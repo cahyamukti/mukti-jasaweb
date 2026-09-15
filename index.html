@@ -36,7 +36,7 @@
       <p class="text-gray-500 max-w-xl mx-auto text-sm">Temukan tips seputar pembuatan website, optimasi bisnis online, tips dashboard admin, dan kabar terbaru dari kami.</p>
     </div>
 
-    <!-- Wadah Dinamis Artikel dari blogs.json -->
+    <!-- Wadah Dinamis Artikel dari admin.html / blogs.json -->
     <div id="blog-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 col-span-3 text-center text-gray-400 py-12">
         Memuat artikel terbaru...
@@ -55,7 +55,7 @@
     </div>
   </footer>
 
-  <!-- Script untuk Otomatis Menarik Data dari blogs.json -->
+  <!-- Script untuk Menarik Data blogs.json secara Otomatis -->
   <script>
     async function loadBlogs() {
       try {
@@ -80,7 +80,7 @@
                 <h3 class="font-bold text-lg text-gray-800 mt-1 mb-3 leading-snug">${blog.title}</h3>
                 <p class="text-gray-600 text-sm mb-6 line-clamp-3">${blog.summary}</p>
               </div>
-              <a href="#" class="text-orange-600 font-semibold text-sm hover:underline inline-flex items-center">Baca Selengkapnya &rarr;</a>
+              <span class="text-gray-400 font-semibold text-sm inline-flex items-center">Baca Selengkapnya &rarr;</span>
             </div>
           `;
           container.innerHTML += blogCard;
