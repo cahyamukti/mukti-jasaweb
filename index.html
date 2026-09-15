@@ -209,6 +209,8 @@
                 <a href="#layanan" onclick="showPage('home')" class="hover:text-brand-orange transition">Redesign Web</a>
                 <a href="#layanan" onclick="showPage('home')" class="hover:text-brand-orange transition">Maintenance Web</a>
                 <a href="#harga" onclick="showPage('home')" class="hover:text-brand-orange transition">Paket Harga</a>
+                <!-- TAMBAHAN MENU BLOG -->
+                <a href="javascript:void(0)" onclick="showPage('blog')" class="hover:text-brand-orange transition font-bold text-brand-orange">Blog / News</a>
             </nav>
 
             <div>
@@ -984,6 +986,96 @@
         </div>
     </div>
 
+    <!-- TAMBAHAN HALAMAN: BLOG / NEWS LIST -->
+    <div id="page-blog" class="view-section hidden py-16 lg:py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-brand-orange font-bold text-sm tracking-widest uppercase">UPDATE & ARTIKEL TERBARU</span>
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4">Blog & News muktijasaweb</h1>
+                <p class="text-slate-600">Temukan tips seputar pembuatan website, optimasi bisnis online, tips dashboard admin, dan kabar terbaru dari kami.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Artikel 1 -->
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-extrabold text-xl p-6 text-center">
+                            🚀 5 Alasan Bisnis Wajib Punya Website
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs bg-orange-50 text-brand-orange font-bold px-2.5 py-1 rounded-md">Tips Bisnis</span>
+                            <div class="text-xs text-slate-400 mt-2">15 September 2026</div>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">5 Alasan Utama UMKM Wajib Punya Website Sendiri di Tahun Ini</h3>
+                            <p class="text-slate-600 text-sm line-clamp-3">Mengandalkan media sosial saja tidak cukup untuk jangka panjang. Simak mengapa kepemilikan website resmi meningkatkan kredibilitas brand Anda.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="javascript:void(0)" onclick="showBlogDetail('5 Alasan Utama UMKM Wajib Punya Website Sendiri di Tahun Ini', '15 September 2026', 'Mengandalkan media sosial saja tidak cukup untuk jangka panjang. Algoritma sosial media sering berubah, dan kepercayaan pelanggan korporat jauh lebih tinggi kepada bisnis yang memiliki domain web profesional (.com atau .my.id). Website bekerja 24 jam penuh memperkenalkan produk Anda tanpa batasan waktu.')" class="text-brand-orange font-bold text-sm hover:underline">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+
+                <!-- Artikel 2 -->
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-slate-900 to-slate-800 flex items-center justify-center text-white font-extrabold text-xl p-6 text-center">
+                            📊 Pentingnya Dashboard Admin Custom
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs bg-orange-50 text-brand-orange font-bold px-2.5 py-1 rounded-md">Teknologi</span>
+                            <div class="text-xs text-slate-400 mt-2">10 September 2026</div>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">Mengapa Dashboard Admin Kustom Lebih Baik Dibanding Excel Manual</h3>
+                            <p class="text-slate-600 text-sm line-clamp-3">Mencatat stok dan rekap transaksi lewat file excel rawan human error. Temukan solusi praktis dengan dashboard manajemen produk interaktif.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="javascript:void(0)" onclick="showBlogDetail('Mengapa Dashboard Admin Kustom Lebih Baik Dibanding Excel Manual', '10 September 2026', 'Mencatat stok dan rekap transaksi lewat file excel manual sangat rentan terjadi selisih dan human error saat bisnis mulai berkembang pesat. Dengan sistem Dashboard Admin Custom dari muktijasaweb, Anda bisa mengontrol stok barang, melihat grafik penjualan secara real-time, dan memantau status pesanan kapanpun dan dimanapun dengan aman.')" class="text-brand-orange font-bold text-sm hover:underline">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+
+                <!-- Artikel 3 -->
+                <div class="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="h-48 bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white font-extrabold text-xl p-6 text-center">
+                            ⚡ Tips Website Cepat & SEO Friendly
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs bg-orange-50 text-brand-orange font-bold px-2.5 py-1 rounded-md">SEO & Web</span>
+                            <div class="text-xs text-slate-400 mt-2">01 September 2026</div>
+                            <h3 class="text-lg font-bold text-slate-900 mt-2 mb-2">Cara Kerja SEO di muktijasaweb Agar Mudah Muncul di Google</h3>
+                            <p class="text-slate-600 text-sm line-clamp-3">Website bagus tapi tidak ada pengunjungnya? Pelajari bagaimana optimasi kecepatan muat dan struktur tag heading mendongkrak peringkat Anda.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="javascript:void(0)" onclick="showBlogDetail('Cara Kerja SEO di muktijasaweb Agar Mudah Muncul di Google', '01 September 2026', 'Memiliki website tanpa optimasi SEO ibarat membuka toko di dalam lorong gelap yang sepi. Di muktijasaweb, setiap halaman website dirancang sejak awal menggunakan struktur heading yang benar, optimasi gambar, kecepatan akses (Core Web Vitals), hingga meta tag yang ramah mesin pencari Google.')" class="text-brand-orange font-bold text-sm hover:underline">Baca Selengkapnya →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="javascript:void(0)" onclick="showPage('home')" class="inline-block border border-slate-300 text-slate-700 px-8 py-3 rounded-xl font-bold hover:bg-slate-50 transition">← Kembali ke Beranda Utama</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAMBAHAN HALAMAN: DETAIL BLOG / NEWS -->
+    <div id="page-blog-detail" class="view-section hidden py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button onclick="showPage('blog')" class="text-brand-orange font-bold text-sm mb-6 inline-flex items-center gap-2 hover:underline">← Kembali ke Daftar Blog</button>
+            <div id="blog-date" class="text-xs text-slate-400 mb-2">Tanggal</div>
+            <h1 id="blog-title" class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">Judul Artikel</h1>
+            <div id="blog-content" class="text-slate-700 leading-relaxed space-y-4 text-base mb-12">
+                Isi artikel lengkap...
+            </div>
+            <div class="bg-orange-50 p-6 rounded-2xl border border-orange-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <h4 class="font-bold text-slate-900">Ingin buat website profesional untuk bisnismu?</h4>
+                    <p class="text-xs text-slate-600">Konsultasikan kebutuhan website atau dashboard admin gratis bersama kami.</p>
+                </div>
+                <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20membaca%20artikel%20di%20blog%20dan%20ingin%20konsultasi." target="_blank" class="bg-brand-orange text-white px-6 py-3 rounded-xl font-bold text-sm hover:bg-orange-600 transition shrink-0">Konsultasi via WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
     <!-- FOOTER -->
     <footer class="bg-brand-dark text-white pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1015,6 +1107,8 @@
                         <li><a href="#harga" onclick="showPage('home')" class="hover:text-white transition">Jasa Pembuatan Toko Online</a></li>
                         <li><a href="#harga" onclick="showPage('home')" class="hover:text-white transition">Jasa Pembuatan Katalog Produk</a></li>
                         <li><a href="#harga" onclick="showPage('home')" class="hover:text-white transition">Jasa Dashboard & Admin Produk</a></li>
+                        <!-- TAMBAHAN LINK BLOG DI FOOTER -->
+                        <li><a href="javascript:void(0)" onclick="showPage('blog')" class="hover:text-white transition text-brand-orange font-semibold">Blog & Berita Update</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1096,6 +1190,14 @@
                 el.classList.add('hidden');
                 icon.textContent = '+';
             }
+        }
+
+        // FUNGSI TAMBAHAN UNTUK BLOG DETAIL
+        function showBlogDetail(title, date, content) {
+            document.getElementById('blog-title').textContent = title;
+            document.getElementById('blog-date').textContent = date;
+            document.getElementById('blog-content').innerHTML = '<p>' + content + '</p><p>Jika Anda memiliki pertanyaan lebih lanjut atau ingin mulai mendesain platform website perusahaan / toko online custom bersama tim ahli muktijasaweb, jangan ragu untuk menghubungi kami via tombol WhatsApp yang tersedia di pojok kanan bawah!</p>';
+            showPage('blog-detail');
         }
     </script>
 </body>
