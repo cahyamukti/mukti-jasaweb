@@ -207,9 +207,53 @@
 
                 <a href="#layanan" onclick="showPage('home')" class="hover:text-brand-orange transition">Web Custom</a>
                 <a href="#layanan" onclick="showPage('home')" class="hover:text-brand-orange transition">Redesign Web</a>
-                <a href="#layanan" onclick="showPage('home')" class="hover:text-brand-orange transition">Maintenance Web</a>
+                
+                <!-- MENU MAINTENANCE WEB DENGAN HOVER MEGA MENU -->
+                <div class="relative group py-4">
+                    <a href="javascript:void(0)" onclick="showPage('maintenance')" class="flex items-center gap-1 hover:text-brand-orange transition py-2">
+                        Maintenance Web 
+                        <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </a>
+
+                    <!-- MEGA MENU DROPDOWN MAINTENANCE -->
+                    <div class="dropdown-menu absolute top-full left-[-80px] w-[650px] bg-white rounded-2xl shadow-2xl border border-slate-100 p-6 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50 grid grid-cols-2 gap-4">
+                        
+                        <a href="javascript:void(0)" onclick="showPage('maintenance')" class="flex items-center gap-3.5 p-3 rounded-xl border border-slate-100 hover:border-brand-orange/40 hover:bg-orange-50/40 transition group/card">
+                            <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 shadow-md shadow-brand-orange/20 font-bold">🛡️</div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900 group-hover/card:text-brand-orange transition">Maintenance Basic</div>
+                                <div class="text-[11px] text-slate-500">Rp 350.000 / bulan</div>
+                            </div>
+                        </a>
+
+                        <a href="javascript:void(0)" onclick="showPage('maintenance')" class="flex items-center gap-3.5 p-3 rounded-xl border border-slate-100 hover:border-brand-orange/40 hover:bg-orange-50/40 transition group/card">
+                            <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 shadow-md shadow-brand-orange/20 font-bold">⚡</div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900 group-hover/card:text-brand-orange transition">Maintenance Standard</div>
+                                <div class="text-[11px] text-slate-500">Rp 750.000 / bulan</div>
+                            </div>
+                        </a>
+
+                        <a href="javascript:void(0)" onclick="showPage('maintenance')" class="flex items-center gap-3.5 p-3 rounded-xl border border-slate-100 hover:border-brand-orange/40 hover:bg-orange-50/40 transition group/card">
+                            <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 shadow-md shadow-brand-orange/20 font-bold">💎</div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900 group-hover/card:text-brand-orange transition">Maintenance Premium</div>
+                                <div class="text-[11px] text-slate-500">Rp 1.500.000 / bulan</div>
+                            </div>
+                        </a>
+
+                        <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20jasa%20maintenance%20website." target="_blank" class="flex items-center gap-3.5 p-3 rounded-xl border border-dashed border-orange-300 bg-orange-50/50 hover:bg-orange-100/50 transition group/card">
+                            <div class="w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center shrink-0 shadow-md font-bold">💬</div>
+                            <div>
+                                <div class="text-xs font-bold text-slate-900 group-hover/card:text-brand-orange transition">Custom Kebutuhan Lain?</div>
+                                <div class="text-[11px] text-brand-orange font-semibold">Konsultasi via WhatsApp →</div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
                 <a href="#harga" onclick="showPage('home')" class="hover:text-brand-orange transition">Paket Harga</a>
-                <!-- TAMBAHAN MENU BLOG -->
                 <a href="javascript:void(0)" onclick="showPage('blog')" class="hover:text-brand-orange transition font-bold text-brand-orange">Blog</a>
             </nav>
 
@@ -221,7 +265,7 @@
         </div>
     </header>
 
-    <!-- CONTAINER UTAMA UNTUK DYNAMIC VIEW -->
+    <!-- CONTAINER UTAMA UNTUK DYNAMIC VIEW: HOME -->
     <div id="page-home" class="view-section">
         <!-- HERO SECTION -->
         <section class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-orange-50/30 to-white">
@@ -313,7 +357,6 @@
         <section id="layanan" class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
-                    <!-- CONTOH PREVIEW LANDING PAGE JADI -->
                     <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-6 sm:p-8 rounded-3xl border border-slate-700 shadow-2xl relative overflow-hidden text-white">
                         <div class="flex items-center justify-between mb-6 pb-4 border-b border-slate-700">
                             <div class="flex items-center gap-2">
@@ -865,27 +908,23 @@
         </section>
     </div>
 
-    <!-- TAMPILAN DINAMIS: DETAIL LAYANAN DROPDOWN -->
+    <!-- TAMPILAN DINAMIS: DETAIL LAYANAN WEB BISNIS DROPDOWN -->
     <div id="page-service-detail" class="view-section hidden py-16 lg:py-24 bg-gradient-to-b from-orange-50/20 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                    <!-- Badge Atas Dinamis -->
                     <div class="inline-flex items-center gap-2 bg-orange-50 px-3.5 py-1.5 rounded-full text-xs font-semibold text-brand-orange mb-6 border border-orange-100 shadow-sm">
                         <span id="detail-badge">🏢 500+ Website Profesional Dibangun, Rating 5.0 di Google</span>
                     </div>
 
-                    <!-- Judul Dinamis -->
                     <h1 id="detail-title" class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
                         Jasa Pembuatan Website yang Dipercaya Klien dan Mitra Bisnis
                     </h1>
 
-                    <!-- Deskripsi Dinamis -->
                     <p id="detail-desc" class="text-slate-600 text-base leading-relaxed mb-8">
                         Jasa pembuatan website untuk tampil profesional di mata klien korporat, calon mitra, dan investor. Struktur informasi lengkap dan kredibel, dibangun dengan fondasi SEO yang kuat.
                     </p>
 
-                    <!-- 4 Point Keunggulan Grid -->
                     <div class="grid sm:grid-cols-2 gap-6 mb-8">
                         <div class="flex items-start gap-3.5">
                             <div id="detail-icon-box" class="w-10 h-10 rounded-xl bg-brand-orange text-white flex items-center justify-center shrink-0 shadow-md shadow-brand-orange/20 font-bold">🏢</div>
@@ -913,7 +952,6 @@
                         </div>
                     </div>
 
-                    <!-- Partner Logo Badges -->
                     <div class="grid grid-cols-4 gap-3 bg-white p-4 rounded-2xl border border-slate-200/80 shadow-sm mb-8">
                         <div class="flex items-center justify-center p-2 bg-slate-50 rounded-lg text-[10px] font-bold text-slate-600">Google Cloud</div>
                         <div class="flex items-center justify-center p-2 bg-slate-50 rounded-lg text-[10px] font-bold text-slate-600">Shopify</div>
@@ -921,7 +959,6 @@
                         <div class="flex items-center justify-center p-2 bg-slate-50 rounded-lg text-[10px] font-bold text-slate-600">WIX Studio</div>
                     </div>
 
-                    <!-- Tombol Aksi -->
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a id="detail-wa-btn" href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi." target="_blank" class="bg-brand-orange hover:bg-orange-600 text-white text-center px-8 py-4 rounded-xl font-bold shadow-xl shadow-brand-orange/20 transition flex items-center justify-center gap-2">
                             Lihat Paket Website Ini 🎁
@@ -932,7 +969,6 @@
                     </div>
                 </div>
 
-                <!-- Mockup Kanan -->
                 <div class="relative">
                     <div class="bg-white p-6 rounded-3xl shadow-2xl border border-slate-200/80 relative z-10">
                         <div class="flex items-center gap-2 mb-6 border-b border-slate-100 pb-4">
@@ -945,45 +981,229 @@
                             <div class="h-4 bg-orange-100 rounded w-1/3"></div>
                             <div class="h-8 bg-slate-900 rounded-lg w-full"></div>
                             <div class="h-3 bg-slate-100 rounded w-4/5"></div>
-                            
                             <div class="grid grid-cols-3 gap-3 pt-2">
                                 <div class="h-20 bg-slate-50 rounded-xl border border-slate-100"></div>
                                 <div class="h-20 bg-slate-50 rounded-xl border border-slate-100"></div>
                                 <div class="h-20 bg-slate-50 rounded-xl border border-slate-100"></div>
                             </div>
-
                             <div class="h-10 bg-brand-orange rounded-xl w-1/3 mt-2 shadow-md shadow-brand-orange/20"></div>
-
-                            <div class="grid grid-cols-3 gap-3 pt-4 border-t border-slate-100">
-                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                    <div class="text-xs font-bold text-slate-900">2-7 Hari</div>
-                                    <div class="text-[10px] text-slate-500">Rata-rata pengerjaan</div>
-                                </div>
-                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                    <div class="text-xs font-bold text-slate-900">100%</div>
-                                    <div class="text-[10px] text-slate-500">Mobile responsive</div>
-                                </div>
-                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                                    <div class="text-xs font-bold text-slate-900">5.0 ★</div>
-                                    <div class="text-[10px] text-slate-500">Rating Google</div>
-                                </div>
-                            </div>
-
                             <div class="flex items-center justify-between p-3 bg-slate-900 text-white rounded-xl text-xs font-medium">
                                 <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span> Live cepat & aman</span>
                                 <span class="text-slate-400 text-[10px]">Secure SSL</span>
-                            </div>
-
-                            <div class="flex items-center justify-between text-[11px] text-slate-500 pt-2 border-t border-dashed border-slate-200">
-                                <span>🔒 SSL Aktif</span>
-                                <span>⚡ Loading Cepat</span>
-                                <span>📱 Mobile Ready</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- TAMPILAN DINAMIS: HALAMAN MAINTENANCE WEB -->
+    <div id="page-maintenance" class="view-section hidden bg-white">
+        <!-- Hero Section Maintenance -->
+        <section class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-orange-50/30 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 bg-orange-50 px-3.5 py-1.5 rounded-full text-xs font-semibold text-brand-orange mb-6 border border-orange-100">
+                            <span>🔥 500+ Website Dibangun, Rating 5.0 di Google</span>
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] mb-6">
+                            Website Kamu Aman dan Update, Tanpa Kamu Perlu Pantau Sendiri
+                        </h1>
+                        <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                            Jasa maintenance website untuk yang websitenya udah jalan tapi nggak ada waktu urus update, backup, atau perbaikan kecil. Kami yang pantau, kamu tinggal fokus ke bisnis, <strong>mulai Rp350.000/bulan</strong>.
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4 mb-8">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center shrink-0 font-bold">🛡️</div>
+                                <p class="text-sm font-medium text-slate-700">Backup rutin, data website aman dari risiko hilang.</p>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-orange-50 text-brand-orange flex items-center justify-center shrink-0 font-bold">⚡</div>
+                                <p class="text-sm font-medium text-slate-700">Update plugin & core rutin, celah keamanan ditutup cepat.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20memilih%20paket%20maintenance%20website." target="_blank" class="bg-brand-orange text-white text-center px-8 py-4 rounded-xl font-bold shadow-xl shadow-brand-orange/20 hover:bg-orange-600 transition">
+                                Lihat Paket Maintenance 🎁
+                            </a>
+                            <a href="#maint-cakupan" class="border border-slate-300 text-center text-slate-700 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition">
+                                Lihat Apa yang Termasuk →
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Mockup Kanan Maintenance -->
+                    <div class="relative">
+                        <div class="bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 relative z-10">
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-3 h-3 rounded-full bg-orange-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                                <div class="ml-4 bg-slate-100 px-4 py-1 rounded-md text-xs text-slate-400 w-full">bisnisanda.co.id</div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="h-4 bg-orange-100 rounded w-1/3"></div>
+                                <div class="h-8 bg-slate-900 rounded-lg w-full"></div>
+                                <div class="h-3 bg-slate-100 rounded w-4/5"></div>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <div class="h-16 bg-slate-50 rounded-xl border border-slate-100"></div>
+                                    <div class="h-16 bg-slate-50 rounded-xl border border-slate-100"></div>
+                                    <div class="h-16 bg-slate-50 rounded-xl border border-slate-100"></div>
+                                </div>
+                                <div class="h-10 bg-brand-orange rounded-xl w-1/3 mt-2 shadow-md shadow-brand-orange/20"></div>
+                                <div class="grid grid-cols-3 gap-3 pt-4 border-t border-slate-100 text-center">
+                                    <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                                        <div class="text-xs font-bold text-slate-900">&lt;24 Jam</div>
+                                        <div class="text-[9px] text-slate-500">Respon perbaikan</div>
+                                    </div>
+                                    <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                                        <div class="text-xs font-bold text-slate-900">Bulanan</div>
+                                        <div class="text-[9px] text-slate-500">Backup rutin</div>
+                                    </div>
+                                    <div class="p-2 bg-slate-50 rounded-xl border border-slate-100">
+                                        <div class="text-xs font-bold text-slate-900">5.0 ★</div>
+                                        <div class="text-[9px] text-slate-500">Rating Google</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-slate-900 text-white rounded-xl text-xs font-medium">
+                                    <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span> Dipantau tiap bulan</span>
+                                    <span class="text-slate-400 text-[10px]">Secure SSL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cakupan Layanan Maintenance -->
+        <section id="maint-cakupan" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-brand-orange font-bold text-sm tracking-widest uppercase">CAKUPAN LAYANAN</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4">Apa yang Termasuk dalam Jasa Maintenance Website</h2>
+                    <p class="text-slate-600">Bukan cuma jaga-jaga kalau ada masalah, tapi rutin dicek supaya masalahnya nggak sempat muncul.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-brand-orange flex items-center justify-center font-bold text-xl mb-6">🔄</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Update Plugin & Core WordPress</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Update rutin biar celah keamanan cepat ditutup dan website tetap kompatibel sama versi terbaru.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-brand-orange flex items-center justify-center font-bold text-xl mb-6">💾</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Backup Rutin</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Data dan file website dibackup berkala, jadi ada cadangan yang bisa dipulihkan kalau ada masalah tak terduga.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-brand-orange flex items-center justify-center font-bold text-xl mb-6">🔒</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Monitoring Keamanan</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Website dipantau dari aktivitas mencurigakan, malware, atau percobaan akses ilegal, biar cepat ditangani sebelum jadi masalah besar.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-brand-orange flex items-center justify-center font-bold text-xl mb-6">⏱️</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Monitoring Uptime</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Kalau website tiba-tiba down, kami langsung tahu dan tangani, jadi kamu nggak perlu terus-terusan cek sendiri.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-brand-orange flex items-center justify-center font-bold text-xl mb-6">🛠️</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Perbaikan Bug Kecil</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Error tampilan, link rusak, atau masalah teknis kecil lainnya diperbaiki tanpa perlu bikin tiket rumit, tinggal kirim WhatsApp.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-orange-50 text-brand-orange flex items-center justify-center font-bold text-xl mb-6">✍️</div>
+                        <h3 class="text-lg font-bold text-slate-900 mb-2">Edit Konten Minor</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Ganti teks, foto, harga, atau info kecil lain di website tanpa perlu kamu belajar coding atau CMS.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paket Harga Maintenance -->
+        <section class="py-20 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <span class="text-brand-orange font-bold text-sm tracking-widest uppercase">PAKET HARGA MAINTENANCE</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4">Pilih Paket Jasa Maintenance Website</h2>
+                    <p class="text-slate-600">Semua paket bisa berhenti kapan saja tanpa kontrak mengikat, cocok buat website WordPress yang butuh perawatan rutin.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Basic -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-brand-orange uppercase">BASIC</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Maintenance Basic</h3>
+                            <p class="text-xs text-slate-500 mb-6">Website landing page atau company profile sederhana, jarang berubah.</p>
+                            <div class="mb-6">
+                                <div class="text-3xl font-extrabold text-slate-900">Rp 350.000 <span class="text-xs font-normal text-slate-500">/ bulan</span></div>
+                            </div>
+                            <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                                <li>✓ Update plugin & core WordPress</li>
+                                <li>✓ Backup bulanan</li>
+                                <li>✓ Monitoring uptime</li>
+                                <li>✓ Perbaikan bug minor (1x/bulan)</li>
+                                <li>✓ Respon maks 1x24 jam</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20memilih%20Paket%20Maintenance%20Basic." target="_blank" class="w-full bg-brand-orange text-white text-center py-3 rounded-xl font-bold text-sm hover:bg-orange-600 transition">Konsultasi via WhatsApp</a>
+                    </div>
+
+                    <!-- Standard (Paling Laris) -->
+                    <div class="bg-white p-8 rounded-3xl border-2 border-brand-orange shadow-xl relative flex flex-col justify-between">
+                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-orange text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">PALING LARIS</div>
+                        <div>
+                            <span class="text-xs font-bold text-brand-orange uppercase">STANDARD</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Maintenance Standard</h3>
+                            <p class="text-xs text-slate-500 mb-6">Website yang sering diakses dan butuh update konten berkala.</p>
+                            <div class="mb-6">
+                                <div class="text-3xl font-extrabold text-slate-900">Rp 750.000 <span class="text-xs font-normal text-slate-500">/ bulan</span></div>
+                            </div>
+                            <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                                <li>✓ Update plugin & core WordPress</li>
+                                <li>✓ Backup mingguan</li>
+                                <li>✓ Monitoring uptime & keamanan</li>
+                                <li>✓ Perbaikan bug minor (3x/bulan)</li>
+                                <li>✓ Edit konten minor (2x/bulan)</li>
+                                <li>✓ Respon maks 12 jam</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20memilih%20Paket%20Maintenance%20Standard." target="_blank" class="w-full bg-brand-orange text-white text-center py-3 rounded-xl font-bold text-sm hover:bg-orange-600 transition">Konsultasi via WhatsApp</a>
+                    </div>
+
+                    <!-- Premium -->
+                    <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-brand-orange uppercase">PREMIUM</span>
+                            <h3 class="text-xl font-bold text-slate-900 mt-1 mb-2">Maintenance Premium</h3>
+                            <p class="text-xs text-slate-500 mb-6">Toko online atau website bisnis kritikal yang nggak boleh sering down.</p>
+                            <div class="mb-6">
+                                <div class="text-3xl font-extrabold text-slate-900">Rp 1.500.000 <span class="text-xs font-normal text-slate-500">/ bulan</span></div>
+                            </div>
+                            <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                                <li>✓ Update plugin & core WordPress</li>
+                                <li>✓ Backup harian</li>
+                                <li>✓ Monitoring uptime & keamanan 24/7</li>
+                                <li>✓ Perbaikan bug minor tanpa batas</li>
+                                <li>✓ Edit konten minor (5x/bulan)</li>
+                                <li>✓ Laporan performa bulanan</li>
+                                <li>✓ Respon maks 4 jam</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20memilih%20Paket%20Maintenance%20Premium." target="_blank" class="w-full bg-brand-orange text-white text-center py-3 rounded-xl font-bold text-sm hover:bg-orange-600 transition">Konsultasi via WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <button onclick="showPage('home')" class="text-brand-orange font-bold hover:underline">← Kembali ke Beranda Utama</button>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- TAMBAHAN HALAMAN: BLOG LIST -->
@@ -1105,9 +1325,8 @@
                         <li><a href="#harga" onclick="showPage('home')" class="hover:text-white transition">Jasa Pembuatan Landing Page</a></li>
                         <li><a href="javascript:void(0)" onclick="openServiceDetail('Website Perusahaan', '🏢', 'Jasa pembuatan website perusahaan untuk tampil profesional di mata klien korporat, calon mitra, dan investor.')" class="hover:text-white transition">Jasa Pembuatan Website Perusahaan</a></li>
                         <li><a href="#harga" onclick="showPage('home')" class="hover:text-white transition">Jasa Pembuatan Toko Online</a></li>
-                        <li><a href="#harga" onclick="showPage('home')" class="hover:text-white transition">Jasa Pembuatan Katalog Produk</a></li>
-                        <li><a href="#harga" onclick="showPage('home')" class="hover:text-white transition">Jasa Dashboard & Admin Produk</a></li>
-                        <!-- TAMBAHAN LINK BLOG DI FOOTER -->
+                        <li><a href="javascript:void(0)" onclick="showPage('home')" class="hover:text-white transition">Jasa Pembuatan Katalog Produk</a></li>
+                        <li><a href="javascript:void(0)" onclick="showPage('maintenance')" class="hover:text-white transition text-brand-orange font-semibold">Jasa Maintenance Website</a></li>
                         <li><a href="javascript:void(0)" onclick="showPage('blog')" class="hover:text-white transition text-brand-orange font-semibold">Blog</a></li>
                     </ul>
                 </div>
@@ -1192,7 +1411,6 @@
             }
         }
 
-        // FUNGSI TAMBAHAN UNTUK BLOG DETAIL
         function showBlogDetail(title, date, content) {
             document.getElementById('blog-title').textContent = title;
             document.getElementById('blog-date').textContent = date;
