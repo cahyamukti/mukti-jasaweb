@@ -6,6 +6,8 @@
     <title>muktijasaweb - Jasa Pembuatan Website & Dashboard Admin Profesional</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- QR Code Generator Library (QRCode.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -250,7 +252,7 @@
         </div>
     </header>
 
-    <!-- CONTAINER UTAMA -->
+    <!-- CONTAINER UTAMA: HOME -->
     <div id="page-home" class="view-section">
         <!-- HERO SECTION -->
         <section class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-orange-50/30 to-white">
@@ -1281,14 +1283,215 @@
         </div>
     </div>
 
-    <!-- FOOTER (2 BARIS SESUAI PERMINTAAN) -->
+    <!-- TAMBAHAN HALAMAN: COMING SOON TOOLS FREE -->
+    <div id="page-coming-soon" class="view-section hidden py-16 lg:py-32 bg-gradient-to-b from-orange-50/40 to-white text-center">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+            
+            <div class="w-24 h-24 sm:w-32 sm:h-32 bg-brand-orange text-white rounded-full flex items-center justify-center text-4xl sm:text-5xl mx-auto mb-8 shadow-xl shadow-brand-orange/30 font-bold relative overflow-hidden">
+                <span class="relative z-10 animate-bounce">🛠️</span>
+                <div class="absolute inset-0 bg-white/20 blur-md rounded-full"></div>
+            </div>
+            
+            <span class="text-brand-orange font-bold text-sm tracking-widest uppercase mb-4 block">SEGERA HADIR</span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
+                Fitur Sedang Dalam Pengembangan 🚀
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-slate-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+                Fitur gratis <strong id="coming-soon-tool-name" class="text-brand-orange bg-orange-50 px-2 py-0.5 rounded-md border border-orange-100">Tools Free</strong> saat ini sedang dipersiapkan oleh tim ahli kami untuk membantu performa bisnis Anda. Nantikan peluncurannya segera!
+            </p>
+            
+            <button onclick="showPage('home')" class="bg-brand-orange text-white px-8 py-4 rounded-xl font-bold shadow-xl shadow-brand-orange/20 hover:bg-orange-600 transition inline-flex items-center gap-2">
+                ← Kembali ke Beranda Utama
+            </button>
+        </div>
+    </div>
+
+    <!-- TAMBAHAN HALAMAN: QR CODE GENERATOR -->
+    <div id="page-qr-generator" class="view-section hidden bg-slate-50/50">
+        <!-- Hero Section QR Generator -->
+        <section class="relative overflow-hidden py-16 lg:py-20 bg-gradient-to-b from-orange-50/40 to-white border-b border-slate-100">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-brand-orange mb-6 border border-orange-100 shadow-sm">
+                    <span>📱 Gratis, Tanpa Watermark</span>
+                </div>
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                    QR Code Generator
+                </h1>
+                <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto">
+                    Bikin QR Code buat link, teks, WhatsApp, email, atau nomor telepon dalam hitungan detik. Langsung preview, langsung download PNG, tanpa perlu daftar akun dulu.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Tool Content -->
+        <section class="py-12 lg:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-200/80 mb-16">
+                    <p class="text-xs sm:text-sm text-slate-500 mb-8 pb-4 border-b border-slate-100">
+                        Pilih tipe QR, isi datanya, preview langsung muncul di kanan. Klik download buat simpan PNG-nya.
+                    </p>
+
+                    <div class="grid lg:grid-cols-12 gap-8 items-start">
+                        <!-- Sisi Kiri: Form Input -->
+                        <div class="lg:col-span-7 space-y-6">
+                            <!-- Pilihan Tipe Tab QR -->
+                            <div class="flex flex-wrap gap-2">
+                                <button onclick="switchQrTab('url')" id="btn-qr-url" class="qr-tab-btn px-4 py-2 rounded-full text-xs font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">Link / URL</button>
+                                <button onclick="switchQrTab('text')" id="btn-qr-text" class="qr-tab-btn px-4 py-2 rounded-full text-xs font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">Teks Bebas</button>
+                                <button onclick="switchQrTab('wa')" id="btn-qr-wa" class="qr-tab-btn px-4 py-2 rounded-full text-xs font-bold transition bg-brand-orange text-white shadow-md">WhatsApp</button>
+                                <button onclick="switchQrTab('email')" id="btn-qr-email" class="qr-tab-btn px-4 py-2 rounded-full text-xs font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">Email</button>
+                                <button onclick="switchQrTab('phone')" id="btn-qr-phone" class="qr-tab-btn px-4 py-2 rounded-full text-xs font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200">Telepon</button>
+                            </div>
+
+                            <!-- Input Field Dynamic sesuai Tipe (Default WhatsApp) -->
+                            <div id="qr-form-inputs" class="space-y-4">
+                                <div class="space-y-2">
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Nomor WhatsApp</label>
+                                    <input type="text" id="qr-input-wa-phone" value="088709656799" oninput="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-sm text-slate-800 bg-slate-50/50 transition">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Pesan Otomatis (opsional)</label>
+                                    <input type="text" id="qr-input-wa-msg" value="Halo, saya scan QR di toko kamu..." oninput="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-sm text-slate-800 bg-slate-50/50 transition">
+                                    <p class="text-[11px] text-slate-400">Butuh link WhatsApp yang lebih lengkap dengan preview chat? Coba WhatsApp Chat Generator kami.</p>
+                                </div>
+                            </div>
+
+                            <!-- Pengaturan Tampilan & Ukuran -->
+                            <div class="grid sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Tampilan QR</label>
+                                    <label for="qr-color-picker" class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-slate-50/50 cursor-pointer hover:border-brand-orange transition">
+                                        <input type="color" id="qr-color-picker" value="#0F172A" onchange="updateQrPreview()" class="w-6 h-6 rounded border-0 cursor-pointer bg-transparent">
+                                        <div>
+                                            <div class="text-xs font-bold text-slate-900">Warna QR</div>
+                                            <div class="text-[10px] text-slate-400">Pastikan tetap kontras dengan background.</div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Ukuran</label>
+                                    <select id="qr-size-select" onchange="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-xs text-slate-800 bg-slate-50/50 transition">
+                                        <option value="180">Sedang (500px)</option>
+                                        <option value="130">Kecil (300px)</option>
+                                        <option value="250">Besar (1000px)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sisi Kanan: Preview & Download -->
+                        <div class="lg:col-span-5 bg-slate-50/80 p-6 rounded-2xl border border-slate-200 flex flex-col justify-between items-center text-center">
+                            <div class="w-full">
+                                <h4 class="text-sm font-bold text-slate-900 mb-4 text-left">Preview QR Code</h4>
+                                <div class="w-full min-h-[260px] bg-white rounded-xl border border-dashed border-slate-300 flex flex-col items-center justify-center p-4 relative shadow-sm overflow-hidden">
+                                    <!-- Tempat Render QR Code Asli -->
+                                    <div id="qrcode" class="flex items-center justify-center bg-white p-2 rounded shadow-sm"></div>
+                                    <span id="qr-preview-text" class="text-[10px] font-mono text-slate-500 mt-3 truncate max-w-full">088709656799</span>
+                                </div>
+                            </div>
+                            
+                            <div class="w-full mt-6 pt-4 border-t border-slate-200/60">
+                                <p class="text-[11px] text-slate-400 mb-3">Isi data di kiri untuk melihat QR Code-nya.</p>
+                                <button onclick="downloadQrImage()" class="w-full bg-brand-orange hover:bg-orange-600 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-brand-orange/20 transition text-sm flex items-center justify-center gap-2">
+                                    ↓ Download PNG
+                                </button>
+                                <p class="text-[10px] text-slate-400 mt-3">QR ini bisa dipakai berulang kali dan tidak kedaluwarsa, selama isi datanya tidak kamu ubah lagi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ QR Code Section -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-12">
+                        <span class="text-brand-orange font-bold text-sm tracking-widest uppercase">PERTANYAAN UMUM</span>
+                        <h2 class="text-3xl font-extrabold text-slate-900 mt-2 mb-3">Yang Sering Ditanyakan Soal QR Code Generator</h2>
+                        <p class="text-slate-600 text-sm">Kalau masih ada yang mengganjal soal cara pakai atau hasil QR-nya, cek dulu jawaban di bawah, atau langsung tanya lewat WhatsApp.</p>
+                    </div>
+
+                    <div class="space-y-4 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+                        <div class="border-b border-slate-200 pb-4">
+                            <button onclick="toggleQrFaq('qrf-1')" class="w-full flex justify-between items-center text-left font-bold text-base text-slate-900">
+                                <span>Apakah QR Code yang dihasilkan tools ini kedaluwarsa atau ada batas scan?</span>
+                                <span id="icon-qrf-1" class="text-brand-orange text-xl font-bold">−</span>
+                            </button>
+                            <div id="qrf-1" class="mt-2 text-slate-600 text-sm leading-relaxed">
+                                Tidak sama sekali. QR Code bersifat permanen dan tidak memiliki batas pemindaian (unlimited scan).
+                            </div>
+                        </div>
+                        <div class="border-b border-slate-200 pb-4">
+                            <button onclick="toggleQrFaq('qrf-2')" class="w-full flex justify-between items-center text-left font-bold text-base text-slate-900">
+                                <span>Apakah data yang saya masukkan (nomor, email, teks) disimpan di server kalian?</span>
+                                <span id="icon-qrf-2" class="text-brand-orange text-xl font-bold">+</span>
+                            </button>
+                            <div id="qrf-2" class="mt-2 text-slate-600 text-sm leading-relaxed hidden">
+                                Tidak, seluruh proses pembuatan QR Code berjalan langsung di browser Anda sehingga data Anda aman dan privasi terjaga.
+                            </div>
+                        </div>
+                        <div class="border-b border-slate-200 pb-4">
+                            <button onclick="toggleQrFaq('qrf-3')" class="w-full flex justify-between items-center text-left font-bold text-base text-slate-900">
+                                <span>Format file apa yang dihasilkan, dan apakah kualitasnya cukup untuk dicetak?</span>
+                                <span id="icon-qrf-3" class="text-brand-orange text-xl font-bold">+</span>
+                            </button>
+                            <div id="qrf-3" class="mt-2 text-slate-600 text-sm leading-relaxed hidden">
+                                File dihasilkan dalam format PNG beresolusi tinggi yang sangat tajam dan siap dicetak di media banner, kartu nama, atau kemasan produk.
+                            </div>
+                        </div>
+                        <div class="border-b border-slate-200 pb-4">
+                            <button onclick="toggleQrFaq('qrf-4')" class="w-full flex justify-between items-center text-left font-bold text-base text-slate-900">
+                                <span>Kenapa QR Code saya tidak bisa di-scan setelah diganti warnanya?</span>
+                                <span id="icon-qrf-4" class="text-brand-orange text-xl font-bold">+</span>
+                            </button>
+                            <div id="qrf-4" class="mt-2 text-slate-600 text-sm leading-relaxed hidden">
+                                Pastikan selalu menggunakan warna gelap untuk pola QR dan warna terang untuk latar belakang agar kamera handphone dapat mendeteksinya dengan mudah.
+                            </div>
+                        </div>
+                        <div class="border-b border-slate-200 pb-4">
+                            <button onclick="toggleQrFaq('qrf-5')" class="w-full flex justify-between items-center text-left font-bold text-base text-slate-900">
+                                <span>Apa bedanya QR untuk link biasa dengan QR untuk WhatsApp?</span>
+                                <span id="icon-qrf-5" class="text-brand-orange text-xl font-bold">+</span>
+                            </button>
+                            <div id="qrf-5" class="mt-2 text-slate-600 text-sm leading-relaxed hidden">
+                                QR WhatsApp otomatis membuka aplikasi chat dengan format nomor dan pesan prapesan yang langsung siap dikirim oleh pelanggan.
+                            </div>
+                        </div>
+                        <div class="border-b border-slate-200 pb-4">
+                            <button onclick="toggleQrFaq('qrf-6')" class="w-full flex justify-between items-center text-left font-bold text-base text-slate-900">
+                                <span>Bisa tidak QR ini dipakai di kemasan produk atau kartu nama fisik?</span>
+                                <span id="icon-qrf-6" class="text-brand-orange text-xl font-bold">+</span>
+                            </button>
+                            <div id="qrf-6" class="mt-2 text-slate-600 text-sm leading-relaxed hidden">
+                                Sangat bisa dan sangat direkomendasikan untuk memudahkan pelanggan mengakses website atau kontak bisnis Anda.
+                            </div>
+                        </div>
+                        <div class="border-b border-slate-200 pb-4">
+                            <button onclick="toggleQrFaq('qrf-7')" class="w-full flex justify-between items-center text-left font-bold text-base text-slate-900">
+                                <span>Apakah saya perlu izin khusus untuk pakai QR Code di bisnis saya?</span>
+                                <span id="icon-qrf-7" class="text-brand-orange text-xl font-bold">+</span>
+                            </button>
+                            <div id="qrf-7" class="mt-2 text-slate-600 text-sm leading-relaxed hidden">
+                                Tidak perlu izin khusus, QR Code bebas digunakan secara komersial untuk keperluan pribadi maupun perusahaan.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <button onclick="showPage('home')" class="text-brand-orange font-bold hover:underline">← Kembali ke Beranda Utama</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- FOOTER -->
     <footer class="bg-brand-dark text-white pt-16 pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- BARIS ATAS: Logo, Layanan Jasa Website, dan Layanan Pengembalian Akun -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 pb-12 border-b border-slate-800">
+            <!-- BARIS ATAS: 4 Kolom -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12 pb-12 border-b border-slate-800">
                 
-                <!-- Kolom Kiri: Logo & Deskripsi -->
+                <!-- Kolom 1: Logo & Deskripsi -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-3">
                         <svg class="h-9 w-auto" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1304,12 +1507,12 @@
                             <span class="text-white">muktijasa</span><span class="text-brand-orange">web</span>
                         </div>
                     </div>
-                    <p class="text-slate-400 text-sm leading-relaxed max-w-md">
+                    <p class="text-slate-400 text-sm leading-relaxed">
                         muktijasaweb adalah penyedia jasa pembuatan website profesional dan dashboard admin produk, melayani bisnis di seluruh Indonesia. Dari landing page hingga sistem manajemen backend lengkap, kami hadirkan solusi berkualitas dengan harga transparan.
                     </p>
                 </div>
 
-                <!-- Kolom Tengah: Layanan Jasa Website -->
+                <!-- Kolom 2: Layanan Jasa Website -->
                 <div>
                     <h4 class="font-bold text-white mb-4 flex items-center gap-2">
                         <svg class="w-5 h-5 text-brand-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
@@ -1324,26 +1527,37 @@
                     </ul>
                 </div>
 
-                <!-- Kolom Kanan: Layanan Pengembalian Akun -->
+                <!-- Kolom 3: Layanan Pengembalian Akun -->
                 <div>
                     <h4 class="font-bold text-white mb-4 flex items-center gap-2">
                         <svg class="w-5 h-5 text-brand-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                         Layanan Pengembalian Akun
                     </h4>
                     <ul class="space-y-2 text-sm text-slate-400">
-                        <li><a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20pengembalian%20akun%20Facebook." target="_blank" class="hover:text-white transition">Facebook</a></li>
-                        <li><a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20pengembalian%20akun%20TikTok." target="_blank" class="hover:text-white transition">TikTok</a></li>
-                        <li><a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20pengembalian%20akun%20Instagram." target="_blank" class="hover:text-white transition">Instagram</a></li>
-                        <li><a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20pengembalian%20akun%20Email." target="_blank" class="hover:text-white transition">Email</a></li>
+                        <li><a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20pengembalian%20akun%20Facebook%20yang%20di%20Hack." target="_blank" class="hover:text-white transition">Facebook</a></li>
+                        <li><a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20pengembalian%20akun%20TikTok%20yang%20di%20Hack." target="_blank" class="hover:text-white transition">TikTok</a></li>
+                        <li><a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20pengembalian%20akun%20Instagram%20yang%20di%20Hack." target="_blank" class="hover:text-white transition">Instagram</a></li>
+                        <li><a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20pengembalian%20akun%20Email%20yang%20di%20Hack." target="_blank" class="hover:text-white transition">Email</a></li>
                     </ul>
+                </div>
+
+                <!-- Kolom 4: Kontak & Head Office -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">Kontak & Head Office</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-3">
+                        Jakarta & Desa Pende, Kersana, Brebes, Jawa Tengah.
+                    </p>
+                    <p class="text-sm text-slate-400">
+                        WhatsApp: <a href="https://wa.me/6288709656799" target="_blank" class="text-brand-orange hover:underline">0887-0965-6799</a>
+                    </p>
                 </div>
 
             </div>
 
-            <!-- BARIS BAWAH: Khusus untuk Dukungan serta Kontak & Head Office -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12 pb-12 border-b border-slate-800">
+            <!-- BARIS BAWAH: 3 Kolom Seimbang (Dukungan, Tools Free di Tengah, Info Tambahan) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 pb-12 border-b border-slate-800">
                 
-                <!-- Dukungan -->
+                <!-- Kolom 1: Dukungan -->
                 <div>
                     <h4 class="font-bold text-white mb-4">Dukungan</h4>
                     <ul class="space-y-2 text-sm text-slate-400">
@@ -1352,96 +1566,284 @@
                     </ul>
                 </div>
 
-                <!-- Kontak & Head Office -->
+                <!-- Kolom 2: Tools Free (Di Tengah-Tengah) -->
                 <div>
-                    <h4 class="font-bold text-white mb-4">Kontak & Head Office</h4>
+                    <h4 class="font-bold text-white mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-brand-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                        Tools Free
+                    </h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="javascript:void(0)" onclick="showComingSoon('SEO Checker')" class="hover:text-white transition">SEO Checker</a></li>
+                        <li><a href="javascript:void(0)" onclick="showComingSoon('Speed Test Web')" class="hover:text-white transition">Speed Test Web</a></li>
+                        <li><a href="javascript:void(0)" onclick="showComingSoon('Color Picker Palettes')" class="hover:text-white transition">Color Picker Palettes</a></li>
+                        <li><a href="javascript:void(0)" onclick="initQrPage()" class="hover:text-white transition">QR Code Generator</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Komitmen & Garansi -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">Komitmen Layanan</h4>
                     <p class="text-sm text-slate-400 leading-relaxed">
-                        Jakarta, Indonesia<br>
-                        WhatsApp: +62 887-0965-6799<br>
-                        Email: info@muktijasaweb.co.id
+                        Memberikan kualitas pengerjaan terbaik, transparan tanpa biaya tersembunyi, serta garansi penuh untuk setiap proyek digital Anda.
                     </p>
                 </div>
 
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-                <p>Copyright © 2026 muktijasaweb - Jasa Pembuatan Website, Dashboard Admin, Profesional & Terjangkau.</p>
-                <div class="flex gap-4 mt-4 sm:mt-0">
-                    <a href="#" class="hover:text-slate-400">Syarat & Ketentuan</a>
-                    <a href="#" class="hover:text-slate-400">Privacy Policy</a>
-                </div>
+            <!-- COPYRIGHT -->
+            <div class="text-center text-xs text-slate-500">
+                &copy; 2026 Muktijasaweb. Semua hak dilindungi.
             </div>
+
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP BUTTON -->
-    <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 animate-pulse hover:scale-110" aria-label="Konsultasi WhatsApp">
-        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+    <!-- ICON WHATSAPP MENGAMBANG BERKEDIP DI KANAN BAWAH -->
+    <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 animate-pulse hover:scale-110" aria-label="Konsultasi WhatsApp">
+        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
         </svg>
     </a>
 
-    <!-- JAVASCRIPT LENGKAP UTUH -->
+    <!-- SCRIPT JAVASCRIPT DINAMIS -->
     <script>
+        // Fungsi Navigasi Halaman Utama / Dinamis
         function showPage(pageId) {
-            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
-            document.getElementById('page-' + pageId).classList.remove('hidden');
+            const sections = document.querySelectorAll('.view-section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+
+            if (pageId === 'home') {
+                document.getElementById('page-home').classList.remove('hidden');
+            } else if (pageId === 'maintenance') {
+                document.getElementById('page-maintenance').classList.remove('hidden');
+            } else if (pageId === 'blog') {
+                document.getElementById('page-blog').classList.remove('hidden');
+            } else if (pageId === 'blog-detail') {
+                document.getElementById('page-blog-detail').classList.remove('hidden');
+            } else if (pageId === 'coming-soon') {
+                document.getElementById('page-coming-soon').classList.remove('hidden');
+            } else if (pageId === 'qr-generator') {
+                document.getElementById('page-qr-generator').classList.remove('hidden');
+                setTimeout(() => updateQrPreview(), 100);
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function openServiceDetail(serviceName, iconSymbol, descriptionText) {
-            document.getElementById('detail-badge').textContent = iconSymbol + ' Jasa ' + serviceName + ' Profesional, Rating 5.0 di Google';
-            document.getElementById('detail-title').textContent = 'Jasa Pembuatan ' + serviceName + ' yang Dipercaya Klien dan Mitra Bisnis';
-            document.getElementById('detail-desc').textContent = descriptionText;
-            document.getElementById('detail-icon-box').textContent = iconSymbol;
-            document.getElementById('detail-wa-btn').href = 'https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20untuk%20' + encodeURIComponent(serviceName) + '.';
+        // Detail Layanan dari Mega Menu Web Bisnis
+        function openServiceDetail(title, icon, desc) {
+            document.getElementById('detail-title').innerText = 'Jasa Pembuatan ' + title;
+            document.getElementById('detail-desc').innerText = desc;
+            document.getElementById('detail-badge').innerText = icon + ' 500+ Website Profesional Dibangun, Rating 5.0 di Google';
+            document.getElementById('detail-icon-box').innerText = icon;
+            document.getElementById('detail-wa-btn').href = "https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi%20untuk%20" + encodeURIComponent(title) + ".";
+
+            const sections = document.querySelectorAll('.view-section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+            document.getElementById('page-service-detail').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Detail Blog
+        function showBlogDetail(title, date, content) {
+            document.getElementById('blog-title').innerText = title;
+            document.getElementById('blog-date').innerText = date;
+            document.getElementById('blog-content').innerHTML = '<p>' + content + '</p>';
             
-            showPage('service-detail');
+            const sections = document.querySelectorAll('.view-section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+            document.getElementById('page-blog-detail').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function switchTab(type) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(el => {
-                el.classList.remove('bg-brand-orange', 'text-white', 'shadow-md');
-                el.classList.add('text-slate-600', 'hover:bg-slate-100');
-            });
-
-            document.getElementById('content-' + type).classList.remove('hidden');
-            const activeBtn = document.getElementById('btn-' + type);
-            activeBtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
-            activeBtn.classList.add('bg-brand-orange', 'text-white', 'shadow-md');
+        // Coming Soon Free Tools
+        function showComingSoon(toolName) {
+            document.getElementById('coming-soon-tool-name').innerText = toolName;
+            showPage('coming-soon');
         }
 
+        // Inisialisasi Halaman QR Code Generator
+        function initQrPage() {
+            showPage('qr-generator');
+        }
+
+        // Accordion Layanan Beranda
         function toggleAccordion(id) {
             const el = document.getElementById(id);
             const icon = document.getElementById('icon-' + id);
             if (el.classList.contains('hidden')) {
                 el.classList.remove('hidden');
-                icon.textContent = '−';
+                icon.innerText = '−';
             } else {
                 el.classList.add('hidden');
-                icon.textContent = '+';
+                icon.innerText = '+';
             }
         }
 
+        // Accordion FAQ Beranda
         function toggleFaq(id) {
             const el = document.getElementById(id);
             const icon = document.getElementById('icon-' + id);
             if (el.classList.contains('hidden')) {
                 el.classList.remove('hidden');
-                icon.textContent = '−';
+                icon.innerText = '−';
             } else {
                 el.classList.add('hidden');
-                icon.textContent = '+';
+                icon.innerText = '+';
             }
         }
 
-        function showBlogDetail(title, date, content) {
-            document.getElementById('blog-title').textContent = title;
-            document.getElementById('blog-date').textContent = date;
-            document.getElementById('blog-content').innerHTML = '<p>' + content + '</p><p>Jika Anda memiliki pertanyaan lebih lanjut atau ingin mulai mendesain platform website perusahaan / toko online custom bersama tim ahli muktijasaweb, jangan ragu untuk menghubungi kami via tombol WhatsApp yang tersedia di pojok kanan bawah!</p>';
-            showPage('blog-detail');
+        // Accordion FAQ QR Code
+        function toggleQrFaq(id) {
+            const el = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                icon.innerText = '−';
+            } else {
+                el.classList.add('hidden');
+                icon.innerText = '+';
+            }
         }
+
+        // Tab Paket Harga Beranda
+        function switchTab(type) {
+            const tabs = ['landing', 'company', 'catalog', 'store', 'dashboard'];
+            tabs.forEach(t => {
+                document.getElementById('content-' + t).classList.add('hidden');
+                const btn = document.getElementById('btn-' + t);
+                btn.className = "tab-btn px-5 py-2.5 rounded-full font-bold text-sm transition text-slate-600 hover:bg-slate-100 shrink-0";
+            });
+            document.getElementById('content-' + type).classList.remove('hidden');
+            document.getElementById('btn-' + type).className = "tab-btn px-5 py-2.5 rounded-full font-bold text-sm transition bg-brand-orange text-white shadow-md shrink-0";
+        }
+
+        // Logika QR Code Generator
+        let currentQrType = 'wa';
+
+        function switchQrTab(type) {
+            currentQrType = type;
+            const tabs = ['url', 'text', 'wa', 'email', 'phone'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('btn-qr-' + t);
+                if (t === type) {
+                    btn.className = "qr-tab-btn px-4 py-2 rounded-full text-xs font-bold transition bg-brand-orange text-white shadow-md";
+                } else {
+                    btn.className = "qr-tab-btn px-4 py-2 rounded-full text-xs font-bold transition bg-slate-100 text-slate-600 hover:bg-slate-200";
+                }
+            });
+
+            const formContainer = document.getElementById('qr-form-inputs');
+            if (type === 'wa') {
+                formContainer.innerHTML = `
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Nomor WhatsApp</label>
+                        <input type="text" id="qr-input-wa-phone" value="088709656799" oninput="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-sm text-slate-800 bg-slate-50/50 transition">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Pesan Otomatis (opsional)</label>
+                        <input type="text" id="qr-input-wa-msg" value="Halo, saya scan QR di toko kamu..." oninput="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-sm text-slate-800 bg-slate-50/50 transition">
+                    </div>`;
+            } else if (type === 'url') {
+                formContainer.innerHTML = `
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Tautan / URL Website</label>
+                        <input type="text" id="qr-input-url" value="https://muktijasaweb.co.id" oninput="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-sm text-slate-800 bg-slate-50/50 transition">
+                    </div>`;
+            } else if (type === 'text') {
+                formContainer.innerHTML = `
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Isi Teks Bebas</label>
+                        <textarea id="qr-input-text" rows="3" oninput="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-sm text-slate-800 bg-slate-50/50 transition">Halo dunia!</textarea>
+                    </div>`;
+            } else if (type === 'email') {
+                formContainer.innerHTML = `
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Alamat Email Tujuan</label>
+                        <input type="email" id="qr-input-email" value="admin@muktijasaweb.co.id" oninput="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-sm text-slate-800 bg-slate-50/50 transition">
+                    </div>`;
+            } else if (type === 'phone') {
+                formContainer.innerHTML = `
+                    <div class="space-y-2">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Nomor Telepon</label>
+                        <input type="text" id="qr-input-phone" value="088709656799" oninput="updateQrPreview()" class="w-full px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:border-brand-orange text-sm text-slate-800 bg-slate-50/50 transition">
+                    </div>`;
+            }
+            updateQrPreview();
+        }
+
+        function updateQrPreview() {
+            let dataToEncode = '';
+            if (currentQrType === 'wa') {
+                let phone = document.getElementById('qr-input-wa-phone').value.trim();
+                let msg = document.getElementById('qr-input-wa-msg').value;
+                if (phone.startsWith('0')) {
+                    phone = '62' + phone.substring(1);
+                } else if (phone.startsWith('+')) {
+                    phone = phone.substring(1);
+                }
+                dataToEncode = 'https://wa.me/' + phone + (msg ? '?text=' + encodeURIComponent(msg) : '');
+            } else if (currentQrType === 'url') {
+                dataToEncode = document.getElementById('qr-input-url').value;
+            } else if (currentQrType === 'text') {
+                dataToEncode = document.getElementById('qr-input-text').value;
+            } else if (currentQrType === 'email') {
+                let email = document.getElementById('qr-input-email').value;
+                dataToEncode = 'mailto:' + email;
+            } else if (currentQrType === 'phone') {
+                let phone = document.getElementById('qr-input-phone').value;
+                dataToEncode = 'tel:' + phone;
+            }
+
+            const qrContainer = document.getElementById('qrcode');
+            qrContainer.innerHTML = '';
+
+            const color = document.getElementById('qr-color-picker').value;
+            const sizeVal = parseInt(document.getElementById('qr-size-select').value) * 1.2;
+
+            try {
+                new QRCode(qrContainer, {
+                    text: dataToEncode || 'https://muktijasaweb.co.id',
+                    width: sizeVal,
+                    height: sizeVal,
+                    colorDark: color,
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+            } catch(e) {
+                console.log(e);
+            }
+
+            document.getElementById('qr-preview-text').innerText = dataToEncode || '-';
+        }
+
+        function downloadQrImage() {
+            const img = document.querySelector('#qrcode img');
+            const canvas = document.querySelector('#qrcode canvas');
+            let imageUrl = '';
+            if (img && img.src) {
+                imageUrl = img.src;
+            } else if (canvas) {
+                imageUrl = canvas.toDataURL("image/png");
+            }
+
+            if (imageUrl) {
+                const link = document.createElement('a');
+                link.href = imageUrl;
+                link.download = 'muktijasaweb-qrcode.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert('QR Code belum siap diunduh, silakan periksa kembali input Anda.');
+            }
+        }
+
+        // Render QR pertama kali saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', () => {
+            if(document.getElementById('qrcode')) {
+                updateQrPreview();
+            }
+        });
     </script>
 </body>
 </html>
