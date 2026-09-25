@@ -489,6 +489,13 @@
                                 <li>✓ Desain responsif HP & desktop</li>
                                 <li>✓ Revisi: 1x minor</li>
                             </ul>
+                            <!-- Tambahkan butang ini di dalam kad pertama (sebelum penutup div baris 493) -->
+                             <div class="pt-4 mt-4 mb-4 border-t border-slate-100 flex items-center justify-between gap-4">
+    <span class="text-xs font-medium text-slate-500 whitespace-nowrap">Lihat Contoh</span>
+    <button onclick="bukaModalDemo()" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium px-3.5 py-2 rounded-xl transition shadow-sm cursor-pointer whitespace-nowrap">
+        <i class="fa-solid fa-eye"></i> Klik Disini
+    </button>
+</div>
                         </div>
                         <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi." target="_blank" class="w-full bg-brand-orange text-white text-center py-3 rounded-xl font-bold text-sm hover:bg-orange-600 transition">Konsultasi via WhatsApp</a>
                     </div>
@@ -2839,25 +2846,67 @@
         }
 
         function downloadQrImage() {
-            const img = document.querySelector('#qrcode img');
-            const canvas = document.querySelector('#qrcode canvas');
-            let dataUrl = "";
-            if (img && img.src) {
-                dataUrl = img.src;
-            } else if (canvas) {
-                dataUrl = canvas.toDataURL("image/png");
-            }
-            if (dataUrl) {
-                const link = document.createElement('a');
-                link.download = 'muktijasaweb-qrcode.png';
-                link.href = dataUrl;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                alert("QR Code belum ter-generate dengan sempurna.");
-            }
-        }
-    </script>
+    const container = document.getElementById('qrcode');
+    if (!container) return;
+    const img = container.querySelector('img');
+    const canvas = container.querySelector('canvas');
+
+    let imageUrl = '';
+    if (img && img.src) {
+        imageUrl = img.src;
+    } else if (canvas) {
+        imageUrl = canvas.toDataURL("image/png");
+    }
+
+    if (imageUrl) {
+        const link = document.createElement('a');
+        link.href = imageUrl;
+        link.download = 'muktijasaweb-qrcode.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        alert('QR Code belum siap diunduh. Silakan isi data terlebih dahulu.');
+    }
+}
+</script>
+<!-- ========================================== -->
+<!-- MODAL PREVIEW WEBSITE INTERAKTIF -->
+<!-- ========================================== -->
+<div id="modalDemo" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
+    <div class="bg-white w-full max-w-5xl h-[85vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden relative">
+        
+        <!-- Header Pop-up -->
+        <div class="bg-slate-900 text-white px-6 py-3 flex items-center justify-between border-b border-slate-800">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                <span class="text-xs text-slate-400 font-mono ml-2">landing-page-umkm.html</span>
+            </div>
+            <button onclick="tutupModalDemo()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg text-sm transition flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-xmark text-base"></i> Tutup
+            </button>
+        </div>
+
+        <!-- Tampilan Isi Website di dalam Pop-up -->
+        <div class="flex-1 bg-slate-100 overflow-y-auto">
+            <iframe src="landing-page-umkm.html" class="w-full h-full border-0"></iframe>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function bukaModalDemo() {
+        document.getElementById('modalDemo').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function tutupModalDemo() {
+        document.getElementById('modalDemo').classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+</script>
 </body>
 </html>
