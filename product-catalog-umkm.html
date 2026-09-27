@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowAura Official - Katalog Produk Skincare UMKM</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelPink: '#FFF1F2',
+                        pastelRose: '#F43F5E',
+                        sageGreen: '#84A98C',
+                        sageLight: '#F0F4F1',
+                        goldAccent: '#D4AF37',
+                        softCream: '#FAFAF7',
+                        charcoalText: '#2D3748'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #FAFAF7; color: #2D3748; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #84A98C; border-radius: 4px; }
+        .fade-in { animation: fadeIn 0.4s ease-in-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-softCream text-charcoalText antialiased selection:bg-rose-100 selection:text-rose-900 flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('beranda')">
+                    <div class="w-10 h-10 rounded-full bg-sageGreen flex items-center justify-center text-white shadow-md">
+                        <i class="fa-solid fa-spa text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-serif font-bold tracking-tight text-gray-900">Glow<span class="text-sageGreen">Aura</span></span>
+                        <span class="block text-[10px] uppercase tracking-widest text-gray-500 font-semibold">Skincare UMKM</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation (6 Halaman) -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                    <button onclick="switchPage('beranda')" id="nav-beranda" class="nav-link text-sageGreen font-semibold transition hover:text-sageGreen">Beranda</button>
+                    <button onclick="switchPage('katalog')" id="nav-katalog" class="nav-link text-gray-600 transition hover:text-sageGreen">Katalog Produk</button>
+                    <button onclick="switchPage('bundling')" id="nav-bundling" class="nav-link text-gray-600 transition hover:text-sageGreen">Paket Bundling</button>
+                    <button onclick="switchPage('tentang')" id="nav-tentang" class="nav-link text-gray-600 transition hover:text-sageGreen">Tentang Kami</button>
+                    <button onclick="switchPage('testimoni')" id="nav-testimoni" class="nav-link text-gray-600 transition hover:text-sageGreen">Testimoni</button>
+                    <button onclick="switchPage('kontak')" id="nav-kontak" class="nav-link text-gray-600 transition hover:text-sageGreen">Kontak</button>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="openSearchModal()" class="p-2.5 rounded-full bg-gray-50 text-gray-600 hover:bg-sageLight hover:text-sageGreen transition shadow-xs" title="Cari Produk">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <a href="https://wa.me/6281234567890?text=Halo%20GlowAura,%20saya%20ingin%20berkonsultasi%20skincare." target="_blank" class="hidden sm:inline-flex items-center space-x-2 bg-sageGreen text-white px-4 py-2.5 rounded-full text-sm font-medium shadow-md hover:bg-[#6c8f74] transition">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Konsultasi WA</span>
+                    </a>
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-100 px-4 pt-2 pb-4 space-y-2 shadow-lg">
+            <button onclick="switchPage('beranda'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:bg-sageLight hover:text-sageGreen">Beranda</button>
+            <button onclick="switchPage('katalog'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:bg-sageLight hover:text-sageGreen">Katalog Produk</button>
+            <button onclick="switchPage('bundling'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:bg-sageLight hover:text-sageGreen">Paket Bundling</button>
+            <button onclick="switchPage('tentang'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:bg-sageLight hover:text-sageGreen">Tentang Kami</button>
+            <button onclick="switchPage('testimoni'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:bg-sageLight hover:text-sageGreen">Testimoni</button>
+            <button onclick="switchPage('kontak'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-gray-700 hover:bg-sageLight hover:text-sageGreen">Kontak</button>
+            <div class="pt-2">
+                <a href="https://wa.me/6281234567890?text=Halo%20GlowAura,%20saya%20ingin%20berkonsultasi%20skincare." target="_blank" class="flex items-center justify-center space-x-2 w-full bg-sageGreen text-white py-2.5 rounded-lg font-medium shadow-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Konsultasi via WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1 - BERANDA ================= -->
+        <div id="page-beranda" class="page-section fade-in">
+            <!-- Hero Section -->
+            <section class="relative bg-gradient-to-r from-pink-50 via-sageLight to-cream overflow-hidden py-16 md:py-24">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6 text-center md:text-left">
+                            <span class="inline-flex items-center space-x-2 bg-white/80 border border-sageGreen/30 px-3 py-1 rounded-full text-xs font-semibold text-sageGreen uppercase tracking-wider shadow-xs">
+                                <i class="fa-solid fa-seedling"></i> <span>100% Produk Lokal UMKM & BPOM</span>
+                            </span>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-gray-900 leading-tight">
+                                Rawat Kulit Sehatmu dengan <span class="text-sageGreen italic">Kebaikan Alami</span>
+                            </h1>
+                            <p class="text-base sm:text-lg text-gray-600 max-w-xl mx-auto md:mx-0">
+                                GlowAura menghadirkan rangkaian skincare terbaik yang diracik khusus untuk iklim tropis Indonesia. Halal, aman, dan ternutrisi sempurna untuk kulit glowing impianmu.
+                            </p>
+                            <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-2">
+                                <button onclick="switchPage('katalog')" class="w-full sm:w-auto bg-sageGreen text-white px-8 py-3.5 rounded-full font-medium shadow-lg hover:bg-[#6c8f74] transition transform hover:-translate-y-0.5">
+                                    Jelajahi Katalog (20 Produk) <i class="fa-solid fa-arrow-right ml-2"></i>
+                                </button>
+                                <button onclick="switchPage('bundling')" class="w-full sm:w-auto bg-white text-gray-700 border border-gray-200 px-8 py-3.5 rounded-full font-medium shadow-sm hover:bg-gray-50 transition">
+                                    Lihat Paket Bundling
+                                </button>
+                            </div>
+                            <!-- Trust Badges -->
+                            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-200/60 max-w-md mx-auto md:mx-0">
+                                <div class="text-center md:text-left">
+                                    <h4 class="font-bold text-lg text-gray-900">20+</h4>
+                                    <p class="text-xs text-gray-500">Produk Unggulan</p>
+                                </div>
+                                <div class="text-center md:text-left">
+                                    <h4 class="font-bold text-lg text-gray-900">100%</h4>
+                                    <p class="text-xs text-gray-500">Aman & BPOM</p>
+                                </div>
+                                <div class="text-center md:text-left">
+                                    <h4 class="font-bold text-lg text-gray-900">4.9/5.0</h4>
+                                    <p class="text-xs text-gray-500">Rating Pelanggan</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative flex justify-center">
+                            <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white bg-white">
+                                <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=800" alt="Skincare Showcase" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent flex items-end p-6">
+                                    <div class="text-white">
+                                        <span class="bg-sageGreen/90 text-xs px-3 py-1 rounded-full font-medium">Bestseller Series</span>
+                                        <h3 class="text-xl font-serif font-bold mt-1">Glow Barrier Hydrating Set</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Categories Grid -->
+            <section class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-2xl mx-auto mb-12">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-sageGreen">Kategori Pilihan</span>
+                        <h2 class="text-3xl font-serif font-bold text-gray-900 mt-2">Temukan Berdasarkan Kategori</h2>
+                        <p class="text-gray-600 mt-2">Pilih perawatan yang paling sesuai dengan kebutuhan kulitmu saat ini.</p>
+                    </div>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4" id="home-category-grid">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bestseller / Highlight Products -->
+            <section class="py-16 bg-softCream">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                        <div>
+                            <span class="text-xs font-semibold uppercase tracking-widest text-sageGreen">Koleksi Terlaris</span>
+                            <h2 class="text-3xl font-serif font-bold text-gray-900 mt-2">Produk Unggulan Pilihan</h2>
+                        </div>
+                        <button onclick="switchPage('katalog')" class="mt-4 md:mt-0 text-sageGreen font-semibold hover:underline flex items-center space-x-1">
+                            <span>Lihat Semua Katalog (20 items)</span> <i class="fa-solid fa-arrow-right text-sm"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="home-featured-grid">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= PAGE 2 - KATALOG PRODUK (20 Produk) ================= -->
+        <div id="page-katalog" class="page-section hidden fade-in py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Page Header -->
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-sageGreen">Katalog Lengkap</span>
+                    <h1 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mt-2">Semua Koleksi Skincare</h1>
+                    <p class="text-gray-600 mt-2">Temukan 20 pilihan produk terbaik kami untuk merawat kecantikan kulitmu. Tanpa checkout online, langsung Order via WhatsApp.</p>
+                </div>
+
+                <!-- Search and Filter Bar -->
+                <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-100 mb-8 space-y-4">
+                    <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+                        <!-- Search Box -->
+                        <div class="relative w-full md:w-96">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-gray-400"></i>
+                            <input type="text" id="product-search-input" oninput="filterProducts()" placeholder="Cari nama produk, bahan aktif..." class="w-full pl-11 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-sageGreen transition">
+                        </div>
+                        <!-- Sort Options -->
+                        <div class="flex items-center space-x-3 w-full md:w-auto justify-end">
+                            <span class="text-xs font-medium text-gray-500 uppercase">Urutkan:</span>
+                            <select id="product-sort-select" onchange="filterProducts()" class="bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-sageGreen transition">
+                                <option value="default">Paling Sesuai</option>
+                                <option value="price-low">Harga: Rendah ke Tinggi</option>
+                                <option value="price-high">Harga: Tinggi ke Rendah</option>
+                                <option value="rating">Rating Tertinggi</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Category Pills Filter -->
+                    <div class="flex items-center space-x-2 overflow-x-auto pb-2 pt-1" id="catalog-category-pills">
+                        <!-- Filled by JS -->
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="catalog-products-grid">
+                    <!-- Filled by JS -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="no-products-found" class="hidden text-center py-16">
+                    <div class="w-16 h-16 bg-gray-100 text-gray-400 rounded-full flex items-center justify-center mx-auto text-2xl mb-4">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800">Produk Tidak Ditemukan</h3>
+                    <p class="text-gray-500 text-sm mt-1">Coba gunakan kata kunci lain atau reset filter kategori.</p>
+                    <button onclick="resetFilters()" class="mt-4 px-6 py-2 bg-sageGreen text-white text-sm font-medium rounded-full shadow-sm hover:bg-[#6c8f74]">Reset Filter</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 3 - PAKET BUNDLING ================= -->
+        <div id="page-bundling" class="page-section hidden fade-in py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-sageGreen">Rangkaian Paket</span>
+                    <h1 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mt-2">Paket Bundling Spesial UMKM</h1>
+                    <p class="text-gray-600 mt-2">Dapatkan kombinasi perawatan lengkap lebih hemat dengan tombol Order/Tanya langsung ke WhatsApp.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="bundling-packages-grid">
+                    <!-- Filled by JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 4 - TENTANG KAMI ================= -->
+        <div id="page-tentang" class="page-section hidden fade-in py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                    <div class="space-y-6">
+                        <span class="text-xs font-semibold uppercase tracking-widest text-sageGreen">Cerita UMKM Kami</span>
+                        <h1 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900">
+                            Mewujudkan Kulit Sehat Alami Wanita Indonesia Sejak 2021
+                        </h1>
+                        <p class="text-gray-600 leading-relaxed">
+                            GlowAura bermula dari kecintaan pada riset botani lokal dan keinginan untuk menyediakan produk skincare berkualitas tinggi yang diformulasikan khusus untuk cuaca tropis Indonesia tanpa menguras kantong.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed">
+                            Sebagai brand UMKM lokal, kami berkomitmen menggunakan bahan-bahan pilihan yang aman, bersih, cruelty-free, dan telah mengantongi izin resmi BPOM.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6 pt-4">
+                            <div class="border-l-4 border-sageGreen pl-4">
+                                <h4 class="font-bold text-2xl text-gray-900">100%</h4>
+                                <p class="text-sm text-gray-500">Lokal & Higienis</p>
+                            </div>
+                            <div class="border-l-4 border-rose-400 pl-4">
+                                <h4 class="font-bold text-2xl text-gray-900">20+</h4>
+                                <p class="text-sm text-gray-500">Varian Produk</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-video sm:aspect-square rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-white">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=800" alt="Tentang GlowAura" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nilai-nilai Kami -->
+                <div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100 mb-16">
+                    <div class="text-center max-w-2xl mx-auto mb-10">
+                        <h2 class="text-2xl sm:text-3xl font-serif font-bold text-gray-900">Nilai Utama GlowAura</h2>
+                        <p class="text-gray-600 text-sm mt-2">Prinsip yang kami pegang teguh dalam setiap tetes formula skincare kami.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center space-y-3 p-4">
+                            <div class="w-12 h-12 bg-sageLight rounded-2xl flex items-center justify-center text-sageGreen mx-auto text-xl">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-900">Clean & Natural</h3>
+                            <p class="text-sm text-gray-600">Bebas dari paraben berbahaya, alkohol iritatif, dan pewangi buatan berlebih.</p>
+                        </div>
+                        <div class="text-center space-y-3 p-4">
+                            <div class="w-12 h-12 bg-pink-50 rounded-2xl flex items-center justify-center text-rose-500 mx-auto text-xl">
+                                <i class="fa-solid fa-flask"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-900">Science-Backed</h3>
+                            <p class="text-sm text-gray-600">Dipadu dengan konsentrasi bahan aktif klinis yang teruji efektif memperbaiki skin barrier.</p>
+                        </div>
+                        <div class="text-center space-y-3 p-4">
+                            <div class="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 mx-auto text-xl">
+                                <i class="fa-solid fa-heart-circle-check"></i>
+                            </div>
+                            <h3 class="font-bold text-lg text-gray-900">Affordable Luxury</h3>
+                            <p class="text-sm text-gray-600">Kualitas kelas dunia dengan harga ramah di kantong masyarakat Indonesia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 5 - TESTIMONI ================= -->
+        <div id="page-testimoni" class="page-section hidden fade-in py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-sageGreen">Testimoni Pelanggan</span>
+                    <h1 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mt-2">Mereka yang Telah Membuktikan</h1>
+                    <p class="text-gray-600 mt-2">Cerita nyata dari pelanggan setia GlowAura.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between space-y-4">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-1 text-amber-400">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm italic">"Serum Hydraluxe-nya bener-bener penyelamat kulit keringku yang sering kena AC kantor. Sekarang muka terasa kenyal dan glowing natural!"</p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Testi" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900">Siti Rahma</h4>
+                                <p class="text-xs text-gray-500">Karyawan Swasta, Jakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between space-y-4">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-1 text-amber-400">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm italic">"Udah nyoba berbagai Sunscreen lokal, baru Sunscreen Gel GlowAura ini yang paling ringan, nggak whitecast, dan nyaman banget dipakai seharian."</p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=200" alt="Testi" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900">Dewi Lestari</h4>
+                                <p class="text-xs text-gray-500">Mahasiswa, Bandung</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 flex flex-col justify-between space-y-4">
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-1 text-amber-400">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-gray-600 text-sm italic">"Paket Bundling Acne-nya sangat membantu meredakan jerawat meradang dalam 1 minggu pemakaian rutin. Suka banget!"</p>
+                        </div>
+                        <div class="flex items-center space-x-3 pt-4 border-t border-gray-100">
+                            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=200" alt="Testi" class="w-10 h-10 rounded-full object-cover">
+                            <div>
+                                <h4 class="font-bold text-sm text-gray-900">Rizky Pratama</h4>
+                                <p class="text-xs text-gray-500">Wiraswasta, Surabaya</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= PAGE 6 - KONTAK ================= -->
+        <div id="page-kontak" class="page-section hidden fade-in py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-xs font-semibold uppercase tracking-widest text-sageGreen">Hubungi Kami</span>
+                    <h1 class="text-3xl sm:text-4xl font-serif font-bold text-gray-900 mt-2">Punya Pertanyaan atau Butuh Konsultasi?</h1>
+                    <p class="text-gray-600 mt-2">Tim Customer Service dan Beauty Consultant kami siap membantu Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                    <!-- Contact Info Card -->
+                    <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-gray-100 space-y-8">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900">Informasi Kontak UMKM</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-sageLight rounded-2xl flex items-center justify-center text-sageGreen text-xl shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Alamat Official Store</h4>
+                                    <p class="text-sm text-gray-600 mt-1">Jl. Senopati Raya No. 45, Kebayoran Baru, Jakarta Selatan, DKI Jakarta</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600 text-xl shrink-0">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">WhatsApp Order & Konsultasi</h4>
+                                    <p class="text-sm text-gray-600 mt-1">+62 812-3456-7890 (Senin - Minggu, 09.00 - 20.00 WIB)</p>
+                                    <a href="https://wa.me/6281234567890?text=Halo%20GlowAura,%20saya%20ingin%20berkonsultasi%20skincare." target="_blank" class="inline-flex items-center space-x-2 text-sageGreen font-semibold text-sm mt-2 hover:underline">
+                                        <span>Chat WhatsApp Langsung</span> <i class="fa-solid fa-arrow-right text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-pink-50 rounded-2xl flex items-center justify-center text-rose-500 text-xl shrink-0">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">Email Resmi</h4>
+                                    <p class="text-sm text-gray-600 mt-1">halo@glowaura-skincare.id</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-gray-100 space-y-6">
+                        <h3 class="text-2xl font-serif font-bold text-gray-900">Pertanyaan Umum (FAQ)</h3>
+                        <div class="space-y-4" id="faq-container">
+                            <div class="border border-gray-200 rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center font-bold text-gray-900">
+                                    <span>Apakah produk GlowAura sudah BPOM dan Halal?</span>
+                                    <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-3 hidden">Ya, seluruh produk GlowAura sudah terdaftar resmi di BPOM dan memiliki sertifikasi Halal MUI sehingga sangat aman digunakan setiap hari.</p>
+                            </div>
+                            <div class="border border-gray-200 rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center font-bold text-gray-900">
+                                    <span>Bagaimana cara memesan produk di katalog ini?</span>
+                                    <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-3 hidden">Website ini adalah katalog resmi UMKM. Anda cukup mengklik tombol "Order / Tanya" pada produk atau paket yang diinginkan untuk terhubung langsung ke WhatsApp Admin.</p>
+                            </div>
+                            <div class="border border-gray-200 rounded-2xl p-5 cursor-pointer" onclick="toggleFaq(this)">
+                                <div class="flex justify-between items-center font-bold text-gray-900">
+                                    <span>Apakah aman untuk kulit sensitif atau ibu hamil?</span>
+                                    <i class="fa-solid fa-chevron-down text-sm transition-transform duration-300"></i>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-3 hidden">Sebagian besar produk kami menggunakan bahan alami yang ramah untuk kulit sensitif. Namun untuk ibu hamil, kami sarankan berkonsultasi terlebih dahulu.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-gray-900 text-white pt-16 pb-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-full bg-sageGreen flex items-center justify-center text-white">
+                            <i class="fa-solid fa-spa text-lg"></i>
+                        </div>
+                        <span class="text-2xl font-serif font-bold text-white">Glow<span class="text-sageGreen">Aura</span></span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Brand skincare UMKM lokal terpercaya yang menghadirkan perawatan kulit berkualitas tinggi dengan bahan alami pilihan.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-gray-200 mb-4">Navigasi Utama</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><button onclick="switchPage('beranda')" class="hover:text-white transition">Beranda</button></li>
+                        <li><button onclick="switchPage('katalog')" class="hover:text-white transition">Katalog Produk</button></li>
+                        <li><button onclick="switchPage('bundling')" class="hover:text-white transition">Paket Bundling</button></li>
+                        <li><button onclick="switchPage('tentang')" class="hover:text-white transition">Tentang Kami</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-gray-200 mb-4">Kategori Produk</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-400">
+                        <li><button onclick="switchCategoryTab('Serum')" class="hover:text-white transition">Serum Wajah</button></li>
+                        <li><button onclick="switchCategoryTab('Cleanser')" class="hover:text-white transition">Cleanser & Facial Wash</button></li>
+                        <li><button onclick="switchCategoryTab('Toner')" class="hover:text-white transition">Toner & Essence</button></li>
+                        <li><button onclick="switchCategoryTab('Moisturizer')" class="hover:text-white transition">Moisturizer & Cream</button></li>
+                        <li><button onclick="switchCategoryTab('Sunscreen')" class="hover:text-white transition">Sunscreen</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-gray-200 mb-4">Butuh Bantuan Cepat?</h4>
+                    <p class="text-gray-400 text-sm mb-4">Konsultasikan masalah kulitmu langsung dengan beauty expert kami.</p>
+                    <a href="https://wa.me/6281234567890?text=Halo%20GlowAura,%20saya%20ingin%20berkonsultasi%20skincare." target="_blank" class="inline-flex items-center space-x-2 bg-sageGreen text-white px-5 py-3 rounded-xl font-medium text-sm shadow-md hover:bg-[#6c8f74] transition w-full justify-center">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Chat WhatsApp (0812-3456-7890)</span>
+                    </a>
+                </div>
+            </div>
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 space-y-4 sm:space-y-0">
+                <p>&copy; 2026 GlowAura Official Skincare UMKM. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <span class="hover:text-gray-400 cursor-pointer">Kebijakan Privasi</span>
+                    <span class="hover:text-gray-400 cursor-pointer">Syarat & Ketentuan</span>
+                    <span class="hover:text-gray-400 cursor-pointer">Izin BPOM</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Quick View Modal -->
+    <div id="quick-view-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative animate-fadeIn p-6 sm:p-8" id="quick-view-content">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-start justify-center pt-20 p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl relative animate-fadeIn space-y-4">
+            <div class="flex items-center justify-between">
+                <h3 class="font-serif font-bold text-lg text-gray-900">Pencarian Cepat Produk</h3>
+                <button onclick="closeSearchModal()" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="relative">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-gray-400"></i>
+                <input type="text" id="modal-search-box" oninput="handleModalSearch(this.value)" placeholder="Ketik nama produk atau bahan aktif..." class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-sageGreen">
+            </div>
+            <div id="modal-search-results" class="max-h-80 overflow-y-auto space-y-2 pt-2">
+                <p class="text-sm text-gray-400 text-center py-4">Mulai ketik untuk mencari produk...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database 20 Produk Skincare UMKM GlowAura
+        const productsData = [
+            {
+                id: 1,
+                name: "GlowAura Radiance Niacinamide 10% Serum",
+                category: "Serum",
+                size: "20 ml",
+                price: 115000,
+                rating: 4.9,
+                reviewsCount: 1420,
+                badge: "Bestseller",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600",
+                description: "Serum pencerah intensif dengan 10% Niacinamide murni dan ekstrak Centella Asiatica untuk menyamarkan noda hitam, meratakan warna kulit, serta mencerahkan wajah kusam.",
+                benefits: ["Mencerahkan noda hitam & bekas jerawat", "Menyamarkan pori-pori besar", "Mengontrol produksi minyak berlebih"],
+                ingredients: ["Niacinamide 10%", "Centella Asiatica Extract", "Alpha Arbutin", "Hyaluronic Acid"]
+            },
+            {
+                id: 2,
+                name: "GlowAura Hydraluxe Barrier Moisture Gel",
+                category: "Moisturizer",
+                size: "30 gr",
+                price: 125000,
+                rating: 4.8,
+                reviewsCount: 980,
+                badge: "Favorite",
+                image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600",
+                description: "Moisturizer bertekstur gel ringan dengan 5x Ceramide dan Panthenol yang melembapkan secara mendalam sekaligus memperkuat pelindung alami (skin barrier) kulit.",
+                benefits: ["Memperkuat skin barrier", "Menjaga kelembapan 24 jam", "Menenangkan kulit kemerahan"],
+                ingredients: ["5x Ceramide Complex", "Panthenol (Vitamin B5)", "Glycerin", "Allantoin"]
+            },
+            {
+                id: 3,
+                name: "GlowAura Daily Gentle Facial Cleanser",
+                category: "Cleanser",
+                size: "100 ml",
+                price: 85000,
+                rating: 4.9,
+                reviewsCount: 1150,
+                badge: "Essential",
+                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=600",
+                description: "Pembersih wajah ber-pH seimbang (5.5) tanpa SLS. Membersihkan kotoran dan debu polusi tanpa membuat kulit terasa kering atau tertarik setelah cuci muka.",
+                benefits: ["pH seimbang sesuai kulit", "Membersihkan hingga pori terdalam", "Tidak membuat kulit kering/ketarik"],
+                ingredients: ["Amino Acid Surfactant", "Aloe Vera Extract", "Licorice Extract", "Glycerin"]
+            },
+            {
+                id: 4,
+                name: "GlowAura Daily Defense Sunscreen SPF 50+ PA++++",
+                category: "Sunscreen",
+                size: "30 ml",
+                price: 135000,
+                rating: 5.0,
+                reviewsCount: 1890,
+                badge: "Top Rated",
+                image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600",
+                description: "Sunscreen hybrid dengan perlindungan maksimal UVA/UVB. Tekstur ringan seperti air, mudah meresap, zero whitecast, dan nyaman digunakan di bawah makeup.",
+                benefits: ["Perlindungan SPF 50+ PA++++", "Zero whitecast & tidak lengket", "Mengandung vitamin E sebagai antioksidan"],
+                ingredients: ["Ethylhexyl Methoxycinnamate", "Titanium Dioxide", "Vitamin E", "Green Tea Extract"]
+            },
+            {
+                id: 5,
+                name: "GlowAura Hydrating Balancing Toner Essence",
+                category: "Toner",
+                size: "100 ml",
+                price: 95000,
+                rating: 4.7,
+                reviewsCount: 620,
+                badge: "New",
+                image: "https://images.unsplash.com/photo-1512290900722-9a70f8a82169?auto=format&fit=crop&q=80&w=600",
+                description: "Toner essence penyegar dengan Hyalu-Complex yang langsung menghidrasi kulit setelah mencuci muka dan menyiapkan kulit untuk menyerap tahapan skincare berikutnya.",
+                benefits: ["Mengembalikan pH kulit setelah cuci muka", "Memberikan hidrasi instan", "Membuat kulit lebih kenyal"],
+                ingredients: ["Sodium Hyaluronate", "Rose Water", "Aloe Vera", "Allantoin"]
+            },
+            {
+                id: 6,
+                name: "GlowAura Acne Care Hero Serum (Salicylic Acid 2%)",
+                category: "Serum",
+                size: "20 ml",
+                price: 120000,
+                rating: 4.8,
+                reviewsCount: 810,
+                badge: "Anti Acne",
+                image: "https://images.unsplash.com/photo-1608248597359-f5383a54b383?auto=format&fit=crop&q=80&w=600",
+                description: "Serum khusus kulit berjerawat dan komedo. Mengandung 2% Salicylic Acid dan Tea Tree Oil untuk membersihkan pori tersumbat dan menenangkan jerawat aktif.",
+                benefits: ["Mengempeskan jerawat aktif dengan cepat", "Mencegah komedo & bintik hitam", "Menenangkan inflamasi kemerahan"],
+                ingredients: ["Salicylic Acid 2%", "Tea Tree Oil", "Centella Asiatica", "Zinc PCA"]
+            },
+            {
+                id: 7,
+                name: "GlowAura Deep Pore Clarifying Cleansing Balm",
+                category: "Cleanser",
+                size: "50 gr",
+                price: 110000,
+                rating: 4.7,
+                reviewsCount: 450,
+                badge: "Popular",
+                image: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600",
+                description: "Pembersih makeup berbasis balm yang meleleh lembut di kulit. Mampu mengangkat waterproof makeup, sunscreen, dan kotoran tanpa merusak kelembapan alami.",
+                benefits: ["Melarutkan waterproof makeup dengan mudah", "Membersihkan kotoran pori mendalam", "Lembut di kulit tanpa iritasi"],
+                ingredients: ["Jojoba Oil", "Olive Oil Esters", "Vitamin E", "Chamomile Extract"]
+            },
+            {
+                id: 8,
+                name: "GlowAura Exfoliating Glow Toner (AHA BHA PHA)",
+                category: "Toner",
+                size: "100 ml",
+                price: 105000,
+                rating: 4.8,
+                reviewsCount: 530,
+                badge: "Smooth",
+                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=600",
+                description: "Toner eksfoliasi lembut untuk mengangkat sel kulit mati, mengatasi kulit kusam, dan menghaluskan tekstur kulit kasar tanpa efek perih berlebih.",
+                benefits: ["Mengangkat sel kulit mati", "Menghaluskan tekstur kulit tidak rata", "Mencerahkan wajah kusam"],
+                ingredients: ["Glycolic Acid (AHA)", "Salicylic Acid (BHA)", "Lactobionic Acid (PHA)", "Aloe Vera"]
+            },
+            {
+                id: 9,
+                name: "GlowAura Anti-Aging Retinol Youth Serum",
+                category: "Serum",
+                size: "20 ml",
+                price: 145000,
+                rating: 4.9,
+                reviewsCount: 620,
+                badge: "Anti Aging",
+                image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600",
+                description: "Serum anti-aging dengan Encapsulated Retinol dan Peptide untuk menyamarkan garis halus, kerutan, serta meningkatkan elastisitas dan kekencangan kulit.",
+                benefits: ["Menyamarkan garis halus & kerutan", "Meningkatkan elastisitas kulit", "Merangsang regenerasi sel kulit baru"],
+                ingredients: ["Encapsulated Retinol 0.5%", "Matrixyl 3000 Peptide", "Niacinamide", "Hyaluronic Acid"]
+            },
+            {
+                id: 10,
+                name: "GlowAura C-Glow Brightening Vitamin C Serum",
+                category: "Serum",
+                size: "20 ml",
+                price: 130000,
+                rating: 4.8,
+                reviewsCount: 910,
+                badge: "Vitamin C",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600",
+                description: "Serum Vitamin C stabil (Ethyl Ascorbic Acid) dengan ekstrak Kakadu Plum untuk antioksidan tinggi, mencerahkan kulit kusam, dan menyamarkan noda matahari.",
+                benefits: ["Antioksidan penangkal radikal bebas", "Mencerahkan kulit kusam secara instan", "Mempercepat pembentukan kolagen"],
+                ingredients: ["Ethyl Ascorbic Acid", "Kakadu Plum Extract", "Ferulic Acid", "Vitamin E"]
+            },
+            {
+                id: 11,
+                name: "GlowAura Ultra Hydrating Sleeping Mask",
+                category: "Moisturizer",
+                size: "50 gr",
+                price: 115000,
+                rating: 4.7,
+                reviewsCount: 390,
+                badge: "Night Care",
+                image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600",
+                description: "Masker malam tanpa bilas yang menutrisi intensif saat tidur. Bangun pagi dengan kulit terasa jauh lebih kenyal, lembap, dan bercahaya.",
+                benefits: ["Menutrisi kulit sepanjang malam", "Memperbaiki kulit lelah dan stres", "Kenyal dan segar keesokan paginya"],
+                ingredients: ["Niacinamide", "Squalane", "Centella Asiatica", "Ceramide NP"]
+            },
+            {
+                id: 12,
+                name: "GlowAura Brightening Whip Foam Cleanser",
+                category: "Cleanser",
+                size: "100 ml",
+                price: 90000,
+                rating: 4.6,
+                reviewsCount: 510,
+                badge: "Whip Foam",
+                image: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&q=80&w=600",
+                description: "Pembersih wajah dengan busa whip yang sangat padat dan lembut seperti awan. Mengangkat kotoran dan mencerahkan kulit seketika.",
+                benefits: ["Busa whip lembut membersihkan pori", "Mengandung ekstrak mutiara pencerah", "Tidak membuat kulit kering"],
+                ingredients: ["Pearl Extract", "Niacinamide", "Amino Acid", "Vitamin B3"]
+            },
+            {
+                id: 13,
+                name: "GlowAura Soothing Calming Centella Toner",
+                category: "Toner",
+                size: "100 ml",
+                price: 98000,
+                rating: 4.8,
+                reviewsCount: 420,
+                badge: "Calming",
+                image: "https://images.unsplash.com/photo-1512290900722-9a70f8a82169?auto=format&fit=crop&q=80&w=600",
+                description: "Toner penenang khusus kulit sensitif dan kemerahan akibat iritasi ringan atau paparan matahari. Diperkaya Madu dan Centella Asiatica.",
+                benefits: ["Menenangkan kemerahan instan", "Menjaga keseimbangan mikrobioma kulit", "Menghidrasi kulit sensitif"],
+                ingredients: ["Centella Asiatica 80%", "Honey Extract", "Allantoin", "Panthenol"]
+            },
+            {
+                id: 14,
+                name: "GlowAura Tone-Up UV Mineral Sunscreen SPF 45",
+                category: "Sunscreen",
+                size: "30 ml",
+                price: 140000,
+                rating: 4.7,
+                reviewsCount: 380,
+                badge: "Tone Up",
+                image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600",
+                description: "Mineral sunscreen fisik yang memberikan efek cerah natural seketika (tone-up) tanpa abu-abu di kulit. Cocok untuk penggunaan sehari-hari.",
+                benefits: ["Perlindungan UV fisik yang aman untuk kulit sensitif", "Efek tone-up cerah natural", "Menyamarkan noda ringan di wajah"],
+                ingredients: ["Zinc Oxide", "Titanium Dioxide", "Niacinamide", "Centella Asiatica"]
+            },
+            {
+                id: 15,
+                name: "GlowAura Youthful Eye Contour Cream",
+                category: "Moisturizer",
+                size: "15 gr",
+                price: 110000,
+                rating: 4.8,
+                reviewsCount: 290,
+                badge: "Eye Care",
+                image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600",
+                description: "Krim khusus area sekitar mata dengan kandungan Peptide dan Caffeine untuk menyamarkan mata panda (lingkaran hitam) dan kantung mata.",
+                benefits: ["Menyamarkan lingkaran hitam (mata panda)", "Mengurangi kantung mata dan puffiness", "Melembapkan kulit sekitar mata yang tipis"],
+                ingredients: ["Caffeine", "Peptide Complex", "Niacinamide", "Hyaluronic Acid"]
+            },
+            {
+                id: 16,
+                name: "GlowAura Glow Booster Essence Mist",
+                category: "Toner",
+                size: "60 ml",
+                price: 85000,
+                rating: 4.7,
+                reviewsCount: 340,
+                badge: "Mist",
+                image: "https://images.unsplash.com/photo-1512290900722-9a70f8a82169?auto=format&fit=crop&q=80&w=600",
+                description: "Face mist multifungsi untuk menyegarkan wajah kapan saja, mengunci makeup agar tahan lama, dan memberikan tambahan hidrasi instan.",
+                benefits: ["Menyegarkan wajah seketika di tengah hari", "Membuat makeup lebih tahan lama (setting spray)", "Menghidrasi kulit lelah"],
+                ingredients: ["Galactomyces Ferment Filtrate", "Rose Water", "Aloe Vera", "Vitamin E"]
+            },
+            {
+                id: 17,
+                name: "GlowAura Exfoliating Gel Face Scrub",
+                category: "Cleanser",
+                size: "60 gr",
+                price: 95000,
+                rating: 4.8,
+                reviewsCount: 510,
+                badge: "Scrub",
+                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=600",
+                description: "Gel peeling lembut dengan butiran selulosa alami untuk mengangkat sel kulit mati dan daki tanpa mengiritasi atau melukai kulit.",
+                benefits: ["Mengangkat sel kulit mati secara lembut", "Membuat skincare meresap lebih optimal", "Kulit terasa halus seketika"],
+                ingredients: ["Natural Cellulose", "Aloe Vera Extract", "Papaya Extract", "Vitamin E"]
+            },
+            {
+                id: 18,
+                name: "GlowAura Hydrating Rose Water Mist",
+                category: "Toner",
+                size: "100 ml",
+                price: 75000,
+                rating: 4.6,
+                reviewsCount: 220,
+                badge: "Rose Water",
+                image: "https://images.unsplash.com/photo-1512290900722-9a70f8a82169?auto=format&fit=crop&q=80&w=600",
+                description: "Air mawar murni dengan tambahan ekstrak Chamomile untuk menyegarkan kulit lelah dan memberikan aroma menenangkan.",
+                benefits: ["Menyegarkan kulit wajah lelah", "Aroma mawar menenangkan pikiran", "Aman untuk semua jenis kulit"],
+                ingredients: ["Rosa Damascena Flower Water", "Chamomile Extract", "Glycerin"]
+            },
+            {
+                id: 19,
+                name: "GlowAura Intensive Spot Treatment Gel",
+                category: "Serum",
+                size: "15 gr",
+                price: 89000,
+                rating: 4.9,
+                reviewsCount: 310,
+                badge: "Spot Gel",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=600",
+                description: "Gel totol khusus untuk meredakan kemerahan pada jerawat aktif dalam semalam tanpa membuat kulit sekitarnya mengelupas.",
+                benefits: ["Meredakan kemerahan jerawat kilat", "Mencegah bekas jerawat hitam", "Mudah meresap"],
+                ingredients: ["Sulfur", "Salicylic Acid", "Centella Asiatica", "Niacinamide"]
+            },
+            {
+                id: 20,
+                name: "GlowAura Daily Glowing BB Cream SPF 30",
+                category: "Sunscreen",
+                size: "30 gr",
+                price: 115000,
+                rating: 4.7,
+                reviewsCount: 440,
+                badge: "BB Cream",
+                image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600",
+                description: "BB Cream ringan dengan kandungan SPF 30 dan pelembap yang meratakan warna kulit seketika dengan hasil akhir dewy glow natural.",
+                benefits: ["Menyamarkan noda ringan & meratakan warna kulit", "SPF 30 perlindungan matahari harian", "Ringan di wajah tidak menyumbat pori"],
+                ingredients: ["Titanium Dioxide", "Niacinamide", "Vitamin E", "Jojoba Oil"]
+            }
+        ];
+
+        // Database Paket Bundling Spesial UMKM
+        const bundlingPackages = [
+            {
+                id: 'b1',
+                name: "Glow Barrier Hydrating Set (4in1)",
+                price: 420000,
+                originalPrice: 480000,
+                badge: "Hemat 15%",
+                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&q=80&w=600",
+                description: "Rangkaian lengkap perawatan harian pemula: Gentle Cleanser, Hydrating Toner, Niacinamide Serum, dan Moisture Gel untuk hasil kulit cerah glowing maksimal.",
+                items: ["1x Daily Gentle Facial Cleanser (100ml)", "1x Hydrating Balancing Toner Essence (100ml)", "1x Radiance Niacinamide Serum (20ml)", "1x Hydraluxe Barrier Moisture Gel (30gr)"]
+            },
+            {
+                id: 'b2',
+                name: "Acne & Oil Control Set (3in1)",
+                price: 320000,
+                originalPrice: 375000,
+                badge: "Paket Acne",
+                image: "https://images.unsplash.com/photo-1608248597359-f5383a54b383?auto=format&fit=crop&q=80&w=600",
+                description: "Rangkaian khusus kulit berjerawat dan berminyak untuk mengatasi jerawat meradang serta mengontrol produksi sebum berlebih.",
+                items: ["1x Salicylic Acne Facial Wash (100ml)", "1x Acne Care Hero Serum (20ml)", "1x Oil-Free Barrier Gel (30gr)"]
+            },
+            {
+                id: 'b3',
+                name: "Anti-Aging Ultimate Set (3in1)",
+                price: 380000,
+                originalPrice: 440000,
+                badge: "Anti-Aging",
+                image: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600",
+                description: "Rangkaian khusus perawatan anti-aging untuk mengembalikan kekencangan kulit dan menyamarkan garis halus.",
+                items: ["1x Peptide Gentle Cleanser (100ml)", "1x Retinol Youth Serum (20ml)", "1x Ceramide Deep Moisturizer (30gr)"]
+            }
+        ];
+
+        // State Management
+        let currentPage = 'beranda';
+        let activeCategory = 'Semua';
+
+        // Format Currency IDR
+        function formatIDR(amount) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(amount);
+        }
+
+        // Switch Pages Function (6 Halaman)
+        function switchPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(el => el.classList.add('hidden'));
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if(targetPage) {
+                targetPage.classList.remove('hidden');
+                currentPage = pageId;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update Nav link styles
+            document.querySelectorAll('.nav-link').forEach(el => {
+                el.classList.remove('text-sageGreen', 'font-semibold');
+                el.classList.add('text-gray-600');
+            });
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if(activeNav) {
+                activeNav.classList.remove('text-gray-600');
+                activeNav.classList.add('text-sageGreen', 'font-semibold');
+            }
+        }
+
+        // WhatsApp Link Generator for Products & Bundles
+        function getWhatsAppLink(itemName, price) {
+            const phone = "6281234567890";
+            const message = `Halo GlowAura, saya tertarik untuk memesan / bertanya mengenai item: *${itemName}* (${formatIDR(price)}). Mohon informasi ketersediaan dan detailnya ya. Terima kasih!`;
+            return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        }
+
+        // Render Home Page Categories & Featured Products
+        function renderHome() {
+            const homeCatGrid = document.getElementById('home-category-grid');
+            if(homeCatGrid) {
+                const cats = ['Semua', 'Serum', 'Cleanser', 'Toner', 'Moisturizer', 'Sunscreen'];
+                homeCatGrid.innerHTML = cats.map(cat => `
+                    <div onclick="switchPage('katalog'); filterByCategory('${cat}');" class="bg-softCream hover:bg-sageLight/60 border border-gray-100 hover:border-sageGreen/50 p-5 rounded-2xl text-center cursor-pointer transition transform hover:-translate-y-1 shadow-xs group">
+                        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-sageGreen mx-auto mb-3 shadow-xs group-hover:bg-sageGreen group-hover:text-white transition">
+                            <i class="fa-solid ${cat === 'Serum' ? 'fa-flask' : cat === 'Cleanser' ? 'fa-hand-sparkles' : cat === 'Toner' ? 'fa-spray-can-sparkles' : cat === 'Moisturizer' ? 'fa-droplet' : cat === 'Sunscreen' ? 'fa-sun' : 'fa-spa'} text-lg"></i>
+                        </div>
+                        <h4 class="font-bold text-sm text-gray-800">${cat}</h4>
+                    </div>
+                `).join('');
+            }
+
+            const homeFeatured = document.getElementById('home-featured-grid');
+            if(homeFeatured) {
+                const featured = productsData.slice(0, 4);
+                homeFeatured.innerHTML = featured.map(p => renderProductCard(p)).join('');
+            }
+        }
+
+        // Render Product Card HTML with WhatsApp "Order / Tanya" button
+        function renderProductCard(p) {
+            return `
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between group">
+                    <div>
+                        <div class="relative aspect-square overflow-hidden bg-gray-100 cursor-pointer" onclick="openQuickView(${p.id})">
+                            <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://placehold.co/400x400/f0f4f1/84a98c?text=GlowAura'">
+                            <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-sageGreen text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xs">
+                                ${p.badge}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-black/60 backdrop-blur-xs text-white text-[11px] font-medium px-2.5 py-0.5 rounded-full">
+                                ${p.size}
+                            </span>
+                        </div>
+                        <div class="p-5 space-y-2">
+                            <div class="flex items-center justify-between text-xs text-gray-500">
+                                <span class="font-medium text-sageGreen uppercase tracking-wider">${p.category}</span>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fa-solid fa-star text-amber-400 text-xs"></i>
+                                    <span class="font-bold text-gray-700">${p.rating}</span>
+                                    <span class="text-gray-400">(${p.reviewsCount})</span>
+                                </div>
+                            </div>
+                            <h3 onclick="openQuickView(${p.id})" class="font-bold text-gray-900 text-base line-clamp-1 cursor-pointer hover:text-sageGreen transition" title="${p.name}">
+                                ${p.name}
+                            </h3>
+                            <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                                ${p.description}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="p-5 pt-0 flex items-center justify-between mt-2">
+                        <div>
+                            <span class="text-[10px] uppercase text-gray-400 block font-semibold">Harga</span>
+                            <span class="font-bold text-gray-900 text-base sm:text-lg">${formatIDR(p.price)}</span>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="openQuickView(${p.id})" class="p-2.5 rounded-xl bg-gray-50 text-gray-600 hover:bg-sageLight hover:text-sageGreen transition" title="Lihat Detail">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
+                            <a href="${getWhatsAppLink(p.name, p.price)}" target="_blank" class="bg-sageGreen text-white px-3.5 py-2.5 rounded-xl font-medium text-xs shadow-sm hover:bg-[#6c8f74] transition flex items-center space-x-1.5" title="Order / Tanya via WhatsApp">
+                                <i class="fa-brands fa-whatsapp text-sm"></i>
+                                <span>Order / Tanya</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render Bundling Packages Page
+        function renderBundlingPackages() {
+            const grid = document.getElementById('bundling-packages-grid');
+            if(!grid) return;
+            grid.innerHTML = bundlingPackages.map(pkg => `
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="relative aspect-video overflow-hidden bg-gray-100">
+                            <img src="${pkg.image}" alt="${pkg.name}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 bg-rose-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-xs">
+                                ${pkg.badge}
+                            </span>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <h3 class="font-serif font-bold text-xl text-gray-900">${pkg.name}</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed">${pkg.description}</p>
+                            <div class="space-y-1 pt-2">
+                                <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Isi Paket:</span>
+                                <ul class="space-y-1 text-xs text-gray-700">
+                                    ${pkg.items.map(item => `<li class="flex items-center space-x-2"><i class="fa-solid fa-check text-sageGreen"></i><span>${item}</span></li>`).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-gray-100 mt-4">
+                        <div>
+                            <span class="text-xs text-gray-400 line-through block">${formatIDR(pkg.originalPrice)}</span>
+                            <span class="font-bold text-rose-600 text-lg">${formatIDR(pkg.price)}</span>
+                        </div>
+                        <a href="${getWhatsAppLink(pkg.name, pkg.price)}" target="_blank" class="bg-sageGreen text-white px-5 py-3 rounded-xl font-medium text-xs shadow-sm hover:bg-[#6c8f74] transition flex items-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-base"></i>
+                            <span>Order / Tanya Paket</span>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render Catalog Page Products & Filter
+        function renderCatalogCategoryPills() {
+            const pillsContainer = document.getElementById('catalog-category-pills');
+            if(!pillsContainer) return;
+            const cats = ['Semua', 'Serum', 'Cleanser', 'Toner', 'Moisturizer', 'Sunscreen'];
+            pillsContainer.innerHTML = cats.map(cat => `
+                <button onclick="filterByCategory('${cat}')" class="category-pill whitespace-nowrap px-4 py-2 rounded-full text-xs font-medium transition ${activeCategory === cat ? 'bg-sageGreen text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}">
+                    ${cat}
+                </button>
+            `).join('');
+        }
+
+        function filterByCategory(cat) {
+            activeCategory = cat;
+            renderCatalogCategoryPills();
+            filterProducts();
+        }
+
+        function filterProducts() {
+            const searchInput = document.getElementById('product-search-input');
+            const sortSelect = document.getElementById('product-sort-select');
+            const grid = document.getElementById('catalog-products-grid');
+            const noFound = document.getElementById('no-products-found');
+
+            if(!grid) return;
+
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+            const sortVal = sortSelect ? sortSelect.value : 'default';
+
+            let filtered = productsData.filter(p => {
+                const matchCat = activeCategory === 'Semua' || p.category === activeCategory;
+                const matchQuery = p.name.toLowerCase().includes(query) || 
+                                   p.description.toLowerCase().includes(query) || 
+                                   p.ingredients.some(ing => ing.toLowerCase().includes(query)) ||
+                                   p.category.toLowerCase().includes(query);
+                return matchCat && matchQuery;
+            });
+
+            if(sortVal === 'price-low') {
+                filtered.sort((a,b) => a.price - b.price);
+            } else if(sortVal === 'price-high') {
+                filtered.sort((a,b) => b.price - a.price);
+            } else if(sortVal === 'rating') {
+                filtered.sort((a,b) => b.rating - a.rating);
+            }
+
+            if(filtered.length === 0) {
+                grid.innerHTML = '';
+                noFound.classList.remove('hidden');
+            } else {
+                noFound.classList.add('hidden');
+                grid.innerHTML = filtered.map(p => renderProductCard(p)).join('');
+            }
+        }
+
+        function resetFilters() {
+            activeCategory = 'Semua';
+            const searchInput = document.getElementById('product-search-input');
+            if(searchInput) searchInput.value = '';
+            const sortSelect = document.getElementById('product-sort-select');
+            if(sortSelect) sortSelect.value = 'default';
+            renderCatalogCategoryPills();
+            filterProducts();
+        }
+
+        function switchCategoryTab(cat) {
+            switchPage('katalog');
+            filterByCategory(cat);
+        }
+
+        // Quick View Modal Functions
+        function openQuickView(productId) {
+            const product = productsData.find(p => p.id === productId);
+            if(!product) return;
+
+            const modalContent = document.getElementById('quick-view-content');
+            modalContent.innerHTML = `
+                <button onclick="closeQuickView()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 z-10 transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-gray-100 relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+                        <span class="absolute top-3 left-3 bg-white/90 backdrop-blur-xs text-sageGreen text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            ${product.badge}
+                        </span>
+                    </div>
+                    <div class="space-y-4 flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-semibold text-sageGreen uppercase tracking-wider">${product.category} &bull; ${product.size}</span>
+                                <div class="flex items-center space-x-1 text-xs">
+                                    <i class="fa-solid fa-star text-amber-400"></i>
+                                    <span class="font-bold text-gray-800">${product.rating}</span>
+                                    <span class="text-gray-400">(${product.reviewsCount} ulasan)</span>
+                                </div>
+                            </div>
+                            <h2 class="text-2xl font-serif font-bold text-gray-900 leading-tight">${product.name}</h2>
+                            <div class="text-xl font-bold text-sageGreen">${formatIDR(product.price)}</div>
+                            <p class="text-gray-600 text-sm leading-relaxed">${product.description}</p>
+                            
+                            <!-- Benefits -->
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5">Manfaat Utama:</h4>
+                                <ul class="space-y-1 text-xs text-gray-700">
+                                    ${product.benefits.map(b => `<li class="flex items-center space-x-2"><i class="fa-solid fa-check text-sageGreen"></i><span>${b}</span></li>`).join('')}
+                                </ul>
+                            </div>
+
+                            <!-- Ingredients -->
+                            <div>
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Kandungan Utama / Ingredients:</h4>
+                                <div class="flex flex-wrap gap-1.5">
+                                    ${product.ingredients.map(ing => `<span class="bg-sageLight text-sageGreen text-[11px] font-medium px-2.5 py-1 rounded-md">${ing}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="pt-4 border-t border-gray-100">
+                            <a href="${getWhatsAppLink(product.name, product.price)}" target="_blank" class="w-full bg-sageGreen text-white py-3.5 rounded-xl font-medium text-sm shadow-md hover:bg-[#6c8f74] transition flex items-center justify-center space-x-2">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Order / Tanya via WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('quick-view-modal').classList.remove('hidden');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quick-view-modal').classList.add('hidden');
+        }
+
+        // Search Modal Functions
+        function openSearchModal() {
+            document.getElementById('search-modal').classList.remove('hidden');
+            setTimeout(() => document.getElementById('modal-search-box').focus(), 100);
+        }
+
+        function closeSearchModal() {
+            document.getElementById('search-modal').classList.add('hidden');
+        }
+
+        function handleModalSearch(query) {
+            const resultsContainer = document.getElementById('modal-search-results');
+            const q = query.toLowerCase().trim();
+            if(!q) {
+                resultsContainer.innerHTML = `<p class="text-sm text-gray-400 text-center py-4">Mulai ketik untuk mencari produk...</p>`;
+                return;
+            }
+
+            const matches = productsData.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || p.ingredients.some(i => i.toLowerCase().includes(q)));
+
+            if(matches.length === 0) {
+                resultsContainer.innerHTML = `<p class="text-sm text-gray-500 text-center py-4">Produk tidak ditemukan.</p>`;
+            } else {
+                resultsContainer.innerHTML = matches.map(p => `
+                    <div onclick="closeSearchModal(); openQuickView(${p.id});" class="flex items-center space-x-4 p-3 hover:bg-gray-50 rounded-2xl cursor-pointer transition border border-gray-100">
+                        <img src="${p.image}" class="w-12 h-12 rounded-xl object-cover" onerror="this.src='https://placehold.co/100x100/f0f4f1/84a98c?text=GlowAura'">
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-sm text-gray-900 line-clamp-1">${p.name}</h4>
+                            <span class="text-xs text-sageGreen font-medium">${p.category} &bull; ${formatIDR(p.price)}</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(el) {
+            const p = el.querySelector('p');
+            const icon = el.querySelector('i');
+            p.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Initialize on Window Load
+        window.onload = function() {
+            renderHome();
+            renderCatalogCategoryPills();
+            filterProducts();
+            renderBundlingPackages();
+
+            // Close modals on outside click
+            window.onclick = function(event) {
+                const qvModal = document.getElementById('quick-view-modal');
+                const sModal = document.getElementById('search-modal');
+                if (event.target === qvModal) closeQuickView();
+                if (event.target === sModal) closeSearchModal();
+            }
+        };
+    </script>
+</body>
+</html>
