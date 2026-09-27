@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Dasar Dinamis -->
+    <title id="meta-title">Pusat Distributor B2B & Supply Chain Terpercaya | PT Nusantara Distribusi Mandiri</title>
+    <meta id="meta-desc" name="description" content="Mitra distribusi B2B terkemuka untuk penyediaan logistik, inventaris grosir, dan rantai pasok industri skala nasional.">
+    <meta name="keywords" content="distributor B2B, suplai industri, grosir komersial, rantai pasok, logistik bisnis">
+    <meta name="author" content="PT Nusantara Distribusi Mandiri">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        industrial: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchPage('home')">
+                    <div class="w-10 h-10 bg-industrial-900 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-md">
+                        ND
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight text-slate-900 block leading-none">NUSANTARA<span class="text-industrial-600">B2B</span></span>
+                        <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Distribusi & Supply Chain</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <button onclick="switchPage('home')" id="nav-home" class="nav-link font-medium text-industrial-600 transition hover:text-industrial-700">Home</button>
+                    <button onclick="switchPage('tentang')" id="nav-tentang" class="nav-link font-medium text-slate-600 transition hover:text-industrial-600">Tentang</button>
+                    <button onclick="switchPage('katalog')" id="nav-katalog" class="nav-link font-medium text-slate-600 transition hover:text-industrial-600">Katalog Produk</button>
+                    <button onclick="switchPage('kemitraan')" id="nav-kemitraan" class="nav-link font-medium text-slate-600 transition hover:text-industrial-600">Kemitraan</button>
+                    <button onclick="switchPage('blog')" id="nav-blog" class="nav-link font-medium text-slate-600 transition hover:text-industrial-600">Blog & FAQ</button>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20berkonsultasi%20mengenai%20pemesanan%20grosir%20B2B." target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 border border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 transition">
+                        <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Sales WhatsApp
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex md:hidden">
+                    <button onclick="toggleMobileMenu()" class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="switchPage('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Home</button>
+            <button onclick="switchPage('tentang'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Tentang</button>
+            <button onclick="switchPage('katalog'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Katalog Produk</button>
+            <button onclick="switchPage('kemitraan'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Kemitraan</button>
+            <button onclick="switchPage('blog'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded-md font-medium text-slate-700 hover:bg-slate-100">Blog & FAQ</button>
+            <div class="pt-2">
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20berkonsultasi%20mengenai%20pemesanan%20grosir%20B2B." target="_blank" class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-lg text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700">
+                    <i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Sales WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER (MULTI-PAGE SIMULATION) -->
+    <main class="flex-grow">
+
+        <!-- ================= PAGE 1: HOME ================= -->
+        <section id="page-home" class="page-section">
+            <!-- Hero Section dengan Background Foto Industri & Overlay Gelap agar teks terbaca jelas -->
+            <div class="relative text-white py-24 lg:py-32 overflow-hidden bg-cover bg-center" style="background-image: linear-gradient(rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.92)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1920');">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-industrial-800/80 text-industrial-100 border border-industrial-700 tracking-wide uppercase">
+                                <i class="fa-solid fa-truck-fast mr-1.5"></i> Distributor Resmi & Jaringan Logistik Nasional
+                            </span>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                                Solusi Rantai Pasok & <span class="text-industrial-400">Grosir B2B</span> Terintegrasi
+                            </h1>
+                            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0">
+                                Menyediakan pasokan komoditas, material industri, dan produk ritel skala besar dengan harga kompetitif, pengiriman tepat waktu, serta garansi keaslian barang.
+                            </p>
+                            <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                                <button onclick="switchPage('katalog')" class="px-8 py-3.5 rounded-xl font-semibold bg-industrial-600 hover:bg-industrial-700 text-white shadow-lg transition">
+                                    Lihat Katalog Produk
+                                </button>
+                                <button onclick="switchPage('kemitraan')" class="px-8 py-3.5 rounded-xl font-semibold bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-600 transition">
+                                    Daftar Jadi Mitra B2B
+                                </button>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-5">
+                            <div class="bg-slate-900/80 backdrop-blur-md border border-slate-700/80 rounded-2xl p-6 shadow-2xl">
+                                <h3 class="text-xl font-bold mb-4 flex items-center text-white">
+                                    <i class="fa-solid fa-file-invoice mr-2 text-industrial-400"></i> Permintaan Penawaran (RFQ) Cepat
+                                </h3>
+                                <form onsubmit="handleContact(event)" class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-medium text-slate-300 uppercase mb-1">Nama Perusahaan / Toko</label>
+                                        <input type="text" required class="w-full bg-slate-800/90 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-industrial-500" placeholder="PT Maju Bersama">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-slate-300 uppercase mb-1">Jenis Produk / Kebutuhan</label>
+                                        <input type="text" required class="w-full bg-slate-800/90 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-industrial-500" placeholder="Contoh: Material Industri / FMCG">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-medium text-slate-300 uppercase mb-1">Nomor WhatsApp / Telp</label>
+                                        <input type="text" required class="w-full bg-slate-800/90 border border-slate-700 rounded-lg px-4 py-2.5 text-white placeholder-slate-400 focus:outline-none focus:border-industrial-500" placeholder="0812xxxx">
+                                    </div>
+                                    <button type="submit" class="w-full py-3 bg-industrial-600 hover:bg-industrial-700 rounded-lg font-semibold text-white shadow-md transition">
+                                        Kirim Permintaan Harga (RFQ)
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="bg-white border-b border-slate-200 py-12">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-extrabold text-industrial-600">500+</div>
+                            <div class="text-sm text-slate-500 mt-1">Mitra Toko & Korporasi</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-extrabold text-industrial-600">10.000+</div>
+                            <div class="text-sm text-slate-500 mt-1">Ton Pengiriman Tahunan</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-extrabold text-industrial-600">25+</div>
+                            <div class="text-sm text-slate-500 mt-1">Cakupan Kota Distribusi</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl sm:text-4xl font-extrabold text-industrial-600">99%</div>
+                            <div class="text-sm text-slate-500 mt-1">Ketepatan Pengiriman</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keunggulan Layanan B2B -->
+            <div class="py-20 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Mengapa Distributor Lain Memilih Kami?</h2>
+                        <p class="mt-4 text-lg text-slate-600">Infrastruktur logistik dan sistem inventaris modern yang dirancang khusus untuk kelancaran bisnis B2B.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-boxes-stacked"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Stok Selalu Tersedia (Ready Stock)</h3>
+                            <p class="text-slate-600">Manajemen gudang terpusat memastikan ketersediaan barang berkapasitas besar untuk mencegah kekosongan stok toko Anda.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-tags"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Harga Grosir Kompetitif</h3>
+                            <p class="text-slate-600">Skema harga berjenjang (tier pricing) khusus grosir dan distributor memberikan margin keuntungan terbaik bagi bisnis Anda.</p>
+                        </div>
+                        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-truck-ramp-box"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Armada & Logistik Handal</h3>
+                            <p class="text-slate-600">Didukung armada pengiriman sendiri dan ekspedisi terpercaya untuk menjamin keamanan barang sampai di tempat tujuan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: TENTANG ================= -->
+        <section id="page-tentang" class="page-section hidden py-16 lg:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-industrial-600 bg-industrial-50 px-3 py-1 rounded-full">Tentang Perusahaan</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Pilar Utama Rantai Pasok Industri Nasional</h1>
+                    <p class="mt-4 text-lg text-slate-600">PT Nusantara Distribusi Mandiri hadir sebagai urat nadi perdagangan grosir B2B yang menghubungkan produsen utama dengan jaringan retail dan korporasi.</p>
+                </div>
+
+                <!-- Visi Misi -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="bg-white p-8 sm:p-10 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                        <div class="w-14 h-14 bg-industrial-900 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Visi Kami</h3>
+                        <p class="text-slate-600 leading-relaxed">
+                            Menjadi perusahaan distributor B2B paling efisien, transparan, dan terluas di Indonesia yang mendukung kemandirian bisnis mitra lokal.
+                        </p>
+                    </div>
+                    <div class="bg-white p-8 sm:p-10 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                        <div class="w-14 h-14 bg-industrial-900 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg">
+                            <i class="fa-solid fa-list-check"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Misi Kami</h3>
+                        <ul class="space-y-3 text-slate-600">
+                            <li class="flex items-start"><i class="fa-solid fa-check text-industrial-600 mt-1 mr-3"></i> Menjaga konsistensi kualitas barang dan keaslian produk.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-industrial-600 mt-1 mr-3"></i> Mengoptimalkan kecepatan pengiriman barang lewat manajemen logistik modern.</li>
+                            <li class="flex items-start"><i class="fa-solid fa-check text-industrial-600 mt-1 mr-3"></i> Membangun hubungan jangka panjang yang saling menguntungkan dengan mitra.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fasilitas Gudang -->
+                <div class="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 shadow-xl">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-industrial-400 bg-industrial-800 px-3 py-1 rounded-full">Infrastruktur</span>
+                            <h2 class="text-3xl font-bold">Pusat Logistik & Gudang Terpadu</h2>
+                            <p class="text-slate-300">
+                                Kami memiliki fasilitas gudang seluas lebih dari 5.000 meter persegi yang dilengkapi sistem manajemen inventaris digital (WMS) dan pengamanan ketat untuk menjamin kondisi barang tetap prima sebelum didistribusikan.
+                            </p>
+                            <div class="grid grid-cols-2 gap-4 pt-2 text-sm">
+                                <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-industrial-400"></i> <span>Sistem Barcode Otomatis</span></div>
+                                <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-industrial-400"></i> <span>Kontrol Suhu & Kelembaban</span></div>
+                                <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-industrial-400"></i> <span>Loading Dock Cepat</span></div>
+                                <div class="flex items-center space-x-2"><i class="fa-solid fa-check text-industrial-400"></i> <span>Keamanan 24 Jam</span></div>
+                            </div>
+                        </div>
+                        <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 text-center space-y-4">
+                            <div class="text-5xl font-extrabold text-industrial-400"><i class="fa-solid fa-warehouse"></i></div>
+                            <h3 class="text-xl font-bold">Siap Mendukung Skala Bisnis Anda</h3>
+                            <p class="text-slate-400 text-sm">Butuh kunjungan gudang atau inspeksi langsung untuk kerja sama korporat? Tim kami siap menyambut Anda.</p>
+                            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20mengagendakan%20kunjungan%20gudang%20distribusi." target="_blank" class="inline-block w-full py-3 bg-industrial-600 hover:bg-industrial-700 font-semibold rounded-lg transition">
+                                Jadwalkan Kunjungan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: KATALOG PRODUK ================= -->
+        <section id="page-katalog" class="page-section hidden py-16 lg:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-industrial-600 bg-industrial-50 px-3 py-1 rounded-full">Katalog Grosir</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Kategori Produk & Komoditas B2B</h1>
+                    <p class="mt-4 text-lg text-slate-600">Dapatkan penawaran harga khusus partai besar untuk berbagai kebutuhan industri dan retail Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Kategori 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between hover:border-industrial-500 transition">
+                        <div>
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-industry"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Material & Perlengkapan Industri</h3>
+                            <p class="text-slate-600 mb-6">Komponen mekanik, perkakas berat, material pendukung pabrik, dan suku cadang mesin berstandar mutu tinggi.</p>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20meminta%20katalog%20dan%20harga%20Material%20Industri." target="_blank" class="inline-flex items-center text-industrial-600 font-semibold hover:text-industrial-700">
+                            Minta Penawaran Harga <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Kategori 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between hover:border-industrial-500 transition">
+                        <div>
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Barang Konsumsi (FMCG) Grosir</h3>
+                            <p class="text-slate-600 mb-6">Kebutuhan pokok, makanan kemasan, produk kebersihan, dan barang fast-moving consumer goods untuk suplai supermarket & toko kelontong.</p>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20meminta%20katalog%20dan%20harga%20FMCG%20Grosir." target="_blank" class="inline-flex items-center text-industrial-600 font-semibold hover:text-industrial-700">
+                            Minta Penawaran Harga <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Kategori 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between hover:border-industrial-500 transition">
+                        <div>
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-box-open"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Kemasan & Packaging Komersial</h3>
+                            <p class="text-slate-600 mb-6">Berbagai jenis kardus box, plastik kemasan, selotip industri, dan material packaging custom untuk kebutuhan pengiriman bisnis.</p>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20meminta%20katalog%20Packaging%20Komersial." target="_blank" class="inline-flex items-center text-industrial-600 font-semibold hover:text-industrial-700">
+                            Minta Penawaran Harga <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Kategori 4 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between hover:border-industrial-500 transition">
+                        <div>
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-seedling"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Komoditas Hasil Pertanian & Pangan</h3>
+                            <p class="text-slate-600 mb-6">Hasil bumi pilihan langsung dari petani lokal dalam volume besar untuk pasokan pabrik pengolahan makanan dan distributor daerah.</p>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20meminta%20katalog%20Komoditas%20Pertanian." target="_blank" class="inline-flex items-center text-industrial-600 font-semibold hover:text-industrial-700">
+                            Minta Penawaran Harga <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Kategori 5 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between hover:border-industrial-500 transition">
+                        <div>
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Alat Pelindung Diri (APD) K3</h3>
+                            <p class="text-slate-600 mb-6">Perlengkapan keselamatan kerja pabrik dan proyek konstruksi seperti helm safety, rompi, sarung tangan khusus, dan sepatu safety grosir.</p>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20meminta%20katalog%20APD%20K3." target="_blank" class="inline-flex items-center text-industrial-600 font-semibold hover:text-industrial-700">
+                            Minta Penawaran Harga <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+
+                    <!-- Kategori 6 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between hover:border-industrial-500 transition">
+                        <div>
+                            <div class="w-12 h-12 bg-industrial-100 text-industrial-600 rounded-xl flex items-center justify-center text-xl font-bold mb-6">
+                                <i class="fa-solid fa-truck-medical"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-3">Suplai Kesehatan & Farmasi B2B</h3>
+                            <p class="text-slate-600 mb-6">Distribusi produk kesehatan penunjang klinik, apotek, dan rumah sakit dengan standar penyimpanan pharmaceutical grade.</p>
+                        </div>
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20meminta%20katalog%20Suplai%20Kesehatan." target="_blank" class="inline-flex items-center text-industrial-600 font-semibold hover:text-industrial-700">
+                            Minta Penawaran Harga <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: KEMITRAAN ================= -->
+        <section id="page-kemitraan" class="page-section hidden py-16 lg:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-industrial-600 bg-industrial-50 px-3 py-1 rounded-full">Program Mitra</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Bergabung Menjadi Jaringan Mitra B2B Kami</h1>
+                    <p class="mt-4 text-lg text-slate-600">Nikmati keuntungan eksklusif, tempo pembayaran fleksibel, serta prioritas stok barang bagi toko atau perusahaan Anda.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-center space-y-4">
+                        <div class="w-14 h-14 bg-industrial-100 text-industrial-600 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto">
+                            1
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Daftar Akun Mitra</h3>
+                        <p class="text-slate-600 text-sm">Isi formulir pendaftaran dengan melampirkan legalitas usaha (NIB / SIUP / Badan Usaha).</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-center space-y-4">
+                        <div class="w-14 h-14 bg-industrial-100 text-industrial-600 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto">
+                            2
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Verifikasi & Penentuan Tier</h3>
+                        <p class="text-slate-600 text-sm">Tim kami akan memverifikasi data dan memberikan akses khusus harga grosir sesuai skala pembelian.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 text-center space-y-4">
+                        <div class="w-14 h-14 bg-industrial-100 text-industrial-600 rounded-2xl flex items-center justify-center text-2xl font-bold mx-auto">
+                            3
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Mulai Pasok Barang</h3>
+                        <p class="text-slate-600 text-sm">Nikmati pengiriman rutin terjadwal dan kemudahan pemesanan langsung melalui sales dedicated.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: BLOG & KONTAK ================= -->
+        <section id="page-blog" class="page-section hidden py-16 lg:py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Blog Header -->
+                <div class="max-w-3xl mx-auto text-center mb-16">
+                    <span class="text-xs font-semibold uppercase tracking-wider text-industrial-600 bg-industrial-50 px-3 py-1 rounded-full">Wawasan & FAQ</span>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Artikel Rantai Pasok & Tanya Jawab B2B</h1>
+                    <p class="mt-4 text-lg text-slate-600">Informasi seputar tips manajemen inventaris gudang, efisiensi logistik, dan mekanisme grosir.</p>
+                </div>
+
+                <!-- Blog Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-calendar"></i> <span>28 September 2026</span>
+                                <span>•</span>
+                                <span class="text-industrial-600 font-medium">Supply Chain</span>
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-900 hover:text-industrial-600 cursor-pointer">Strategi Menjaga Stabilitas Stok Barang di Toko Grosir Saat Musim Tinggi</h2>
+                            <p class="text-slate-600 text-sm">Tips mengantisipasi lonjakan permintaan pasar agar rantai pasok bisnis Anda tetap lancar tanpa kendala kehabisan stok.</p>
+                        </div>
+                        <div class="px-6 pb-6 pt-0">
+                            <a href="#kontak" onclick="switchPage('blog')" class="text-sm font-semibold text-industrial-600 hover:text-industrial-700 inline-flex items-center">Baca Selengkapnya <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-calendar"></i> <span>24 September 2026</span>
+                                <span>•</span>
+                                <span class="text-industrial-600 font-medium">Logistik Bisnis</span>
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-900 hover:text-industrial-600 cursor-pointer">Pentingnya Memilih Distributor Tangan Pertama untuk Efisiensi Biaya Operasional</h2>
+                            <p class="text-slate-600 text-sm">Bagaimana kerja sama langsung dengan distributor utama dapat menekan harga pokok penjualan (HPP) usaha retail Anda.</p>
+                        </div>
+                        <div class="px-6 pb-6 pt-0">
+                            <a href="#kontak" onclick="switchPage('blog')" class="text-sm font-semibold text-industrial-600 hover:text-industrial-700 inline-flex items-center">Baca Selengkapnya <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 flex flex-col justify-between">
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center space-x-2 text-xs text-slate-400">
+                                <i class="fa-regular fa-calendar"></i> <span>18 September 2026</span>
+                                <span>•</span>
+                                <span class="text-industrial-600 font-medium">Tips B2B</span>
+                            </div>
+                            <h2 class="text-xl font-bold text-slate-900 hover:text-industrial-600 cursor-pointer">Panduan Prosedur Pengadaan Barang (Procurement) untuk Perusahaan Skala Menengah</h2>
+                            <p class="text-slate-600 text-sm">Langkah-langkah menyusun dokumen permintaan penawaran (RFQ) agar mendapatkan vendor distributor yang tepat.</p>
+                        </div>
+                        <div class="px-6 pb-6 pt-0">
+                            <a href="#kontak" onclick="switchPage('blog')" class="text-sm font-semibold text-industrial-600 hover:text-industrial-700 inline-flex items-center">Baca Selengkapnya <i class="fa-solid fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Form Kontak / RFQ Section -->
+                <div id="kontak" class="bg-slate-900 text-white rounded-3xl p-8 sm:p-12 lg:p-16 shadow-xl relative overflow-hidden">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+                        <div class="lg:col-span-5 space-y-6">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-industrial-400 bg-industrial-800 px-3 py-1 rounded-full">Hubungi Tim Sales</span>
+                            <h2 class="text-3xl font-bold tracking-tight">Kirimkan Permintaan Penawaran (RFQ) Anda</h2>
+                            <p class="text-slate-300">Butuh pasokan rutin atau konsultasi ketersediaan barang skala besar? Tim sales B2B kami siap merespons cepat.</p>
+                            <div class="space-y-4 pt-4 text-slate-300">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-industrial-800 rounded-lg flex items-center justify-center text-industrial-300"><i class="fa-solid fa-location-dot"></i></div>
+                                    <span>Kawasan Gudang Industri Terpadu Blok C No. 12, Jakarta</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-industrial-800 rounded-lg flex items-center justify-center text-industrial-300"><i class="fa-solid fa-envelope"></i></div>
+                                    <span>corporate@nusantaradistribusi.co.id</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-industrial-800 rounded-lg flex items-center justify-center text-industrial-300"><i class="fa-solid fa-phone"></i></div>
+                                    <span>+62 812-3456-7890</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lg:col-span-7 bg-white text-slate-900 p-8 rounded-2xl shadow-lg">
+                            <h3 class="text-2xl font-bold mb-6">Formulir Pemesanan Grosir & RFQ</h3>
+                            <form onsubmit="handleContact(event)" class="space-y-4">
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Nama PIC / Penanggung Jawab</label>
+                                        <input type="text" required class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-industrial-600" placeholder="Nama Anda">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Nomor WhatsApp Aktif</label>
+                                        <input type="text" required class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-industrial-600" placeholder="0812xxxxxxxx">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Kategori Produk yang Dibutuhkan</label>
+                                    <select class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-industrial-600">
+                                        <option>Material & Perlengkapan Industri</option>
+                                        <option>Barang Konsumsi (FMCG) Grosir</option>
+                                        <option>Kemasan & Packaging Komersial</option>
+                                        <option>Komoditas Hasil Pertanian</option>
+                                        <option>Alat Pelindung Diri (APD) K3</option>
+                                        <option>Lainnya</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Detail Kuantitas & Catatan Pesanan</label>
+                                    <textarea rows="4" required class="w-full bg-slate-50 border border-slate-300 rounded-lg px-4 py-2.5 text-slate-900 focus:outline-none focus:border-industrial-600" placeholder="Tuliskan estimasi jumlah barang, jadwal pengiriman, atau pertanyaan spesifik..."></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-3 bg-industrial-600 hover:bg-industrial-700 rounded-lg font-semibold text-white shadow-md transition">
+                                    Kirim RFQ ke Sales
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20untuk%20berkonsultasi%20mengenai%20pemesanan%20grosir%20B2B." target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 bg-industrial-700 rounded-lg flex items-center justify-center text-white font-bold text-lg">ND</div>
+                        <span class="text-lg font-bold text-white tracking-tight">NUSANTARA<span class="text-industrial-500">B2B</span></span>
+                    </div>
+                    <p class="text-sm">Mitra distribusi grosir dan rantai pasok terpercaya untuk mendukung pertumbuhan bisnis retail dan korporasi di Indonesia.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Navigasi Utama</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><button onclick="switchPage('home')" class="hover:text-white transition">Home</button></li>
+                        <li><button onclick="switchPage('tentang')" class="hover:text-white transition">Tentang Perusahaan</button></li>
+                        <li><button onclick="switchPage('katalog')" class="hover:text-white transition">Katalog Produk</button></li>
+                        <li><button onclick="switchPage('kemitraan')" class="hover:text-white transition">Program Kemitraan</button></li>
+                        <li><button onclick="switchPage('blog')" class="hover:text-white transition">Blog & Wawasan</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Kategori Unggulan</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><span class="hover:text-white cursor-pointer" onclick="switchPage('katalog')">Material Industri</span></li>
+                        <li><span class="hover:text-white cursor-pointer" onclick="switchPage('katalog')">FMCG Grosir</span></li>
+                        <li><span class="hover:text-white cursor-pointer" onclick="switchPage('katalog')">Packaging Komersial</span></li>
+                        <li><span class="hover:text-white cursor-pointer" onclick="switchPage('katalog')">APD & Alat Keselamatan</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Jam Operasional Gudang</h4>
+                    <p class="text-sm mb-2">Senin - Jumat: 08.00 - 17.00 WIB</p>
+                    <p class="text-sm mb-2">Sabtu: 08.00 - 13.00 WIB</p>
+                    <p class="text-sm">Minggu & Libur Nasional: Tutup</p>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs">
+                <p>&copy; 2026 PT Nusantara Distribusi Mandiri. Hak Cipta Dilindungi.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-white transition">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-white transition">Syarat & Ketentuan Pengadaan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const seoData = {
+            home: {
+                title: "Pusat Distributor B2B & Supply Chain Terpercaya | PT Nusantara Distribusi Mandiri",
+                desc: "Mitra distribusi B2B terkemuka untuk penyediaan logistik, inventaris grosir, dan rantai pasok industri skala nasional."
+            },
+            tentang: {
+                title: "Tentang Perusahaan & Gudang Logistik | PT Nusantara Distribusi Mandiri",
+                desc: "Kenali infrastruktur gudang, fasilitas rantai pasok, serta visi misi PT Nusantara Distribusi Mandiri sebagai distributor B2B andalan."
+            },
+            katalog: {
+                title: "Katalog Produk Grosir & Komoditas Industri | PT Nusantara Distribusi Mandiri",
+                desc: "Jelajahi berbagai kategori produk partai besar mulai dari material industri, FMCG, packaging, hingga alat keselamatan kerja."
+            },
+            kemitraan: {
+                title: "Program Kemitraan & Pendaftaran Akun Grosir | PT Nusantara Distribusi Mandiri",
+                desc: "Bergabunglah menjadi mitra bisnis kami untuk mendapatkan harga grosir kompetitif dan prioritas pengiriman logistik."
+            },
+            blog: {
+                title: "Blog Rantai Pasok & Panduan Pengadaan B2B | PT Nusantara Distribusi Mandiri",
+                desc: "Baca tips manajemen inventaris gudang, strategi logistik bisnis, dan panduan pengadaan barang (RFQ) untuk perusahaan."
+            }
+        };
+
+        function switchPage(pageId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+
+            const targetSection = document.getElementById('page-' + pageId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                btn.classList.remove('text-industrial-600');
+                btn.classList.add('text-slate-600');
+            });
+            const activeNav = document.getElementById('nav-' + pageId);
+            if (activeNav) {
+                activeNav.classList.remove('text-slate-600');
+                activeNav.classList.add('text-industrial-600');
+            }
+
+            if (seoData[pageId]) {
+                document.getElementById('meta-title').innerText = seoData[pageId].title;
+                document.getElementById('meta-desc').setAttribute('content', seoData[pageId].desc);
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function handleContact(event) {
+            event.preventDefault();
+            alert('Terima kasih! Permintaan penawaran (RFQ) Anda telah terkirim. Tim Sales B2B kami akan segera menghubungi Anda.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
