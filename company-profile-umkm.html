@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesehatan Anda Prioritas Kami - Company Profile</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js untuk Navigasi Tab / Halaman -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Font Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen" x-data="{ activeTab: 'home', mobileMenu: false }">
+
+    <!-- NAVBAR (Header) -->
+    <header class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo / Nama Usaha -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" @click.prevent="activeTab = 'home'" class="text-xl font-bold text-blue-600 flex items-center gap-2">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        Klinik Sehat
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" @click.prevent="activeTab = 'home'" :class="activeTab === 'home' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-slate-600 hover:text-blue-600'" class="py-2 text-sm font-medium transition">Home</a>
+                    <a href="#" @click.prevent="activeTab = 'tentang'" :class="activeTab === 'tentang' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-slate-600 hover:text-blue-600'" class="py-2 text-sm font-medium transition">Tentang Kami</a>
+                    <a href="#" @click.prevent="activeTab = 'layanan'" :class="activeTab === 'layanan' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-slate-600 hover:text-blue-600'" class="py-2 text-sm font-medium transition">Layanan</a>
+                </nav>
+
+                <!-- WhatsApp CTA Button (Desktop) -->
+                <div class="hidden md:flex items-center">
+                    <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20layanan%20Klinik%20Sehat." target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 transition shadow-sm">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        Tanya / Order
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="flex items-center md:hidden">
+                    <button @click="mobileMenu = !mobileMenu" class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path x-show="!mobileMenu" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            <path x-show="mobileMenu" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div x-show="mobileMenu" class="md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <a href="#" @click.prevent="activeTab = 'home'; mobileMenu = false" class="block py-2 text-base font-medium text-slate-700 hover:text-blue-600">Home</a>
+            <a href="#" @click.prevent="activeTab = 'tentang'; mobileMenu = false" class="block py-2 text-base font-medium text-slate-700 hover:text-blue-600">Tentang Kami</a>
+            <a href="#" @click.prevent="activeTab = 'layanan'; mobileMenu = false" class="block py-2 text-base font-medium text-slate-700 hover:text-blue-600">Layanan</a>
+            <div class="pt-2">
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20layanan%20Klinik%20Sehat." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 transition">
+                    Tanya / Order via WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow">
+
+        <!-- ================= HALAMAN HOME ================= -->
+        <section x-show="activeTab === 'home'" class="space-y-16 pb-16">
+            
+            <!-- Hero Section dengan Foto Latar Belakang Panjang dari Link Anda -->
+            <div class="relative bg-cover bg-center text-white py-24 sm:py-32 px-4" style="background-image: url('https://cdn.phototourl.com/member/2026-09-27-58fa7e3a-52cc-49b4-a0cb-090b64c7a738.png');">
+                <!-- Overlay gelap proporsional (60%) agar foto klinik tampil cantik dan teks mudah dibaca -->
+                <div class="absolute inset-0 bg-slate-900/60"></div>
+
+                <div class="relative max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-6">
+                        <span class="bg-blue-600/85 text-blue-100 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider border border-blue-400/50 backdrop-blur-sm">Kesehatan Anda Prioritas Kami</span>
+                        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight leading-tight drop-shadow-lg">Mitra Terbaik untuk Kesehatan & Pelayanan Medis Anda</h1>
+                        <p class="text-slate-100 text-lg leading-relaxed drop-shadow-md">Kami hadir memberikan layanan kesehatan berkualitas tinggi, profesional, dan berorientasi pada kesembuhan pasien dengan penanganan langsung oleh dokter spesialis dan tenaga medis berpengalaman.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <a href="#" @click.prevent="activeTab = 'layanan'" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium text-center transition shadow-lg shadow-blue-600/30">Lihat Layanan</a>
+                            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20konsultasi%20kesehatan%20di%20klinik." target="_blank" class="bg-slate-900/60 hover:bg-slate-900/80 text-white border border-white/30 px-6 py-3 rounded-xl font-medium text-center transition backdrop-blur-sm">Konsultasi Dokter</a>
+                        </div>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-700/60 p-6 rounded-2xl shadow-2xl backdrop-blur-md">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4 bg-slate-800/90 p-4 rounded-xl border border-slate-700">
+                                <div class="bg-blue-600/20 text-blue-400 p-3 rounded-lg">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white">Dokter Spesialis Profesional</h3>
+                                    <p class="text-sm text-slate-300">Ditangani oleh tenaga medis ahli dan terpercaya.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 bg-slate-800/90 p-4 rounded-xl border border-slate-700">
+                                <div class="bg-emerald-600/20 text-emerald-400 p-3 rounded-lg">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-white">Pelayanan Cepat & Ramah</h3>
+                                    <p class="text-sm text-slate-300">Prioritas kenyamanan dan kesehatan pasien.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Highlights Layanan Unggulan (Ringkasan) -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-slate-900">Mengapa Memilih Klinik Kami?</h2>
+                    <p class="text-slate-600 mt-2">Kami berkomitmen memberikan standar kesehatan terbaik untuk Anda dan keluarga.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4">01</div>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Tenaga Medis Berpengalaman</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Dokter dan perawat yang bersertifikasi serta berpengalaman di bidangnya.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4">02</div>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Fasilitas Nyaman & Modern</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Ruang tunggu bersih, peralatan medis modern, dan suasana yang menenangkan.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4">03</div>
+                        <h3 class="text-lg font-semibold text-slate-900 mb-2">Biaya Transparan & Terjangkau</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Informasi harga layanan yang jelas tanpa ada biaya tersembunyi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= HALAMAN TENTANG KAMI ================= -->
+        <section x-show="activeTab === 'tentang'" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Tentang Klinik Kami</span>
+                <h1 class="text-3xl sm:text-4xl font-bold text-slate-900">Berdedikasi untuk Kesehatan Masyarakat</h1>
+                <p class="text-slate-600 text-lg">Mengenal lebih dekat visi, misi, dan komitmen pelayanan medis kami.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-slate-900">Perjalanan & Komitmen Kami</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        Klinik Sehat didirikan dengan visi utama memberikan akses kesehatan yang mudah, cepat, dan berkualitas bagi setiap individu dan keluarga.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Didukung oleh tenaga medis yang berdedikasi tinggi, kami selalu mengutamakan keramahan, ketepatan diagnosa, dan pemulihan kesehatan pasien sebagai prioritas utama.
+                    </p>
+                </div>
+                <div class="bg-slate-100 rounded-xl p-6 border border-slate-200 space-y-6">
+                    <div>
+                        <h3 class="text-blue-600 font-semibold mb-1">Visi Kami</h3>
+                        <p class="text-slate-700 text-sm">Menjadi pusat layanan kesehatan pilihan utama yang terpercaya dan berstandar tinggi di masyarakat.</p>
+                    </div>
+                    <hr class="border-slate-200">
+                    <div>
+                        <h3 class="text-blue-600 font-semibold mb-1">Misi Kami</h3>
+                        <ul class="text-slate-700 text-sm space-y-2 list-disc list-inside">
+                            <li>Memberikan pelayanan medis yang cepat, tepat, dan penuh empati.</li>
+                            <li>Menyediakan fasilitas kesehatan yang bersih, nyaman, dan modern.</li>
+                            <li>Meningkatkan kesadaran masyarakat akan pentingnya hidup sehat.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= HALAMAN LAYANAN ================= -->
+        <section x-show="activeTab === 'layanan'" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+            <div class="max-w-3xl mx-auto text-center space-y-4">
+                <span class="text-blue-600 font-semibold text-sm uppercase tracking-wider">Daftar Layanan Medis</span>
+                <h1 class="text-3xl sm:text-4xl font-bold text-slate-900">Pilih Layanan & Konsultasi Kesehatan</h1>
+                <p class="text-slate-600 text-lg">Pilih layanan kesehatan yang Anda butuhkan dan jadwalkan pemeriksaan melalui WhatsApp.</p>
+            </div>
+
+            <!-- List Kartu Layanan -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Layanan 1 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between transition hover:shadow-md">
+                    <div class="p-6 space-y-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Pemeriksaan Umum & Konsultasi</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Pemeriksaan kesehatan fisik umum bersama dokter berpengalaman untuk mendiagnosa penyakit ringan hingga penanganan awal.
+                        </p>
+                        <div class="text-blue-600 font-semibold text-sm">Mulai dari Rp 75.000</div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20memesan%20layanan%20Pemeriksaan%20Umum%20%26%20Konsultasi." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition text-sm">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            Booking via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Layanan 2 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between transition hover:shadow-md">
+                    <div class="p-6 space-y-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Pemeriksaan Gigi & Mulut</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Layanan perawatan gigi lengkap mulai dari pembersihan karang gigi, penambalan, hingga konsultasi kesehatan rongga mulut.
+                        </p>
+                        <div class="text-blue-600 font-semibold text-sm">Mulai dari Rp 100.000</div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20memesan%20layanan%20Pemeriksaan%20Gigi%20%26%20Mulut." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition text-sm">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            Booking via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Layanan 3 -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col justify-between transition hover:shadow-md">
+                    <div class="p-6 space-y-4">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Laboratorium & Cek Darah</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Layanan pemeriksaan darah lengkap, gula darah, kolesterol, asam urat, dan tes penunjang medis akurat lainnya.
+                        </p>
+                        <div class="text-blue-600 font-semibold text-sm">Mulai dari Rp 120.000</div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20memesan%20layanan%20Laboratorium%20%26%20Cek%20Darah." target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition text-sm">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                            Booking via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
+            <p>&copy; 2026 Nama Bisnis Anda. Hak Cipta Dilindungi.</p>
+            <div class="flex space-x-6">
+                <a href="#" @click.prevent="activeTab = 'home'" class="hover:text-white transition">Home</a>
+                <a href="#" @click.prevent="activeTab = 'tentang'" class="hover:text-white transition">Tentang</a>
+                <a href="#" @click.prevent="activeTab = 'layanan'" class="hover:text-white transition">Layanan</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
