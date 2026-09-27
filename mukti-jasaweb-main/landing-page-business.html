@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zulaikha Fashion - Koleksi Koko & Gamis Premium Eksklusif</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#fbe8e6',
+                            500: '#c55331',
+                            600: '#b04321',
+                            700: '#933519',
+                            900: '#5c1f0f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- SECTION 1: Top Navigation / Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="bg-brand-600 text-white p-2 rounded-lg font-bold text-xl flex items-center justify-center w-10 h-10 shadow-sm">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-slate-900">Zulaikha<span class="text-brand-600">Fashion</span></span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                <a href="#koleksi" class="hover:text-brand-600 transition">Koleksi</a>
+                <a href="#keunggulan" class="hover:text-brand-600 transition">Keunggulan</a>
+                <a href="#testimoni" class="hover:text-brand-600 transition">Ulasan</a>
+                <a href="#promo" class="hover:text-brand-600 transition">Promo Paket</a>
+                <a href="#faq" class="hover:text-brand-600 transition">FAQ</a>
+            </nav>
+            <div class="flex items-center space-x-3">
+                <a href="#form-crm" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 rounded-lg transition">
+                    Pesan Sekarang
+                </a>
+                <a href="https://wa.me/6281234567890?text=Halo%2C%20saya%20tertarik%20dengan%20koleksi%20baju%20di%20Zulaikha%20Fashion" target="_blank" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-sm transition">
+                    <i class="fa-brands fa-whatsapp mr-2 text-base"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2: Hero Section (Fokus Konversi Utama) -->
+    <section class="relative pt-16 pb-24 lg:pt-28 lg:pb-32 bg-gradient-to-b from-white via-brand-50/40 to-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 bg-brand-100 text-brand-700 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
+                    <i class="fa-solid fa-fire text-amber-600"></i> Diskon Spesial Hari Ini - Bisa COD & Garansi Retur
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Tampil Elegan & Nyaman dengan <span class="text-brand-600">Koleksi Muslimah & Koko Premium</span>
+                </h1>
+                <p class="mt-6 text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Bahan katun toyobo & ceruty import pilihan yang adem, tidak mudah kusut, dan pas di badan untuk segala aktivitas harian maupun acara spesial.
+                </p>
+                <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                    <a href="#form-crm" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-lg shadow-brand-500/25 transition transform hover:-translate-y-0.5">
+                        Ambil Promo Diskon <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="w-full sm:w-auto px-8 py-4 text-base font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 rounded-xl transition">
+                        <i class="fa-brands fa-whatsapp text-emerald-600 mr-2"></i> Tanya Ukuran & Warna
+                    </a>
+                </div>
+                <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-slate-500 text-sm font-medium">
+                    <div class="flex items-center"><i class="fa-solid fa-truck-fast text-brand-600 mr-2"></i> Bisa Bayar di Tempat (COD)</div>
+                    <div class="flex items-center"><i class="fa-solid fa-shield-check text-brand-600 mr-2"></i> 100% Garansi Tukar Size</div>
+                </div>
+            </div>
+            <!-- Hero Image Banner / Card Preview -->
+            <div class="relative">
+                <div class="bg-gradient-to-tr from-brand-600 to-amber-500 rounded-3xl p-2 shadow-2xl transform rotate-1 hover:rotate-0 transition duration-300">
+                    <div class="bg-white rounded-2xl p-6 text-center space-y-4">
+                        <div class="w-full h-72 bg-slate-200 rounded-xl overflow-hidden relative flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=800');">
+                            <span class="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1.5 rounded-lg">Best Seller Series 2026</span>
+                        </div>
+                        <h3 class="font-bold text-xl text-slate-900">Set Gamis & Koko Zulaikha Exclusive</h3>
+                        <p class="text-sm text-slate-500">Tersedia ukuran S, M, L, XL, XXL untuk Pria & Wanita.</p>
+                        <div class="flex justify-center items-center space-x-3">
+                            <span class="text-slate-400 line-through text-sm">Rp 350.000</span>
+                            <span class="text-2xl font-extrabold text-brand-600">Rp 219.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: Social Proof / Brand Logos / Kepercayaan -->
+    <section class="py-10 bg-white border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-6">Telah Terkirim ke 25.000+ Pelanggan Seluruh Indonesia</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-75 text-sm font-bold text-slate-600">
+                <div class="flex items-center"><i class="fa-solid fa-box-open mr-2 text-brand-600 text-lg"></i> Packing Aman & Rapi</div>
+                <div class="flex items-center"><i class="fa-solid fa-star mr-2 text-amber-500 text-lg"></i> Rating 4.9/5 Toko Terpercaya</div>
+                <div class="flex items-center"><i class="fa-solid fa-arrows-rotate mr-2 text-emerald-600 text-lg"></i> Garansi Retur 7 Hari</div>
+                <div class="flex items-center"><i class="fa-solid fa-headset mr-2 text-indigo-600 text-lg"></i> Admin Fast Response</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Masalah & Solusi (Kenapa Baju Kami Berbeda) -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Pernah Beli Baju Online tapi Kecewa?</h2>
+                <p class="mt-4 text-slate-600">Banyak baju murah di luar sana yang panas, mudah luntur, atau ukurannya tidak sesuai ekspektasi. Zulaikha Fashion hadir memberikan solusi.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Masalah -->
+                <div class="bg-red-50/50 border border-red-100 rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-red-700 flex items-center mb-4"><i class="fa-solid fa-circle-xmark mr-2"></i> Masalah Toko Biasa</h3>
+                    <ul class="space-y-4 text-slate-700">
+                        <li class="flex items-start"><i class="fa-solid fa-xmark text-red-500 mt-1 mr-3"></i> Bahan tipis, nerawang, dan gerah saat dipakai seharian.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-xmark text-red-500 mt-1 mr-3"></i> Ukuran sering tidak pas (kekecilan atau kebesaran).</li>
+                        <li class="flex items-start"><i class="fa-solid fa-xmark text-red-500 mt-1 mr-3"></i> Respon admin lama dan pesanan sering salah kirim.</li>
+                    </ul>
+                </div>
+                <!-- Solusi -->
+                <div class="bg-emerald-50/50 border border-emerald-100 rounded-2xl p-8">
+                    <h3 class="text-xl font-bold text-emerald-700 flex items-center mb-4"><i class="fa-solid fa-circle-check mr-2"></i> Standar Kualitas Zulaikha Fashion</h3>
+                    <ul class="space-y-4 text-slate-700">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-emerald-600 mt-1 mr-3"></i> Bahan premium pilihan: Adem, menyerap keringat, awet dicuci berkali-kali.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-emerald-600 mt-1 mr-3"></i> Panduan ukuran lengkap dan garansi tukar size jika kurang pas.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-emerald-600 mt-1 mr-3"></i> Mini CRM & sistem pencatatan pesanan akurat tanpa takut salah kirim.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: Katalog / Fitur Produk Utama -->
+    <section id="koleksi" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Koleksi Best Seller Bulan Ini</h2>
+                <p class="mt-4 text-slate-600">Pilihan model baju terfavorit yang paling banyak dicari untuk acara keluarga dan harian.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produk 1 -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden group hover:shadow-lg transition">
+                    <div class="h-64 bg-slate-200 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&q=80&w=600');"></div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md uppercase">Gamis Wanita</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-2">Gamis Seroja Luxury Series</h3>
+                        <p class="text-slate-500 text-sm mt-1">Bahan Ceruty Babydoll lapis furing full, busui friendly.</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-lg font-extrabold text-slate-900">Rp 239.000</span>
+                            <a href="#form-crm" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-lg transition">Pilih Ukuran</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produk 2 -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden group hover:shadow-lg transition">
+                    <div class="h-64 bg-slate-200 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?auto=format&fit=crop&q=80&w=600');"></div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md uppercase">Koko Pria</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-2">Koko Eksekutif Al-Farooq</h3>
+                        <p class="text-slate-500 text-sm mt-1">Katun Toyobo Premium, lembut, elegan untuk kerja & ibadah.</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-lg font-extrabold text-slate-900">Rp 175.000</span>
+                            <a href="#form-crm" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-lg transition">Pilih Ukuran</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Produk 3 -->
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden group hover:shadow-lg transition">
+                    <div class="h-64 bg-slate-200 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600');"></div>
+                    <div class="p-6">
+                        <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md uppercase">Couple Set</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-2">Couple Family Series Harmoni</h3>
+                        <p class="text-slate-500 text-sm mt-1">Set serasi ayah, ibu, dan anak untuk momen spesial.</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-lg font-extrabold text-slate-900">Rp 385.000</span>
+                            <a href="#form-crm" class="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-lg transition">Pilih Ukuran</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: Harga / Promo Paket Bundling -->
+    <section id="promo" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Pilih Paket Promo Khusus Hari Ini</h2>
+                <p class="mt-4 text-slate-600">Hemat lebih banyak dengan mengambil paket bundling spesial keluarga.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Paket Satuan -->
+                <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">Paket Satuan Regular</h3>
+                        <p class="text-slate-500 text-sm mt-1">Cocok untuk pembelian 1 pcs baju.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-extrabold text-slate-900">Rp 219.000</span>
+                            <span class="text-slate-500 text-sm"> / pcs</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-600 mr-2"></i> Bebas pilih model & ukuran</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-600 mr-2"></i> Bisa sistem COD (Bayar di Tempat)</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-600 mr-2"></i> Garansi tukar size</li>
+                        </ul>
+                    </div>
+                    <a href="#form-crm" class="w-full text-center py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold rounded-xl transition">Pilih Paket Satuan</a>
+                </div>
+                <!-- Paket Bundling (Rekomendasi) -->
+                <div class="bg-brand-900 text-white rounded-3xl p-8 border border-brand-700 shadow-xl flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-4 py-1.5 rounded-bl-xl uppercase tracking-wider">Hemat Rp 70 Ribu</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Paket Bundling Couple (2 Pcs)</h3>
+                        <p class="text-brand-200 text-sm mt-1">Paling laris untuk pasangan & keluarga.</p>
+                        <div class="my-6">
+                            <span class="text-4xl font-extrabold text-white">Rp 385.000</span>
+                            <span class="text-brand-300 text-sm"> / 2 pcs</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-brand-100 mb-8">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-400 mr-2"></i> Bebas pilih 2 item (Gamis / Koko)</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-400 mr-2"></i> <strong>Gratis Ongkir Seluruh Indonesia</strong></li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-brand-400 mr-2"></i> Bonus Tas Eksklusif Zulaikha</li>
+                        </ul>
+                    </div>
+                    <a href="#form-crm" class="w-full text-center py-3 bg-brand-500 hover:bg-brand-600 text-white font-bold rounded-xl transition shadow-md">Ambil Paket Bundling</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: Testimoni / Ulasan Pembeli -->
+    <section id="testimoni" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Testimoni Pelanggan Setia</h2>
+                <p class="mt-4 text-slate-600">Apa kata mereka yang sudah merasakan kenyamanan baju dari Zulaikha Fashion?</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="flex text-amber-400 mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-slate-700 text-sm italic mb-6">"Bahannya adem banget pas dipakai pengajian. Jahitan rapi dan warnanya tidak luntur waktu dicuci. Suka sekali!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center font-bold justify-center mr-3">DA</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Dian Anitasari</h4>
+                            <p class="text-xs text-slate-500">Bandung</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="flex text-amber-400 mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-slate-700 text-sm italic mb-6">"Beli koko buat suami, pas banget ukurannya di badan dan kainnya tidak gampang kusut. Recommended seller!"</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center font-bold justify-center mr-3">RN</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Rina Nuraini</h4>
+                            <p class="text-xs text-slate-500">Jakarta Selatan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div class="flex text-amber-400 mb-4 text-sm"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                    <p class="text-slate-700 text-sm italic mb-6">"Pelayanan cepat, kemarin pesan pakai COD besoknya langsung sampai rumah. Barangnya original sesuai foto."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center font-bold justify-center mr-3">FA</div>
+                        <div>
+                            <h4 class="font-bold text-sm text-slate-900">Fauzan Azima</h4>
+                            <p class="text-xs text-slate-500">Surabaya</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: Form Pemesanan + Mini CRM Spreadsheet Simulator -->
+    <section id="form-crm" class="py-20 bg-brand-900 text-white relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-tight">Formulir Pemesanan & Mini CRM Pesanan</h2>
+                <p class="mt-2 text-brand-200">Isi data pengiriman Anda di bawah ini. Pesanan akan langsung tercatat di sistem kami dan terhubung ke WhatsApp admin.</p>
+            </div>
+
+            <div class="bg-white text-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl">
+                <form id="leadForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Penerima *</label>
+                            <input type="text" id="name" required placeholder="Contoh: Siti Aisyah" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Nomor WhatsApp Aktif *</label>
+                            <input type="tel" id="whatsapp" required placeholder="Contoh: 08123456789" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                        </div>
+                    </div>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Pilih Produk & Ukuran *</label>
+                            <select id="package" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-white">
+                                <option value="Gamis Seroja (Size M) - Rp 239.000">Gamis Seroja (Size M) - Rp 239.000</option>
+                                <option value="Gamis Seroja (Size L) - Rp 239.000">Gamis Seroja (Size L) - Rp 239.000</option>
+                                <option value="Gamis Seroja (Size XL) - Rp 239.000">Gamis Seroja (Size XL) - Rp 239.000</option>
+                                <option value="Koko Al-Farooq (Size L) - Rp 175.000">Koko Al-Farooq (Size L) - Rp 175.000</option>
+                                <option value="Paket Bundling Couple - Rp 385.000">Paket Bundling Couple - Rp 385.000</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Metode Pembayaran *</label>
+                            <select id="payment" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm bg-white">
+                                <option value="COD (Bayar di Tempat)">COD (Bayar di Tempat / Bayar ke kurir)</option>
+                                <option value="Transfer Bank / QRIS">Transfer Bank / QRIS</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Alamat Lengkap Pengiriman *</label>
+                        <textarea id="address" rows="3" required placeholder="Nama Jalan, RT/RW, Kecamatan, Kabupaten/Kota, Kode Pos..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition flex items-center justify-center text-base">
+                        <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> Konfirmasi Pesanan via WhatsApp
+                    </button>
+                </form>
+
+                <!-- Panel Mini CRM Dashboard Simulasi -->
+                <div class="mt-12 pt-8 border-t border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-900 text-sm flex items-center"><i class="fa-solid fa-table text-brand-600 mr-2"></i> Simulasi Mini CRM (Database Pesanan Masuk)</h3>
+                        <span id="leadCount" class="text-xs bg-brand-100 text-brand-700 px-2.5 py-1 rounded-full font-semibold">0 Pesanan</span>
+                    </div>
+                    <div class="overflow-x-auto max-h-48 border border-slate-200 rounded-xl">
+                        <table class="w-full text-left text-xs text-slate-600">
+                            <thead class="bg-slate-100 text-slate-700 font-bold uppercase">
+                                <tr>
+                                    <th class="p-3">Waktu</th>
+                                    <th class="p-3">Nama</th>
+                                    <th class="p-3">WhatsApp</th>
+                                    <th class="p-3">Produk & Pembayaran</th>
+                                </tr>
+                            </thead>
+                            <tbody id="crmTableBody" class="divide-y divide-slate-100">
+                                <tr>
+                                    <td colspan="4" class="p-4 text-center text-slate-400 italic">Belum ada pesanan masuk pada sesi ini.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: FAQ (Pertanyaan Umum) & Footer -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Pertanyaan yang Sering Diajukan</h2>
+                <p class="mt-4 text-slate-600">Informasi penting seputar pengiriman, ukuran, dan sistem belanja di Zulaikha Fashion.</p>
+            </div>
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 transition">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 cursor-pointer list-none">
+                        Apakah bisa sistem COD (Bayar di Tempat)?
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                        Ya, sangat bisa! Kami melayani pengiriman ke seluruh Indonesia dengan sistem COD melalui kurir terpercaya. Anda bisa membayar langsung saat paket tiba di rumah.
+                    </p>
+                </details>
+                <!-- FAQ 2 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 transition">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 cursor-pointer list-none">
+                        Bagaimana jika ukuran baju yang dikirim kekecilan?
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                        Kami menyediakan garansi tukar size selama 7 hari setelah barang diterima, asalkan label masih terpasang dan baju belum dicuci.
+                    </p>
+                </details>
+                <!-- FAQ 3 -->
+                <details class="group bg-slate-50 border border-slate-200 rounded-2xl p-6 transition">
+                    <summary class="flex justify-between items-center font-bold text-slate-900 cursor-pointer list-none">
+                        Berapa lama estimasi pengiriman paket sampai?
+                        <span class="transition group-open:rotate-180"><i class="fa-solid fa-chevron-down text-slate-400"></i></span>
+                    </summary>
+                    <p class="mt-4 text-slate-600 text-sm leading-relaxed">
+                        Estimasi pengiriman berkisar antara 2-4 hari kerja untuk wilayah Pulau Jawa, dan 4-7 hari kerja untuk luar Pulau Jawa tergantung ekspedisi.
+                    </p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <div class="bg-brand-600 text-white p-1.5 rounded-md font-bold text-sm flex items-center justify-center w-8 h-8">
+                    <i class="fa-solid fa-shirt"></i>
+                </div>
+                <span class="text-white font-extrabold text-lg">Zulaikha<span class="text-brand-500">Fashion</span></span>
+            </div>
+            <p class="text-xs">&copy; 2026 Zulaikha Fashion. Hak Cipta Dilindungi.</p>
+            <div class="flex space-x-4 text-lg">
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript untuk Mini CRM & WhatsApp Redirect -->
+    <script>
+        let leadsData = JSON.parse(localStorage.getItem('fashion_crm_leads')) || [];
+        renderTable();
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const packageVal = document.getElementById('package').value;
+            const payment = document.getElementById('payment').value;
+            const address = document.getElementById('address').value;
+            const timestamp = new Date().toLocaleString('id-ID', { dateStyle: 'short', timeStyle: 'short' });
+
+            // Simpan ke Mini CRM
+            const newOrder = { timestamp, name, whatsapp, packageVal, payment, address };
+            leadsData.unshift(newOrder);
+            localStorage.setItem('fashion_crm_leads', JSON.stringify(leadsData));
+
+            renderTable();
+
+            // Format Pesan WhatsApp
+            const message = `Halo Admin Zulaikha Fashion, saya ingin memesan:%0A%0A*Nama:* ${encodeURIComponent(name)}%0A*No WhatsApp:* ${encodeURIComponent(whatsapp)}%0A*Produk:* ${encodeURIComponent(packageVal)}%0A*Pembayaran:* ${encodeURIComponent(payment)}%0A*Alamat:* ${encodeURIComponent(address)}`;
+
+            document.getElementById('leadForm').reset();
+
+            alert('Pesanan berhasil tercatat di Mini CRM! Anda akan diarahkan ke WhatsApp untuk konfirmasi akhir.');
+            window.open(`https://wa.me/6281234567890?text=${message}`, '_blank');
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('crmTableBody');
+            const countBadge = document.getElementById('leadCount');
+            
+            countBadge.innerText = `${leadsData.length} Pesanan`;
+
+            if (leadsData.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400 italic">Belum ada pesanan masuk pada sesi ini.</td></tr>`;
+                return;
+            }
+
+            let html = '';
+            leadsData.forEach(item => {
+                html += `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="p-3 whitespace-nowrap">${item.timestamp}</td>
+                        <td class="p-3 font-semibold text-slate-800">${escapeHtml(item.name)}</td>
+                        <td class="p-3 text-brand-600">${escapeHtml(item.whatsapp)}</td>
+                        <td class="p-3">${escapeHtml(item.packageVal)}<br><span class="text-slate-400">(${item.payment})</span></td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+    </script>
+</body>
+</html>
