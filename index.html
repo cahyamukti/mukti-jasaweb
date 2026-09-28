@@ -3374,7 +3374,7 @@
         // 3. Logika respons asisten Muktijasaweb
         setTimeout(() => {
             const teksLower = pesanUser.toLowerCase();
-            let jawabanAI = "Terima kasih kak atas pesannya. Mengenai kebutuhan digital bisnis kakak di Muktijasaweb, Kak Cahya Mukti siap membantu menyediakan solusi website profesional. Ada detail spesifik yang ingin didiskusikan?";
+            let jawabanAI = "Terima kasih kak atas pesannya. Mengenai kebutuhan digital bisnis kakak di Muktijasaweb, Aku siap membantu menyediakan solusi website profesional. Ada detail spesifik yang ingin didiskusikan?";
             let tombolWaHtml = "";
             
             // Link WhatsApp otomatis dengan pesan pengantar
@@ -3383,7 +3383,7 @@
             const linkWa = `https://wa.me/${noWa}?text=${pesanWa}`;
 
             if (teksLower.includes('paket') || teksLower.includes('harga') || teksLower.includes('umkm') || teksLower.includes('buat website') || teksLower.includes('bikin web') || teksLower.includes('toko online') || teksLower.includes('landing page')) {
-                jawabanAI = "Tentu kak! Untuk kebutuhan UMKM maupun pembuatan website profesional, Muktijasaweb menyediakan berbagai pilihan paket terbaik mulai dari Landing Page, Company Profile, hingga toko online. Jika ingin langsung mendiskusikan konsep dan fiturnya secara lebih detail dengan Kak Cahya, silakan klik tombol WhatsApp di bawah ini ya kak!";
+                jawabanAI = "Tentu kak! Untuk kebutuhan UMKM maupun pembuatan website profesional, Muktijasaweb menyediakan berbagai pilihan paket terbaik mulai dari Landing Page, Company Profile, hingga toko online. Jika ingin langsung mendiskusikan konsep dan fiturnya secara lebih detail, silakan klik tombol WhatsApp di bawah ini ya kak!";
                 tombolWaHtml = `<br><br><a href="${linkWa}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">💬 Lanjut Konsultasi via WhatsApp</a>`;
             } 
             else if (teksLower.includes('waktu') || teksLower.includes('lama') || teksLower.includes('proses') || teksLower.includes('hari')) {
@@ -3391,7 +3391,7 @@
                 tombolWaHtml = `<br><br><a href="${linkWa}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">💬 Lanjut Konsultasi via WhatsApp</a>`;
             } 
             else if (teksLower.includes('malam') || teksLower.includes('pagi') || teksLower.includes('siang') || teksLower.includes('sore') || teksLower.includes('halo') || teksLower.includes('hai') || teksLower.includes('konsultasi')) {
-                jawabanAI = "Halo juga kak! Selamat datang di Muktijasaweb. Jika Kakak ingin langsung mendiskusikan konsep, ide, atau fitur website yang diinginkan dengan Kak Cahya, silakan langsung terhubung melalui WhatsApp kami ya kak!";
+                jawabanAI = "Halo juga kak! Selamat datang di Muktijasaweb. Jika Kakak ingin langsung mendiskusikan konsep, ide, atau fitur website yang diinginkan, silakan langsung terhubung melalui WhatsApp kami ya kak!";
                 tombolWaHtml = `<br><br><a href="${linkWa}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">💬 Lanjut Konsultasi via WhatsApp</a>`;
             }
 
