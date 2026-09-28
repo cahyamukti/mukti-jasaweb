@@ -245,7 +245,7 @@
             </nav>
 
             <div>
-                <a href="javascript:void(0);" onclick="document.getElementById('mj-chat-popup').classList.toggle('mj-hidden');" class="bg-orange-600 hover:bg-orange-700 text-white font-medium px-4 py-2 rounded-full transition">Konsultasi Gratis</a>
+                <a href="javascript:void(0);" onclick="document.getElementById('mj-chat-popup').classList.toggle('mj-hidden');" style="background-color: #f97316;" class="hover:opacity-90 text-white font-medium px-4 py-2 rounded-full transition">Konsultasi Gratis</a>
             </div>
         </div>
     </header>
@@ -3317,7 +3317,7 @@
     <div class="mj-chat-header">
       <div class="mj-header-info">
         <span class="mj-status-dot"></span>
-        <h3>Muktijasaweb AI</h3>
+        <h3>AI Muktijasaweb</h3>
       </div>
       <button id="mj-close-btn">&times;</button>
     </div>
@@ -3416,7 +3416,7 @@
   align-self: flex-start;
 }
 .mj-user-msg {
-  background: #2563eb;
+  background: #f97316;
   color: white;
   align-self: flex-end;
 }
@@ -3435,7 +3435,7 @@
   font-size: 14px;
 }
 #mj-send-btn {
-  background: #2563eb;
+  background: #f97316;
   color: white;
   border: none;
   padding: 0 15px;
@@ -3443,6 +3443,10 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 500;
+  transition: background 0.2s ease;
+}
+#mj-send-btn:hover {
+  background: #ea580c;
 }
 .mj-chat-footer-cta {
   padding: 8px 10px;
@@ -3460,68 +3464,87 @@
 .mj-wa-btn:hover {
   text-decoration: underline;
 }
-</style>
+</style> <!-- <-- PASTIKAN TAG INI ADA DI SINI -->
 
 <script>
-const WORKER_URL = "https://ai-muktijasaweb.cahyamukti52.workers.dev/";
+document.addEventListener("DOMContentLoaded", () => {
+  const WORKER_URL = "https://ai-muktijasaweb.cahyamukti52.workers.dev/";
 
-const chatPopup = document.getElementById("mj-chat-popup");
-const closeBtn = document.getElementById("mj-close-btn");
-const sendBtn = document.getElementById("mj-send-btn");
-const userInput = document.getElementById("mj-user-input");
-const chatMessages = document.getElementById("mj-chat-messages");
+  const chatPopup = document.getElementById("mj-chat-popup");
+  const closeBtn = document.getElementById("mj-close-btn");
+  const sendBtn = document.getElementById("mj-send-btn");
+  const userInput = document.getElementById("mj-user-input");
+  const chatMessages = document.getElementById("mj-chat-messages");
 
-let chatHistory = [];
+  let chatHistory = [];
 
-if (closeBtn && chatPopup) {
-  closeBtn.addEventListener("click", () => {
-    chatPopup.classList.add("mj-hidden");
-  });
-}
+  if (closeBtn && chatPopup) {
+    closeBtn.addEventListener("click", () => {
+      chatPopup.classList.add("mj-hidden");
+    });
+  }
 
-async function sendMessage() {
-        const text = userInput.value.trim();
-        if (!text) return;
+  async function sendMessage() {
+    const text = userInput.value.trim();
+    if (!text) return;
 
-        // Tampilkan pesan user
-        appendMessage(text, "mj-user-msg");
-        userInput.value = "";
+    appendMessage(text, "mj-user-msg");
+    userInput.value = "";
 
-        // Tampilkan indikator loading/mengetik
-        const loadingId = "loading-" + Math.random();
-        appendMessage("Mengetik...", "mj-bot-msg", loadingId);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+    const loadingId = "loading-" + Math.random();
+    appendMessage("Mengetik...", "mj-bot-msg", loadingId);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 
-        try {
-          // Kirim ke Cloudflare Worker
-          const response = await fetch("https://ai-muktijasaweb.cahyamukti52.workers.dev/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: text, history: chatHistory })
-          });
+    try {
+      const response = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text, history: chatHistory })
+      });
 
-          const data = await response.json();
-          
-          // Hapus loading
-          document.getElementById(loadingId)?.remove();
+      const data = await response.json();
+      
+      document.getElementById(loadingId)?.remove();
 
-          if (data.reply) {
-            appendMessage(data.reply, "mj-bot-msg");
-            chatHistory.push({ role: "user", parts: [{ text }] });
-            chatHistory.push({ role: "model", parts: [{ text: data.reply }] });
-          } else if (data.error) {
-            // Menampilkan pesan error detail dari worker/DEBUG
-            appendMessage(data.error, "mj-bot-msg");
-          } else {
-            appendMessage("Maaf, terjadi kesalahan pada sistem.", "mj-bot-msg");
-          }
-        } catch (error) {
-          document.getElementById(loadingId)?.remove();
-          appendMessage("Gagal terhubung ke server AI.", "mj-bot-msg");
-        }
-
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+      if (data.reply) {
+        appendMessage(data.reply, "mj-bot-msg");
+        chatHistory.push({ role: "user", parts: [{ text }] });
+        chatHistory.push({ role: "model", parts: [{ text: data.reply }] });
+      } else if (data.error) {
+        appendMessage(data.error, "mj-bot-msg");
+      } else {
+        appendMessage("Maaf, terjadi kesalahan pada sistem.", "mj-bot-msg");
       }
+    } catch (error) {
+      document.getElementById(loadingId)?.remove();
+      appendMessage("Gagal terhubung ke server AI.", "mj-bot-msg");
+    }
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function appendMessage(text, className, id = "") {
+    const msgDiv = document.createElement("div");
+    if (id) msgDiv.id = id;
+    msgDiv.className = `mj-msg ${className}`;
+    msgDiv.innerText = text;
+    chatMessages.appendChild(msgDiv);
+    return msgDiv;
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener("click", sendMessage);
+  }
+
+  if (userInput) {
+    userInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  }
+});
 </script>
 </div>
 </body>
