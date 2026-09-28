@@ -245,9 +245,9 @@
             </nav>
 
             <div>
-                <a href="https://wa.me/6288709656799?text=Halo%20muktijasaweb,%20saya%20ingin%20konsultasi." target="_blank" class="bg-brand-orange text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-brand-orange/20 hover:bg-orange-600 transition" data-lang-en="Free Consultation" data-lang-id="Konsultasi Gratis">
-                    Konsultasi Gratis
-                </a>
+                <a href="javascript:void(0);" onclick="toggleChatBox()" class="bg-brand-orange text-white px-5 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-brand-orange/20 hover:bg-orange-600 transition" data-lang-en="Free Consultation" data-lang-id="Konsultasi Gratis">
+    Konsultasi Gratis
+</a>
             </div>
         </div>
     </header>
@@ -3313,5 +3313,137 @@
         document.getElementById('previewModal').classList.add('hidden');
     }
 </script>
+<script>
+    function toggleChatBox() {
+        const widget = document.getElementById('muktijasaChatWidget');
+        if (widget) {
+            widget.classList.toggle('hidden');
+        }
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            kirimPesanChat();
+        }
+    }
+
+    function ketikTeks(elemen, teks, i = 0, kecepatan = 20, callback) {
+        if (i < teks.length) {
+            elemen.innerHTML = teks.substring(0, i + 1).replace(/\n/g, '<br>');
+            setTimeout(() => {
+                ketikTeks(elemen, teks, i + 1, kecepatan, callback);
+            }, kecepatan);
+            const chatContainer = document.getElementById('chatMessages');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        } else if (callback) {
+            callback();
+        }
+    }
+
+    function kirimPesanPintas(teksPintas) {
+        const input = document.getElementById('chatInputText');
+        input.value = teksPintas;
+        kirimPesanChat();
+    }
+
+    async function kirimPesanChat() {
+        const input = document.getElementById('chatInputText');
+        if (!input) return;
+
+        const pesanUser = input.value.trim();
+        if (!pesanUser) return;
+
+        const chatContainer = document.getElementById('chatMessages');
+
+        // 1. Tampilkan pesan user di UI
+        const bubbleUser = document.createElement('div');
+        bubbleUser.className = "bg-orange-500 text-white p-3 rounded-xl shadow-sm max-w-[85%] self-end";
+        bubbleUser.textContent = pesanUser;
+        chatContainer.appendChild(bubbleUser);
+        
+        input.value = '';
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        // 2. Tampilkan status loading
+        const bubbleBot = document.createElement('div');
+        bubbleBot.className = "bg-white p-3 rounded-xl shadow-sm border border-slate-100 max-w-[85%] self-start text-slate-700 leading-relaxed";
+        bubbleBot.textContent = "Mengetik...";
+        chatContainer.appendChild(bubbleBot);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+
+        // 3. Logika respons asisten Muktijasaweb
+        setTimeout(() => {
+            const teksLower = pesanUser.toLowerCase();
+            let jawabanAI = "Terima kasih kak atas pesannya. Mengenai kebutuhan digital bisnis kakak di Muktijasaweb, Kak Cahya Mukti siap membantu menyediakan solusi website profesional. Ada detail spesifik yang ingin didiskusikan?";
+            let tombolWaHtml = "";
+            
+            // Link WhatsApp otomatis dengan pesan pengantar
+            const noWa = "6288709656799";
+            const pesanWa = encodeURIComponent("Halo Kak, saya ingin konsultasi pembuatan website di Muktijasaweb.");
+            const linkWa = `https://wa.me/${noWa}?text=${pesanWa}`;
+
+            if (teksLower.includes('paket') || teksLower.includes('harga') || teksLower.includes('umkm') || teksLower.includes('buat website') || teksLower.includes('bikin web') || teksLower.includes('toko online') || teksLower.includes('landing page')) {
+                jawabanAI = "Tentu kak! Untuk kebutuhan UMKM maupun pembuatan website profesional, Muktijasaweb menyediakan berbagai pilihan paket terbaik mulai dari Landing Page, Company Profile, hingga toko online. Jika ingin langsung mendiskusikan konsep dan fiturnya secara lebih detail dengan Kak Cahya, silakan klik tombol WhatsApp di bawah ini ya kak!";
+                tombolWaHtml = `<br><br><a href="${linkWa}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">💬 Lanjut Konsultasi via WhatsApp</a>`;
+            } 
+            else if (teksLower.includes('waktu') || teksLower.includes('lama') || teksLower.includes('proses') || teksLower.includes('hari')) {
+                jawabanAI = "Untuk estimasi pengerjaan website di Muktijasaweb sangat cepat dan efisien kak, umumnya berkisar antara 2 hingga 7 hari kerja tergantung pada kerumitan dan fitur yang Kakak minta. Ingin langsung diskusi lebih lanjut? Silakan hubungi WhatsApp kami di bawah ya kak!";
+                tombolWaHtml = `<br><br><a href="${linkWa}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">💬 Lanjut Konsultasi via WhatsApp</a>`;
+            } 
+            else if (teksLower.includes('malam') || teksLower.includes('pagi') || teksLower.includes('siang') || teksLower.includes('sore') || teksLower.includes('halo') || teksLower.includes('hai') || teksLower.includes('konsultasi')) {
+                jawabanAI = "Halo juga kak! Selamat datang di Muktijasaweb. Jika Kakak ingin langsung mendiskusikan konsep, ide, atau fitur website yang diinginkan dengan Kak Cahya, silakan langsung terhubung melalui WhatsApp kami ya kak!";
+                tombolWaHtml = `<br><br><a href="${linkWa}" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">💬 Lanjut Konsultasi via WhatsApp</a>`;
+            }
+
+            bubbleBot.textContent = "";
+            ketikTeks(bubbleBot, jawabanAI, 0, 20, () => {
+                if (tombolWaHtml) {
+                    bubbleBot.innerHTML += tombolWaHtml;
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }
+            });
+        }, 800);
+
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+</script>
+<div id="muktijasaChatWidget" class="fixed bottom-6 right-6 z-50 hidden flex flex-col w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden transition-all duration-300">
+    <!-- Header Chat -->
+    <div class="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></div>
+            <span class="font-bold text-sm">Konsultasi Muktijasaweb</span>
+        </div>
+        <button onclick="toggleChatBox()" class="text-slate-400 hover:text-white font-bold text-lg">&times;</button>
+    </div>
+
+    <!-- Ruang Pesan / Riwayat Chat -->
+    <div id="chatMessages" class="p-4 h-64 overflow-y-auto bg-slate-50 flex flex-col space-y-3 text-sm">
+        <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 max-w-[85%] self-start text-slate-700 leading-relaxed">
+            Halo kak! Selamat datang di Muktijasaweb. Ada yang bisa kami bantu seputar pembuatan website atau optimasi digital bisnis kakak? 😊
+        </div>
+    </div>
+
+    <!-- Tombol Pintas Cepat (Quick Reply Buttons) -->
+    <div class="px-3 py-2 bg-white border-t border-slate-100 flex flex-wrap gap-1.5">
+        <button onclick="kirimPesanPintas('Lihat Pilihan Paket Web')" class="text-xs bg-slate-100 hover:bg-orange-500 hover:text-white text-slate-700 px-3 py-1.5 rounded-full transition font-medium border border-slate-200">
+            📦 Lihat Paket Web
+        </button>
+        <button onclick="kirimPesanPintas('Berapa lama proses pembuatannya?')" class="text-xs bg-slate-100 hover:bg-orange-500 hover:text-white text-slate-700 px-3 py-1.5 rounded-full transition font-medium border border-slate-200">
+            ⏱️ Estimasi Waktu
+        </button>
+        <button onclick="kirimPesanPintas('Saya ingin konsultasi khusus custom web')" class="text-xs bg-slate-100 hover:bg-orange-500 hover:text-white text-slate-700 px-3 py-1.5 rounded-full transition font-medium border border-slate-200">
+            💬 Konsultasi Khusus
+        </button>
+    </div>
+
+    <!-- Input Pesan -->
+    <div class="p-3 bg-white border-t border-slate-100 flex items-center space-x-2">
+        <input type="text" id="chatInputText" placeholder="Ketik pesan konsultasi..." class="flex-1 px-4 py-2 text-sm border border-slate-200 rounded-full focus:outline-none focus:border-orange-500" onkeypress="handleKeyPress(event)">
+        <button onclick="kirimPesanChat()" class="bg-orange-500 text-white px-4 py-2 rounded-full hover:bg-orange-600 transition text-sm font-semibold">
+            Kirim
+        </button>
+    </div>
+</div>
 </body>
 </html>
