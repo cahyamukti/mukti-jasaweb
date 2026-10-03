@@ -3601,7 +3601,7 @@
 
         // 1. Tampilkan pesan user di UI
         const bubbleUser = document.createElement('div');
-        bubbleUser.className = "bg-orange-500 text-white p-3 rounded-xl shadow-sm max-w-[85%] self-end";
+        bubbleUser.className = "bg-orange-500 text-white p-3 rounded-xl shadow-sm max-w-[85%] self-end text-sm";
         bubbleUser.textContent = pesanUser;
         chatContainer.appendChild(bubbleUser);
         
@@ -3610,7 +3610,7 @@
 
         // 2. Tampilkan status loading
         const bubbleBot = document.createElement('div');
-        bubbleBot.className = "bg-white p-3 rounded-xl shadow-sm border border-slate-100 max-w-[85%] self-start text-slate-700 leading-relaxed";
+        bubbleBot.className = "bg-white p-3 rounded-xl shadow-sm border border-slate-100 max-w-[85%] self-start text-slate-700 leading-relaxed text-sm";
         bubbleBot.textContent = "Mengetik...";
         chatContainer.appendChild(bubbleBot);
         chatContainer.scrollTop = chatContainer.scrollHeight;
