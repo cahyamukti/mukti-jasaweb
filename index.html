@@ -328,6 +328,116 @@
             </div>
         </section>
 
+<!-- Bagian Hero Section dengan Animasi Ketik Google Search -->
+<section class="py-12 md:py-20 bg-white text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        
+        <!-- Judul Utama dengan Warna Oranye Muktijasaweb -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+    Website Profesional,<br>
+    Disiapkan agar <span class="text-orange-500">Ditemukan di Google</span>, Beres Tanpa Ribet.
+</h1>
+
+        <!-- Sub-judul / Deskripsi -->
+        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
+            Mau cari bengkel, klinik, katering, sampai tukang renovasi — sekarang orang mengetik dulu di Google, baru memutuskan. Kalau bisnismu tidak ditemukan di sana, yang mereka hubungi adalah kompetitormu.
+        </p>
+
+        <!-- Mockup Kotak Pencarian Google dengan Animasi Ketik -->
+        <div class="pt-4 max-w-xl mx-auto">
+            <div class="flex items-center bg-white border border-slate-200 rounded-full shadow-lg px-6 py-4 transition hover:shadow-xl">
+                <!-- Logo Google Kecil -->
+                <div class="flex items-center space-x-1 mr-3 flex-shrink-0 font-bold text-lg">
+                    <span class="text-blue-500">G</span>
+                    <span class="text-red-500">o</span>
+                    <span class="text-yellow-500">o</span>
+                    <span class="text-blue-500">g</span>
+                    <span class="text-green-500">l</span>
+                    <span class="text-red-500">e</span>
+                </div>
+
+                <!-- Text yang Berjalan (Dynamic Typing) -->
+                <div class="flex-grow text-left overflow-hidden">
+                    <span id="typing-text" class="text-slate-800 text-base sm:text-lg font-medium"></span>
+                    <span class="animate-pulse text-slate-400 font-bold">|</span>
+                </div>
+
+                <!-- Icon Search -->
+                <div class="flex-shrink-0 text-slate-400 ml-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Script JavaScript untuk Efek Animasi Ketik yang Lebih Cepat & Responsif -->
+<script>
+    const words = [
+        "rumah makan terdekat", 
+        "toko material terdekat",
+        "rumah makan brebes",
+        "rumah makan tegal",
+        "restoran jakarta",
+        "warung makan bandung",
+        "cafe semarang",
+        "rumah makan cirebon",
+        "kuliner jogja",
+        "laundry kiloan terdekat",
+        "bengkel motor terdekat",
+        "bengkel mobil surabaya",
+        "salon kecantikan jakarta",
+        "klinik gigi bandung",
+        "cuci mobil bekasi",
+        "barbershop terdekat",
+        "toko komputer semarang",
+        "percetakan terdekat",
+        "jasa service AC jakarta",
+        "katering nasi box depok",
+        "toko elektronik surakarta"
+    ];
+    
+    let i = 0;
+    let textElement = document.getElementById('typing-text');
+
+    function typingEffect() {
+        let currentWord = words[i];
+        let charIndex = 0;
+        
+        textElement.innerHTML = "";
+
+        let typeInterval = setInterval(function() {
+            if (charIndex < currentWord.length) {
+                textElement.innerHTML += currentWord.charAt(charIndex);
+                charIndex++;
+            } else {
+                clearInterval(typeInterval);
+                setTimeout(deletingEffect, 1500);
+            }
+        }, 70);
+    }
+
+    function deletingEffect() {
+        let currentText = textElement.innerHTML;
+        
+        let deleteInterval = setInterval(function() {
+            if (currentText.length > 0) {
+                currentText = currentText.substring(0, currentText.length - 1);
+                textElement.innerHTML = currentText;
+            } else {
+                clearInterval(deleteInterval);
+                i = (i + 1) % words.length;
+                setTimeout(typingEffect, 300);
+            }
+        }, 30);
+    }
+
+    typingEffect();
+</script>
+
         <!-- SECTION: JENIS WEBSITE & PLATFORM (DINAMIS MENYESUAIKAN TAB) -->
         <section id="layanan" class="py-20 bg-white">
             <div id="layanan-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
