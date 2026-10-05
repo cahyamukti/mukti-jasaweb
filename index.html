@@ -328,53 +328,148 @@
             </div>
         </section>
 
-<!-- Bagian Hero Section dengan Animasi Ketik Google Search -->
-<section class="py-12 md:py-20 bg-white text-center">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+<!-- SECTION: DITEMUKAN DI GOOGLE & ALUR CARA KERJANYA -->
+<section class="py-16 lg:py-24 bg-white text-slate-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Judul Utama dengan Warna Oranye Muktijasaweb -->
-        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-    Website Profesional,<br>
-    Disiapkan agar <span class="text-orange-500">Ditemukan di Google</span>, Beres Tanpa Ribet.
-</h1>
+        <!-- Grid Utama 2 Kolom Berdampingan -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- KOLOM KIRI: Judul, Deskripsi, & Kotak Google dengan Animasi Ketik (Lebar 5 Kolom) -->
+            <div class="lg:col-span-5 text-left space-y-6">
+                
+                <!-- Judul Utama dengan Warna Hitam & Orange yang Konsisten -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15]">
+                    Website Profesional,<br>
+                    Disiapkan agar <span class="text-brand-orange">Ditemukan di Google</span>, Beres Tanpa Ribet.
+                </h1>
 
-        <!-- Sub-judul / Deskripsi -->
-        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto">
-            Mau cari bengkel, klinik, katering, sampai tukang renovasi — sekarang orang mengetik dulu di Google, baru memutuskan. Kalau bisnismu tidak ditemukan di sana, yang mereka hubungi adalah kompetitormu.
-        </p>
+                <!-- Sub-judul / Deskripsi -->
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    Mau cari bengkel, klinik, katering, sampai tukang renovasi — sekarang orang mengetik dulu di Google, baru memutuskan. Kalau bisnismu tidak ditemukan di sana, yang mereka hubungi adalah kompetitormu.
+                </p>
 
-        <!-- Mockup Kotak Pencarian Google dengan Animasi Ketik -->
-        <div class="pt-4 max-w-xl mx-auto">
-            <div class="flex items-center bg-white border border-slate-200 rounded-full shadow-lg px-6 py-4 transition hover:shadow-xl">
-                <!-- Logo Google Kecil -->
-                <div class="flex items-center space-x-1 mr-3 flex-shrink-0 font-bold text-lg">
-                    <span class="text-blue-500">G</span>
-                    <span class="text-red-500">o</span>
-                    <span class="text-yellow-500">o</span>
-                    <span class="text-blue-500">g</span>
-                    <span class="text-green-500">l</span>
-                    <span class="text-red-500">e</span>
+                <!-- Mockup Kotak Pencarian Google dengan Animasi Ketik -->
+                <div class="pt-2 max-w-lg">
+                    <div class="flex items-center bg-slate-50 border border-slate-200 rounded-full shadow-lg px-6 py-4 transition hover:shadow-xl">
+                        <!-- Logo Google Kecil -->
+                        <div class="flex items-center space-x-1 mr-3 flex-shrink-0 font-bold text-lg">
+                            <span class="text-blue-500">G</span>
+                            <span class="text-red-500">o</span>
+                            <span class="text-yellow-500">o</span>
+                            <span class="text-blue-500">g</span>
+                            <span class="text-green-500">l</span>
+                            <span class="text-red-500">e</span>
+                        </div>
+
+                        <!-- Text yang Berjalan (Dynamic Typing) -->
+                        <div class="flex-grow text-left overflow-hidden">
+                            <span id="typing-text" class="text-slate-700 text-base sm:text-lg font-normal"></span>
+                            <span class="animate-pulse text-slate-400 font-bold">|</span>
+                        </div>
+
+                        <!-- Icon Search -->
+                        <div class="flex-shrink-0 text-slate-400 ml-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Text yang Berjalan (Dynamic Typing) -->
-                <div class="flex-grow text-left overflow-hidden">
-                    <span id="typing-text" class="text-slate-600 text-base sm:text-lg font-normal"></span>
-                    <span class="animate-pulse text-slate-400 font-bold">|</span>
-                </div>
-
-                <!-- Icon Search -->
-                <div class="flex-shrink-0 text-slate-400 ml-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                </div>
             </div>
+
+            <!-- KOLOM KANAN: Card Alur 5 Langkah (Lebar 7 Kolom) -->
+            <div class="lg:col-span-7 space-y-4">
+                
+                <div class="space-y-4">
+                    <!-- Langkah 1 (Logo Google) -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-md relative flex items-center gap-4 transition hover:shadow-lg">
+                        <div class="absolute top-4 right-4 w-7 h-7 bg-brand-orange text-white rounded-full flex items-center justify-center font-bold text-xs shadow-sm">1</div>
+                        <div class="w-14 h-14 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center shrink-0 shadow-inner p-2 font-bold text-xl tracking-tighter">
+                            <span class="text-blue-500">G</span><span class="text-red-500">o</span><span class="text-yellow-500">o</span><span class="text-blue-500">g</span><span class="text-green-500">l</span><span class="text-red-500">e</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Dicari di Google</h3>
+                            <p class="text-xs sm:text-sm text-slate-600">Calon pelanggan mengetik kebutuhannya, misalnya "bengkel mobil bekasi".</p>
+                        </div>
+                    </div>
+
+                    <!-- Langkah 2 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-md relative flex items-center gap-4 transition hover:shadow-lg">
+                        <div class="absolute top-4 right-4 w-7 h-7 bg-brand-orange text-white rounded-full flex items-center justify-center font-bold text-xs shadow-sm">2</div>
+                        <div class="w-14 h-14 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center shrink-0 shadow-inner p-2">
+                            <svg class="w-8 h-8 text-brand-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Menemukan Websitemu</h3>
+                            <p class="text-xs sm:text-sm text-slate-600">Bisnismu muncul, mereka klik dan melihat layanan serta fotomu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Langkah 3 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-md relative flex items-center gap-4 transition hover:shadow-lg">
+                        <div class="absolute top-4 right-4 w-7 h-7 bg-brand-orange text-white rounded-full flex items-center justify-center font-bold text-xs shadow-sm">3</div>
+                        <div class="w-14 h-14 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center shrink-0 shadow-inner p-2">
+                            <svg class="w-8 h-8 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Jadi Yakin</h3>
+                            <p class="text-xs sm:text-sm text-slate-600">Tampilan rapi & info lengkap membuat mereka percaya.</p>
+                        </div>
+                    </div>
+
+                    <!-- Langkah 4 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-md relative flex items-center gap-4 transition hover:shadow-lg">
+                        <div class="absolute top-4 right-4 w-7 h-7 bg-brand-orange text-white rounded-full flex items-center justify-center font-bold text-xs shadow-sm">4</div>
+                        <div class="w-14 h-14 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center shrink-0 shadow-inner p-2">
+                            <svg class="w-8 h-8 text-emerald-500" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.124-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Chat WhatsApp</h3>
+                            <p class="text-xs sm:text-sm text-slate-600">Satu klik, mereka langsung menghubungimu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Langkah 5 -->
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-md relative flex items-center gap-4 transition hover:shadow-lg">
+                        <div class="absolute top-4 right-4 w-7 h-7 bg-brand-orange text-white rounded-full flex items-center justify-center font-bold text-xs shadow-sm">5</div>
+                        <div class="w-14 h-14 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center shrink-0 shadow-inner p-2">
+                            <svg class="w-8 h-8 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                                <polyline points="17 6 23 6 23 12"></polyline>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-sm sm:text-base">Jadi Pelanggan</h3>
+                            <p class="text-xs sm:text-sm text-slate-600">Transaksi terjadi. Bisnismu bertumbuh.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teks Catatan Penutup -->
+                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 sm:p-5 text-center shadow-sm">
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Tanpa website, alur ini putus di langkah pertama — calon pelanggan tetap mencari, hanya saja bukan kamu yang mereka temukan. <span class="text-slate-900 font-semibold">Dengan website, langkah pertama itu jadi milikmu.</span>
+                    </p>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
 </section>
 
-<!-- Script JavaScript untuk Efek Animasi Ketik yang Lebih Cepat & Responsif -->
+<!-- Script JavaScript untuk Efek Animasi Ketik -->
 <script>
     const words = [
         "rumah makan terdekat", 
@@ -441,7 +536,6 @@
 
     typingEffect();
 </script>
-
         <!-- SECTION: JENIS WEBSITE & PLATFORM (DINAMIS MENYESUAIKAN TAB) -->
         <section id="layanan" class="py-20 bg-white">
             <div id="layanan-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2282,7 +2376,7 @@
                     Tools Free
                 </h4>
                 <ul class="space-y-2 text-sm text-slate-400">
-                    <li><a href="javascript:void(0)" onclick="showComingSoon('SEO Checker')" class="hover:text-white transition">SEO Checker</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('page-seo-checker')" class="hover:text-white transition">SEO Checker</a></li>
                     <li><a href="javascript:void(0)" onclick="showComingSoon('Speed Test Web')" class="hover:text-white transition">Speed Test Web</a></li>
                     <li><a href="javascript:void(0)" onclick="showComingSoon('Color Picker Palettes')" class="hover:text-white transition">Color Picker Palettes</a></li>
                     <li><a href="javascript:void(0)" onclick="initQrPage()" class="hover:text-white transition">QR Code Generator</a></li>
