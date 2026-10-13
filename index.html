@@ -34,6 +34,13 @@
             transform: translateY(0);
         }
     </style>
+<!-- Supabase JS Library & Initialization -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://usfchqjroyxnkxqlgjkj.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_oCqdDb0pe1-4lX2LVJTL1Q_L9CT4zkg'; 
+    window.supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  </script>
 </head>
 <body class="font-sans text-slate-800 bg-white antialiased">
 
@@ -2328,6 +2335,289 @@
         </section>
     </div>
 
+ <!-- Modal Pop-up Affiliate -->
+<div id="affiliateModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+  <div class="bg-slate-900 border border-slate-800 text-white rounded-2xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative">
+    
+    <!-- Tombol Silang (Tutup Modal) -->
+    <button onclick="closeAffiliateModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 p-2 rounded-full w-8 h-8 flex items-center justify-center transition-colors">
+      ✕
+    </button>
+
+    <div class="text-center mb-6">
+      <h2 class="text-2xl font-bold text-orange-500">Program Mitra & Affiliate</h2>
+      <p class="text-slate-400 text-xs mt-1">Dapatkan komisi Rp 50.000 untuk setiap projek yang berhasil dikerjakan melalui link referral Anda.</p>
+    </div>
+
+    <!-- Navigasi Tab (Daftar Mitra / Cek Komisi) -->
+    <div class="flex border-b border-slate-800 mb-6">
+      <button id="tabRegisterBtn" onclick="switchAffiliateTab('register')" class="flex-1 pb-2 text-sm font-semibold border-b-2 border-orange-500 text-orange-500 transition-colors">
+        Daftar Mitra
+      </button>
+      <button id="tabCheckBtn" onclick="switchAffiliateTab('check')" class="flex-1 pb-2 text-sm font-semibold border-b-2 border-transparent text-slate-400 hover:text-white transition-colors">
+        Cek Komisi
+      </button>
+    </div>
+
+    <!-- TAB 1: FORM PENDAFTARAN MITRA -->
+    <div id="affiliateRegisterBox">
+      <div id="affiliateFormBox" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Nama Lengkap</label>
+          <input type="text" id="affName" placeholder="Masukkan nama Anda" class="w-full px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-orange-500">
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-slate-300 mb-1">Nomor WhatsApp / Email</label>
+          <input type="text" id="affContact" placeholder="0812xxxxxxx" class="w-full px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white focus:outline-none focus:border-orange-500">
+        </div>
+        <button onclick="handleRegisterAffiliate()" class="w-full py-3 bg-orange-600 hover:bg-orange-500 rounded-lg font-semibold text-sm transition-all shadow-lg shadow-orange-600/30 text-white">
+          Daftar Mitra Sekarang
+        </button>
+      </div>
+
+      <!-- Widget Share Link (Setelah berhasil mendaftar) -->
+      <div id="affiliateShareBox" class="hidden space-y-4 bg-slate-800/80 p-5 rounded-xl border border-slate-700">
+        <p class="text-xs text-emerald-400 font-medium">✓ Pendaftaran Berhasil! Kode Anda: <span id="displayRefCode" class="font-bold underline"></span></p>
+        
+        <div>
+          <label class="block text-xs font-medium text-slate-400 mb-1">Link Referral Unik Anda</label>
+          <input type="text" id="displayAffLink" readonly class="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded text-xs text-slate-300">
+        </div>
+
+        <div class="flex gap-2">
+          <button onclick="copyCurrentLink()" class="flex-1 py-2 bg-slate-700 hover:bg-slate-600 text-xs font-semibold rounded flex items-center justify-center gap-1.5 transition-colors">
+            📋 Copy Link
+          </button>
+          <button onclick="shareCurrentWA()" class="flex-1 py-2 bg-emerald-600 hover:bg-emerald-500 text-xs font-semibold rounded flex items-center justify-center gap-1.5 transition-colors">
+            💬 Share WA
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: CEK SALDO KOMISI -->
+    <div id="affiliateCheckBox" class="hidden space-y-4">
+      <div>
+        <label class="block text-xs font-medium text-slate-300 mb-1">Masukkan Kode Referral Anda</label>
+        <div class="flex gap-2">
+          <input type="text" id="checkRefInput" placeholder="Contoh: KUMPU110" class="flex-1 px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-lg text-sm text-white uppercase focus:outline-none focus:border-orange-500">
+          <button onclick="checkAffiliateCommission()" class="px-5 py-2.5 bg-orange-600 hover:bg-orange-500 font-semibold rounded-lg text-sm transition-colors text-white">
+            Cek
+          </button>
+        </div>
+      </div>
+
+      <!-- Result Box Komisi -->
+      <div id="commissionResult" class="hidden p-4 bg-slate-800/80 border border-slate-700 rounded-xl space-y-3">
+        <div class="flex justify-between items-center text-xs text-slate-400 border-b border-slate-700/60 pb-2">
+          <span>Nama Mitra:</span>
+          <span id="resultAffName" class="font-semibold text-white"></span>
+        </div>
+        <div class="flex justify-between items-center text-xs text-slate-400 border-b border-slate-700/60 pb-2">
+          <span>Kode Referral:</span>
+          <span id="resultRefCode" class="font-semibold text-orange-400"></span>
+        </div>
+        <div class="text-center pt-2">
+          <span class="text-xs text-slate-400 block mb-1">Total Komisi Berhasil</span>
+          <span id="resultCommission" class="text-2xl font-extrabold text-emerald-400">Rp 0</span>
+        </div>
+        <button onclick="claimCommissionWA()" class="w-full mt-2 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-2">
+          💬 Pencairan / Withdraw via WA
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Skrip Penghubung Modal & Aksi Affiliate -->
+<script>
+  let activeRefCode = '';
+
+  // 1. Tangkap otomatis kode referral dari URL (?ref=KUMPU110)
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const refParam = urlParams.get('ref');
+    
+    if (refParam) {
+      localStorage.setItem('muktijasaweb_ref', refParam.toUpperCase());
+    }
+  });
+
+  // 2. Buka WA Admin dengan membawa kode referral pengundang
+  function openAdminWhatsApp(serviceName = 'Layanan Muktijasaweb') {
+    const savedRef = localStorage.getItem('muktijasaweb_ref');
+    let textMessage = `Halo Admin Muktijasaweb, saya ingin konsultasi/pemesanan untuk ${serviceName}.`;
+
+    if (savedRef) {
+      textMessage += `\n\n(Kode Referral Mitra: ${savedRef})`;
+    }
+
+    const encodedText = encodeURIComponent(textMessage);
+    // Masukkan nomor WA Admin Kak Cahya di sini
+    window.open(`https://wa.me/6281234567890?text=${encodedText}`, '_blank');
+  }
+
+  // 3. Tab Navigation (Daftar vs Cek Komisi)
+  function switchAffiliateTab(tab) {
+    const regBox = document.getElementById('affiliateRegisterBox');
+    const checkBox = document.getElementById('affiliateCheckBox');
+    const regBtn = document.getElementById('tabRegisterBtn');
+    const checkBtn = document.getElementById('tabCheckBtn');
+
+    if (tab === 'register') {
+      if (regBox) regBox.classList.remove('hidden');
+      if (checkBox) checkBox.classList.add('hidden');
+      if (regBtn) {
+        regBtn.classList.add('border-blue-500', 'text-blue-400');
+        regBtn.classList.remove('border-transparent', 'text-slate-400');
+      }
+      if (checkBtn) {
+        checkBtn.classList.remove('border-blue-500', 'text-blue-400');
+        checkBtn.classList.add('border-transparent', 'text-slate-400');
+      }
+    } else {
+      if (regBox) regBox.classList.add('hidden');
+      if (checkBox) checkBox.classList.remove('hidden');
+      if (checkBtn) {
+        checkBtn.classList.add('border-blue-500', 'text-blue-400');
+        checkBtn.classList.remove('border-transparent', 'text-slate-400');
+      }
+      if (regBtn) {
+        regBtn.classList.remove('border-blue-500', 'text-blue-400');
+        regBtn.classList.add('border-transparent', 'text-slate-400');
+      }
+    }
+  }
+
+  // 4. Pendaftaran Mitra
+  async function handleRegisterAffiliate() {
+    const name = document.getElementById('affName').value.trim();
+    const contact = document.getElementById('affContact').value.trim();
+
+    if (!name || !contact) {
+      alert('Mohon isi Nama Lengkap dan Nomor WhatsApp/Email.');
+      return;
+    }
+
+    try {
+      const client = window.supabaseClient;
+
+      if (!client) {
+        alert('Supabase client belum siap. Pastikan script CDN Supabase sudah terpasang.');
+        return;
+      }
+
+      const cleanName = name.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+      const generatedRef = cleanName.substring(0, 5) + Math.floor(100 + Math.random() * 900);
+
+      const { data, error } = await client
+        .from('affiliates')
+        .insert([
+          { name: name, email_wa: contact, ref_code: generatedRef, total_commission: 0 }
+        ])
+        .select();
+
+      if (error) {
+        alert('Supabase Error: ' + error.message);
+        return;
+      }
+
+      if (data && data[0]) {
+        activeRefCode = data[0].ref_code;
+        document.getElementById('displayRefCode').innerText = activeRefCode;
+        document.getElementById('displayAffLink').value = `https://muktijasaweb.com/?ref=${activeRefCode}`;
+        
+        document.getElementById('affiliateFormBox').classList.add('hidden');
+        document.getElementById('affiliateShareBox').classList.remove('hidden');
+      }
+    } catch (err) {
+      console.error('Error:', err);
+      alert('Error Sistem: ' + err.message);
+    }
+  }
+
+  // 5. Cek Komisi Mitra dari Supabase
+  async function checkAffiliateCommission() {
+    const refCodeInput = document.getElementById('checkRefInput').value.trim().toUpperCase();
+
+    if (!refCodeInput) {
+      alert('Mohon masukkan Kode Referral Anda.');
+      return;
+    }
+
+    try {
+      const { data, error } = await window.supabaseClient
+        .from('affiliates')
+        .select('name, ref_code, total_commission')
+        .eq('ref_code', refCodeInput)
+        .single();
+
+      if (error || !data) {
+        alert('Kode referral tidak ditemukan. Pastikan Anda memasukkan kode yang benar.');
+        document.getElementById('commissionResult').classList.add('hidden');
+        return;
+      }
+
+      const formattedCommission = new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        maximumFractionDigits: 0
+      }).format(data.total_commission || 0);
+
+      document.getElementById('resultAffName').innerText = data.name;
+      document.getElementById('resultRefCode').innerText = data.ref_code;
+      document.getElementById('resultCommission').innerText = formattedCommission;
+      document.getElementById('commissionResult').classList.remove('hidden');
+
+    } catch (err) {
+      console.error('Error saat mengecek komisi:', err);
+      alert('Gagal mengambil data komisi.');
+    }
+  }
+
+  // 6. Klaim/Withdraw Komisi via WA
+  function claimCommissionWA() {
+    const refCode = document.getElementById('resultRefCode').innerText;
+    const name = document.getElementById('resultAffName').innerText;
+    const commission = document.getElementById('resultCommission').innerText;
+
+    const message = `Halo Admin Muktijasaweb, saya ingin mencairkan komisi affiliate.\n\n` +
+                    `Nama: ${name}\n` +
+                    `Kode Referral: ${refCode}\n` +
+                    `Total Komisi: ${commission}\n\n` +
+                    `Mohon diproses, terima kasih!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    // Masukkan nomor WA Admin Kak Cahya di sini
+    window.open(`https://wa.me/6281234567890?text=${encodedMessage}`, '_blank');
+  }
+
+  function copyCurrentLink() {
+    if (activeRefCode) {
+      const affUrl = `https://muktijasaweb.com/?ref=${activeRefCode}`;
+      navigator.clipboard.writeText(affUrl);
+      alert('Link referral berhasil disalin!\n' + affUrl);
+    }
+  }
+
+  function shareCurrentWA() {
+    if (activeRefCode) {
+      const affUrl = `https://muktijasaweb.com/?ref=${activeRefCode}`;
+      const text = encodeURIComponent(`Halo! Butuh pembuatan website profesional atau konfigurasi server? Cek layanan Muktijasaweb di sini: ${affUrl}`);
+      window.open(`https://wa.me/?text=${text}`, '_blank');
+    }
+  }
+
+  function openAffiliateModal() {
+    document.getElementById('affiliateModal').classList.remove('hidden');
+  }
+
+  function closeAffiliateModal() {
+    document.getElementById('affiliateModal').classList.add('hidden');
+  }
+</script>
+
 <!-- FOOTER -->
 <footer class="bg-brand-dark text-white pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2391,7 +2681,7 @@
         </div>
 
    <!-- BARIS BAWAH: 3 Kolom Seimbang -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 pb-12 border-b border-slate-800 items-start">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 pb-12 border-b border-slate-800 items-start">
             
             <!-- Kolom 1: Informasi -->
             <div>
@@ -2402,6 +2692,20 @@
                     <li><a href="javascript:void(0)" onclick="showPage('blog')" class="hover:text-white transition">Blog</a></li>
                 </ul>
             </div>
+
+            <!-- Kolom Informasi -->
+
+<!-- Kolom Affiliate -->
+<div>
+  <h4 class="text-white font-semibold mb-3">Affiliate</h4>
+  <ul class="space-y-2 text-sm text-slate-400">
+    <li>
+      <button onclick="openAffiliateModal()" class="text-slate-400 hover:text-slate-200 transition-colors text-left">
+        Komisi Affiliate
+      </button>
+    </li>
+  </ul>
+</div>
 
             <!-- Kolom 2: Kontak & Head Office -->
             <div>
@@ -2424,7 +2728,7 @@
                 <!-- Ikon Sosial Media -->
                 <div class="flex items-center gap-3">
                     <!-- Facebook Icon -->
-                    <a href="https://web.facebook.com/profile.php?id=61594104406798" target="_blank" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-orange text-slate-300 hover:text-white flex items-center justify-center transition shadow-sm" aria-label="Facebook">
+                    <a href="https://web.facebook.com/muktijasawebdotcom" target="_blank" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-brand-orange text-slate-300 hover:text-white flex items-center justify-center transition shadow-sm" aria-label="Facebook">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                     </a>
                     <!-- TikTok Icon -->
@@ -3869,6 +4173,245 @@
     function closeLivePreviewKafe() {
         document.getElementById('previewModalKafe').classList.add('hidden');
     }
+activeRefCode = '';
+
+  // 1. Tangkap otomatis kode referral dari URL (?ref=KUMPU110)
+  document.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const refParam = urlParams.get('ref');
+    
+    if (refParam) {
+      localStorage.setItem('muktijasaweb_ref', refParam.toUpperCase());
+    }
+  });
+
+  // 2. Buka WA Admin dengan menyertakan kode referral pengundang
+  function openAdminWhatsApp(serviceName = 'Layanan Muktijasaweb') {
+    const savedRef = localStorage.getItem('muktijasaweb_ref');
+    let textMessage = `Halo Admin Muktijasaweb, saya ingin konsultasi/pemesanan untuk ${serviceName}.`;
+
+    if (savedRef) {
+      textMessage += `\n\n(Kode Referral Mitra: ${savedRef})`;
+    }
+
+    const encodedText = encodeURIComponent(textMessage);
+    // Masukkan nomor WA Admin Kak Cahya di sini (misal: 6281234567890)
+    window.open(`https://wa.me/6281234567890?text=${encodedText}`, '_blank');
+  }
+
+  // 3. Tab Navigation (Daftar vs Cek Komisi)
+  function switchAffiliateTab(tab) {
+    const regBox = document.getElementById('affiliateRegisterBox');
+    const checkBox = document.getElementById('affiliateCheckBox');
+    const regBtn = document.getElementById('tabRegisterBtn');
+    const checkBtn = document.getElementById('tabCheckBtn');
+
+    if (tab === 'register') {
+      if (regBox) regBox.classList.remove('hidden');
+      if (checkBox) checkBox.classList.add('hidden');
+      if (regBtn) {
+        regBtn.classList.add('border-orange-500', 'text-orange-500');
+        regBtn.classList.remove('border-transparent', 'text-slate-400');
+      }
+      if (checkBtn) {
+        checkBtn.classList.remove('border-orange-500', 'text-orange-500');
+        checkBtn.classList.add('border-transparent', 'text-slate-400');
+      }
+    } else {
+      if (regBox) regBox.classList.add('hidden');
+      if (checkBox) checkBox.classList.remove('hidden');
+      if (checkBtn) {
+        checkBtn.classList.add('border-orange-500', 'text-orange-500');
+        checkBtn.classList.remove('border-transparent', 'text-slate-400');
+      }
+      if (regBtn) {
+        regBtn.classList.remove('border-orange-500', 'text-orange-500');
+        regBtn.classList.add('border-transparent', 'text-slate-400');
+      }
+    }
+  }
+
+  // 4. Pendaftaran Mitra
+  async function handleRegisterAffiliate() {
+    const name = document.getElementById('affName').value.trim();
+    const contact = document.getElementById('affContact').value.trim();
+
+    if (!name || !contact) {
+      alert('Mohon isi Nama Lengkap dan Nomor WhatsApp/Email.');
+      return;
+    }
+
+    try {
+      const cleanName = name.replace(/[^a-zA-Z0-9]/g, '').toUpperCase();
+      const generatedRef = cleanName.substring(0, 5) + Math.floor(100 + Math.random() * 900);
+
+      const { data, error } = await window.supabaseClient
+        .from('affiliates')
+        .insert([
+          { name: name, email_wa: contact, ref_code: generatedRef, total_commission: 0 }
+        ])
+        .select();
+
+      if (error) {
+        alert('Supabase Error: ' + error.message);
+        return;
+      }
+
+      if (data && data[0]) {
+        activeRefCode = data[0].ref_code;
+        document.getElementById('displayRefCode').innerText = activeRefCode;
+        document.getElementById('displayAffLink').value = `https://muktijasaweb.com/?ref=${activeRefCode}`;
+        
+        document.getElementById('affiliateFormBox').classList.add('hidden');
+        document.getElementById('affiliateShareBox').classList.remove('hidden');
+      }
+    } catch (err) {
+      console.error('Error:', err);
+      alert('Error Sistem: ' + err.message);
+    }
+  }
+
+  // 5. Cek Komisi Mitra
+  async function checkAffiliateCommission() {
+    const refCodeInput = document.getElementById('checkRefInput').value.trim().toUpperCase();
+
+    if (!refCodeInput) {
+      alert('Mohon masukkan Kode Referral Anda.');
+      return;
+    }
+
+    try {
+      const { data, error } = await window.supabaseClient
+        .from('affiliates')
+        .select('name, ref_code, total_commission')
+        .eq('ref_code', refCodeInput)
+        .single();
+
+      if (error || !data) {
+        alert('Kode referral tidak ditemukan.');
+        document.getElementById('commissionResult').classList.add('hidden');
+        return;
+      }
+
+      const formattedCommission = new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        maximumFractionDigits: 0
+      }).format(data.total_commission || 0);
+
+      document.getElementById('resultAffName').innerText = data.name;
+      document.getElementById('resultRefCode').innerText = data.ref_code;
+      document.getElementById('resultCommission').innerText = formattedCommission;
+      document.getElementById('commissionResult').classList.remove('hidden');
+
+    } catch (err) {
+      console.error('Error saat mengecek komisi:', err);
+      alert('Gagal mengambil data komisi.');
+    }
+  }
+
+  // 3. Tab Navigation (Daftar vs Cek Komisi)
+  function switchAffiliateTab(tab) {
+    const regBox = document.getElementById('affiliateRegisterBox');
+    const checkBox = document.getElementById('affiliateCheckBox');
+    const regBtn = document.getElementById('tabRegisterBtn');
+    const checkBtn = document.getElementById('tabCheckBtn');
+
+    if (tab === 'register') {
+      if (regBox) regBox.classList.remove('hidden');
+      if (checkBox) checkBox.classList.add('hidden');
+      if (regBtn) {
+        regBtn.classList.add('border-orange-500', 'text-orange-500');
+        regBtn.classList.remove('border-transparent', 'text-slate-400');
+      }
+      if (checkBtn) {
+        checkBtn.classList.remove('border-orange-500', 'text-orange-500');
+        checkBtn.classList.add('border-transparent', 'text-slate-400');
+      }
+    } else {
+      if (regBox) regBox.classList.add('hidden');
+      if (checkBox) checkBox.classList.remove('hidden');
+      if (checkBtn) {
+        checkBtn.classList.add('border-orange-500', 'text-orange-500');
+        checkBtn.classList.remove('border-transparent', 'text-slate-400');
+      }
+      if (regBtn) {
+        regBtn.classList.remove('border-orange-500', 'text-orange-500');
+        regBtn.classList.add('border-transparent', 'text-slate-400');
+      }
+    }
+  }
+
+function switchAffiliateTab(tab) {
+    const regBox = document.getElementById('affiliateRegisterBox');
+    const checkBox = document.getElementById('affiliateCheckBox');
+    const regBtn = document.getElementById('tabRegisterBtn');
+    const checkBtn = document.getElementById('tabCheckBtn');
+
+    if (tab === 'register') {
+      if (regBox) regBox.classList.remove('hidden');
+      if (checkBox) checkBox.classList.add('hidden');
+      if (regBtn) {
+        regBtn.classList.add('border-orange-500', 'text-orange-500');
+        regBtn.classList.remove('border-transparent', 'text-slate-400');
+      }
+      if (checkBtn) {
+        checkBtn.classList.remove('border-orange-500', 'text-orange-500');
+        checkBtn.classList.add('border-transparent', 'text-slate-400');
+      }
+    } else {
+      if (regBox) regBox.classList.add('hidden');
+      if (checkBox) checkBox.classList.remove('hidden');
+      if (checkBtn) {
+        checkBtn.classList.add('border-orange-500', 'text-orange-500');
+        checkBtn.classList.remove('border-transparent', 'text-slate-400');
+      }
+      if (regBtn) {
+        regBtn.classList.remove('border-orange-500', 'text-orange-500');
+        regBtn.classList.add('border-transparent', 'text-slate-400');
+      }
+    }
+  }
+
+  // 6. Pencairan Komisi via WA
+  function claimCommissionWA() {
+    const refCode = document.getElementById('resultRefCode').innerText;
+    const name = document.getElementById('resultAffName').innerText;
+    const commission = document.getElementById('resultCommission').innerText;
+
+    const message = `Halo Admin Muktijasaweb, saya ingin mencairkan komisi affiliate.\n\n` +
+                    `Nama: ${name}\n` +
+                    `Kode Referral: ${refCode}\n` +
+                    `Total Komisi: ${commission}\n\n` +
+                    `Mohon diproses, terima kasih!`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/6288709656799?text=${encodedMessage}`, '_blank');
+  }
+
+  function copyCurrentLink() {
+    if (activeRefCode) {
+      const affUrl = `https://muktijasaweb.com/?ref=${activeRefCode}`;
+      navigator.clipboard.writeText(affUrl);
+      alert('Link referral berhasil disalin!\n' + affUrl);
+    }
+  }
+
+  function shareCurrentWA() {
+    if (activeRefCode) {
+      const affUrl = `https://muktijasaweb.com/?ref=${activeRefCode}`;
+      const text = encodeURIComponent(`Halo! Butuh pembuatan website profesional atau konfigurasi server? Cek layanan Muktijasaweb di sini: ${affUrl}`);
+      window.open(`https://wa.me/?text=${text}`, '_blank');
+    }
+  }
+
+  function openAffiliateModal() {
+    document.getElementById('affiliateModal').classList.remove('hidden');
+  }
+
+  function closeAffiliateModal() {
+    document.getElementById('affiliateModal').classList.add('hidden');
+  }
 </script>
 </body>
 </html>
